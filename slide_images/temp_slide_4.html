@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PackShift • Deeptech Gigahack 2026 (Biomentorhub × Profi)</title>
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌱</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap"
+    rel="stylesheet">
+  <style>
+    /* ==========================================================================
+       HACKATHON DEEPTECH THEME: Графит + Неоновый Изумруд + Научный Минимализм
+       ========================================================================== */
+    :root {
+      --bg-dark: #0a0e11;
+      --bg-card: #12181d;
+      --bg-card-hover: #162027;
+      --border-subtle: #1e2932;
+      --border-emerald: #10b981;
+      --border-glow: rgba(52, 211, 153, 0.35);
+
+      --neon-emerald: #34d399;
+      --vibrant-green: #10b981;
+      --dark-green: #065f46;
+
+      --text-white: #ffffff;
+      --text-muted: #94a3b8;
+      --text-light: #cbd5e1;
+      --accent-red: #f43f5e;
+      --accent-amber: #f59e0b;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.12) 0%, transparent 55%),
+        radial-gradient(circle at 80% 90%, rgba(5, 150, 105, 0.08) 0%, transparent 45%);
+      color: var(--text-white);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Главный 16:9 контейнер сцены */
+    .deck-viewport {
+      width: 100vw;
+      height: 100vh;
+      max-width: 177.78vh; /* 16:9 соотношение */
+      max-height: 56.25vw;
+      padding: 35px 55px 75px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .slide {
+      width: 100%;
+      height: 100%;
+      display: none;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: center;
+    }
+
+    .slide.active {
+      display: flex;
+      opacity: 1;
+      transform: translateY(0);
+      z-index: 10;
+    }
+
+    /* Верхний статус-бар */
+    .top-status-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .track-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--neon-emerald);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .track-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--neon-emerald);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--neon-emerald);
+    }
+
+    .slide-index-counter {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+    }
+
+    /* Центрированные заголовки слайдов */
+    .slide-header {
+      margin-bottom: 18px;
+      text-align: center;
+    }
+
+    .slide-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--neon-emerald);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      display: inline-block;
+    }
+
+    .slide-title {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--text-white);
+      margin-bottom: 6px;
+    }
+
+    .slide-subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+      max-width: 880px;
+      margin: 0 auto;
+      line-height: 1.45;
+    }
+
+    /* Основная рабочая область слайда */
+    .slide-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      gap: 16px;
+    }
+
+    /* ==========================================================================
+       КОМПОНЕНТЫ СХЕМ И ДИАГРАММ
+       ========================================================================== */
+
+    /* Карточки */
+    .deeptech-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 18px;
+      transition: all 0.25s ease;
+      position: relative;
+    }
+
+    .deeptech-card:hover {
+      border-color: var(--neon-emerald);
+      box-shadow: 0 6px 20px rgba(16, 185, 129, 0.12);
+    }
+
+    /* Сетка 3 колонок */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      width: 100%;
+    }
+
+    /* Сетка 2 колонок */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      width: 100%;
+    }
+
+    /* Сетка 4 колонок */
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      width: 100%;
+    }
+
+    /* Моноширинные цифры */
+    .stat-number {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      color: var(--neon-emerald);
+    }
+
+    /* График DMA (SVG) */
+    .chart-container {
+      width: 100%;
+      max-width: 900px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 16px 24px;
+      box-shadow: inset 0 0 30px rgba(0,0,0,0.5);
+    }
+
+    /* Пайплайн / Шаги */
+    .pipeline-flow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+    }
+
+    .pipeline-step {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 16px 14px;
+      flex: 1;
+      text-align: center;
+      position: relative;
+    }
+
+    .pipeline-step.active-step {
+      border-color: var(--neon-emerald);
+      box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
+    }
+
+    .pipeline-arrow {
+      color: var(--neon-emerald);
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    /* Футер сцены с навигацией и таймером */
+    .bottom-control-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      padding-top: 14px;
+      border-top: 1px solid var(--border-subtle);
+      margin-top: 14px;
+    }
+
+    .hotkey-hints {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--text-muted);
+      display: flex;
+      gap: 14px;
+    }
+
+    .kbd-btn {
+      background: #1e293b;
+      padding: 2px 7px;
+      border-radius: 4px;
+      color: var(--text-light);
+      border: 1px solid #334155;
+    }
+
+    .nav-buttons-group {
+      display: flex;
+      gap: 8px;
+    }
+
+    .nav-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-white);
+      padding: 6px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .nav-btn:hover {
+      background: var(--neon-emerald);
+      color: #000;
+      border-color: var(--neon-emerald);
+    }
+
+    .timer-display {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--neon-emerald);
+      background: rgba(16, 185, 129, 0.1);
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      cursor: pointer;
+    }
+
+    /* Шпаргалка спикера (скрытый выдвижной ящик) */
+    .notes-drawer {
+      position: absolute;
+      bottom: 70px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width: 850px;
+      background: rgba(18, 24, 29, 0.96);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--neon-emerald);
+      border-radius: 12px;
+      padding: 16px 20px;
+      display: none;
+      z-index: 100;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+      text-align: left;
+    }
+
+    .notes-drawer.open {
+      display: block;
+    }
+
+    .notes-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--neon-emerald);
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .notes-text {
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--text-light);
+    }
+
+    /* Прогресс-бар */
+    .deck-progress-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      background: var(--neon-emerald);
+      box-shadow: 0 0 8px var(--neon-emerald);
+      transition: width 0.3s ease;
+    }
+  </style>
+
+    <style>
+      html, body {
+        width: 1920px !important;
+        height: 1080px !important;
+        overflow: hidden !important;
+      }
+      .deck-viewport {
+        width: 1920px !important;
+        height: 1080px !important;
+        max-width: 1920px !important;
+        max-height: 1080px !important;
+        padding: 45px 75px 45px !important;
+      }
+      .bottom-control-bar, .notes-drawer, .deck-progress-bar {
+        display: none !important;
+      }
+      .slide {
+        display: none !important;
+        opacity: 0 !important;
+      }
+      .slide[data-slide="4"] {
+        display: flex !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    </style>
+    </head>
+
+<body>
+
+  <div class="deck-viewport">
+
+    <!-- Верхний статус-бар -->
+    <div class="top-status-bar">
+      <div class="track-badge">
+        <span class="track-dot"></span>
+        <span>Deeptech Gigahack 2026 • Biomentorhub × Profi Track</span>
+      </div>
+      <div class="slide-index-counter" id="slideIndexLabel">04 / 08</div>
+    </div>
+
+    <!-- ======================================================================
+         СЛАЙД 1: DEEPTECH VISION & THE BREAKTHROUGH
+         ====================================================================== -->
+    <div class="slide active" data-slide="1">
+      <div class="slide-header">
+        <span class="slide-tag">DEEPTECH VENTURE • МАТЕРИАЛОВЕДЕНИЕ</span>
+        <h1 class="slide-title" style="font-size: 46px; margin: 10px 0 8px; letter-spacing: -1px;">
+          Pack<span style="color: var(--neon-emerald);">Shift</span>
+        </h1>
+        <p class="slide-subtitle" style="font-size: 16px; color: var(--text-light);">
+          Высококристаллическая и биомиметическая моно-материальная платформа для пищевой упаковки
+        </p>
+      </div>
+
+      <div class="slide-body">
+        <!-- Схема молекулярного и материаловедческого триумвирата -->
+        <div style="background: rgba(18, 24, 29, 0.7); border: 1px solid var(--border-subtle); border-radius: 16px; padding: 22px 30px; width: 100%; max-width: 950px; box-shadow: 0 10px 30px rgba(0,0,0,0.4);">
+          <div style="margin-bottom: 16px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--neon-emerald); letter-spacing: 2px;">
+            АРХИТЕКТУРА ТЕХНОЛОГИЧЕСКОГО ПРОРЫВА
+          </div>
+
+          <div class="grid-3" style="margin-top: 10px;">
+            <!-- Узел 1 -->
+            <div class="deeptech-card" style="text-align: center; border-color: rgba(16, 185, 129, 0.3);">
+              <div style="font-size: 24px; margin-bottom: 6px;">🧬</div>
+              <div style="font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 4px;">Нано-кристаллизация</div>
+              <div class="stat-number" style="font-size: 24px; margin-bottom: 6px;">&chi;<sub>c</sub> &gt; 38%</div>
+              <p style="font-size: 11.5px; color: var(--text-muted); line-height: 1.4;">
+                Модифицированный rPET. Термостойкость до <b>250°C</b> без деформации в тепловых витринах.
+              </p>
+            </div>
+
+            <!-- Узел 2 -->
+            <div class="deeptech-card" style="text-align: center; border-color: rgba(16, 185, 129, 0.3);">
+              <div style="font-size: 24px; margin-bottom: 6px;">🌿</div>
+              <div style="font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 4px;">Биомиметический барьер</div>
+              <div class="stat-number" style="font-size: 24px; margin-bottom: 6px;">Kit 12 • 0% PFAS</div>
+              <p style="font-size: 11.5px; color: var(--text-muted); line-height: 1.4;">
+                Ионно-сшитая полисахаридная матрица (альгинат + хитозан). Блокировка горячих масел.
+              </p>
+            </div>
+
+            <!-- Узел 3 -->
+            <div class="deeptech-card" style="text-align: center; border-color: rgba(16, 185, 129, 0.3);">
+              <div style="font-size: 24px; margin-bottom: 6px;">🔄</div>
+              <div style="font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 4px;">Чистая циркулярность</div>
+              <div class="stat-number" style="font-size: 24px; margin-bottom: 6px;">RecyClass A</div>
+              <p style="font-size: 11.5px; color: var(--text-muted); line-height: 1.4;">
+                100% моно-материалы: сортировка в чистый поток rPET-бутылок или домашний компост (60 дн).
+              </p>
+            </div>
+          </div>
+
+          <div style="margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--border-subtle); display: flex; justify-content: center; gap: 30px; font-size: 12px; color: var(--text-light); font-family: 'JetBrains Mono', monospace;">
+            <span>⚡ Решение под вызов Profi</span>
+            <span style="color: var(--neon-emerald);">●</span>
+            <span>🛡️ Полная готовность к EU PPWR 2030</span>
+            <span style="color: var(--neon-emerald);">●</span>
+            <span>🏭 Zero-CapEx интеграция</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="notes-drawer" id="note-1">
+        <div class="notes-header"><span>Шпаргалка спикера (0:00 – 0:35)</span><span>Нажмите 'S' чтобы скрыть</span></div>
+        <div class="notes-text">
+          «Добрый день, уважаемые эксперты и жюри! Команда PackShift представляет deeptech-платформу моно-материальной пищевой упаковки. Мы разрешили ключевой парадокс материаловедения: как совместить экстремальную термостойкость в 250°C с абсолютной циркулярностью переработки по классу RecyClass A и полным отказом от токсичных PFAS.»
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================================================
+         СЛАЙД 2: THE PACKAGING TRILEMMA (ФУНДАМЕНТАЛЬНЫЙ ТУПИК)
+         ====================================================================== -->
+    <div class="slide" data-slide="2">
+      <div class="slide-header">
+        <span class="slide-tag">ФУНДАМЕНТАЛЬНЫЙ ВЫЗОВ • ТЕОРИЯ МАТЕРИАЛОВ</span>
+        <h2 class="slide-title">Материаловедческая трилемма пищевой упаковки</h2>
+        <p class="slide-subtitle">
+          Почему современные полимеры не способны объединить температуру, переработку и себестоимость
+        </p>
+      </div>
+
+      <div class="slide-body">
+        <div class="grid-2" style="max-width: 1000px; align-items: center;">
+          <!-- SVG Радар / Диаграмма трилеммы -->
+          <div class="deeptech-card" style="padding: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-muted); margin-bottom: 8px;">
+              РАДАР КОМПРОМИССОВ МАТЕРИАЛОВ
+            </div>
+            <svg viewBox="0 0 360 300" style="width: 100%; max-height: 250px;">
+              <!-- Треугольник осей -->
+              <polygon points="180,30 330,260 30,260" fill="none" stroke="#1e293b" stroke-width="2" />
+              <polygon points="180,95 270,225 90,225" fill="none" stroke="#1e293b" stroke-dasharray="4" stroke-width="1.5" />
+              
+              <!-- Вершины -->
+              <text x="180" y="20" fill="#34d399" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="bold" text-anchor="middle">ТЕРМОСТОЙКОСТЬ (&gt;200°C)</text>
+              <text x="335" y="280" fill="#34d399" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="bold" text-anchor="middle">ЦИРКУЛЯРНОСТЬ (Class A)</text>
+              <text x="25" y="280" fill="#34d399" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="bold" text-anchor="middle">ПАРИТЕТ ЦЕНЫ (1:1)</text>
+
+              <!-- Альтернатива 1: Алюминий (Красный) -->
+              <polygon points="180,45 130,240 100,240" fill="rgba(244, 63, 94, 0.15)" stroke="#f43f5e" stroke-width="1.5" />
+              <!-- Альтернатива 2: PLA/PBAT (Оранжевый) -->
+              <polygon points="180,210 310,250 80,245" fill="rgba(245, 158, 11, 0.15)" stroke="#f59e0b" stroke-width="1.5" />
+              <!-- PackShift (Зеленый прорыв) -->
+              <polygon points="180,40 315,250 45,250" fill="rgba(16, 185, 129, 0.25)" stroke="#10b981" stroke-width="3" filter="drop-shadow(0 0 8px #10b981)" />
+
+              <circle cx="180" cy="40" r="4" fill="#34d399" />
+              <circle cx="315" cy="250" r="4" fill="#34d399" />
+              <circle cx="45" cy="250" r="4" fill="#34d399" />
+            </svg>
+            <div style="font-size: 11px; font-family: 'JetBrains Mono', monospace; color: var(--neon-emerald); margin-top: 6px;">
+              ⚡ Зелёный контур: PackShift Парето-оптимум
+            </div>
+          </div>
+
+          <!-- Разбор краха существующих аналогов -->
+          <div style="display: flex; flex-direction: column; gap: 10px; text-align: left;">
+            <div class="deeptech-card" style="border-left: 3px solid var(--accent-red); padding: 12px 14px;">
+              <div style="font-weight: 700; font-size: 13px; color: #fff; margin-bottom: 2px;">
+                ❌ Многослойные ламинаты (PET + Al + PE)
+              </div>
+              <div style="font-size: 11.5px; color: var(--text-muted); line-height: 1.4;">
+                Неразделимый пирог из 3 полимеров и клея. <b>0% вторичной переработки</b>, распад клея при 85°C в тепловой витрине, штраф EPR €800/т.
+              </div>
+            </div>
+
+            <div class="deeptech-card" style="border-left: 3px solid var(--accent-amber); padding: 12px 14px;">
+              <div style="font-weight: 700; font-size: 13px; color: #fff; margin-bottom: 2px;">
+                ⚠️ Традиционный алюминий
+              </div>
+              <div style="font-size: 11.5px; color: var(--text-muted); line-height: 1.4;">
+                Выдерживает жар, но оставляет огромный углеродный след (<b>11.5 кг CO₂/кг</b>), непрозрачен на витрине и взрывается в бытовых СВЧ.
+              </div>
+            </div>
+
+            <div class="deeptech-card" style="border-left: 3px solid var(--accent-amber); padding: 12px 14px;">
+              <div style="font-weight: 700; font-size: 13px; color: #fff; margin-bottom: 2px;">
+                ⚠️ Стандартные биопластики (PLA / PBAT)
+              </div>
+              <div style="font-size: 11.5px; color: var(--text-muted); line-height: 1.4;">
+                Плавятся уже при <b>55°C–60°C</b>. Полностью неприменимы для горячих витрин гриля (85°C–120°C).
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="notes-drawer" id="note-2">
+        <div class="notes-header"><span>Шпаргалка спикера (0:35 – 1:15)</span><span>Нажмите 'S' чтобы скрыть</span></div>
+        <div class="notes-text">
+          «Перед ритейлом Profi стоит непреодолимая трилемма. Если мы берём многослойный ламинат с клеем — он держит жир, но не перерабатывается и сжигается, создавая риски штрафов по директиве PPWR. Алюминий оставляет колоссальный след CO2. А обычные биопластики типа PLA просто плавятся уже при 55 градусах. Ни один коммерческий материал не закрывал все 3 вершины — до PackShift.»
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================================================
+         СЛАЙД 3: CORE DEEPTECH 1 — НАНО-КРИСТАЛЛИЗАЦИЯ rPET (High-χc Platform)
+         ====================================================================== -->
+    <div class="slide" data-slide="3">
+      <div class="slide-header">
+        <span class="slide-tag">ПОЛИМЕРНАЯ ИНЖЕНЕРИЯ • НАУЧНОЕ ЯДРО 1</span>
+        <h2 class="slide-title">Высококристаллический моно-rPET (CPET Ultra-Flex)</h2>
+        <p class="slide-subtitle">
+          Управление кинетикой кристаллизации вторичного ПЭТ (&chi;<sub>c</sub> &gt; 38%) для удержания 250°C
+        </p>
+      </div>
+
+      <div class="slide-body">
+        <div class="grid-2" style="max-width: 1020px; align-items: center;">
+          <!-- График термомеханического анализа (DMA) -->
+          <div class="chart-container" style="text-align: center;">
+            <div style="display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 11px; margin-bottom: 8px;">
+              <span style="color: var(--neon-emerald);">DMA: Модуль упругости E' (МПа) vs Температура (°C)</span>
+              <span style="color: var(--text-muted);">ASTM D4065</span>
+            </div>
+
+            <svg viewBox="0 0 450 220" style="width: 100%; max-height: 200px;">
+              <!-- Сетка -->
+              <line x1="40" y1="20" x2="40" y2="180" stroke="#1e293b" stroke-width="1.5" />
+              <line x1="40" y1="180" x2="430" y2="180" stroke="#1e293b" stroke-width="1.5" />
+
+              <line x1="40" y1="60" x2="430" y2="60" stroke="#1e293b" stroke-dasharray="3" />
+              <line x1="40" y1="120" x2="430" y2="120" stroke="#1e293b" stroke-dasharray="3" />
+
+              <!-- Маркеры температуры -->
+              <!-- 70C Tg -->
+              <line x1="120" y1="20" x2="120" y2="180" stroke="#475569" stroke-dasharray="4" />
+              <text x="120" y="195" fill="#94a3b8" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">70°C (Tg)</text>
+
+              <!-- 120C Витрина Profi -->
+              <line x1="210" y1="20" x2="210" y2="180" stroke="#f59e0b" stroke-dasharray="4" />
+              <text x="210" y="195" fill="#f59e0b" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">120°C (Витрина)</text>
+
+              <!-- 250C Духовка -->
+              <line x1="390" y1="20" x2="390" y2="180" stroke="#34d399" stroke-dasharray="4" />
+              <text x="390" y="195" fill="#34d399" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">250°C (Пик)</text>
+
+              <!-- Кривая 1: Стандартный аморфный rPET (Проваливается при 70C) -->
+              <path d="M 40,40 Q 110,45 125,120 T 170,175 L 430,175" fill="none" stroke="#f43f5e" stroke-width="2.5" stroke-dasharray="5" />
+              
+              <!-- Кривая 2: PackShift High-chi CPET (Держит плато до 250C) -->
+              <path d="M 40,35 Q 120,40 210,48 T 380,65 L 415,160" fill="none" stroke="#10b981" stroke-width="3" filter="drop-shadow(0 0 6px #10b981)" />
+
+              <!-- Подписи кривых -->
+              <text x="240" y="40" fill="#34d399" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="bold">PackShift High-&chi;c CPET</text>
+              <text x="135" y="150" fill="#f43f5e" font-family="'JetBrains Mono', monospace" font-size="9">Стандартный rPET (коллапс)</text>
+            </svg>
+
+            <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">
+              Кристаллические сферолиты удерживают механический модуль при длительном нагреве.
+            </div>
+          </div>
+
+          <!-- Инженерная спецификация -->
+          <div style="display: flex; flex-direction: column; gap: 12px; text-align: left;">
+            <div class="deeptech-card">
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--neon-emerald); margin-bottom: 2px;">
+                МЕХАНИЗМ КРИСТАЛЛИЗАЦИИ
+              </div>
+              <div style="font-weight: 700; font-size: 14px; color: #fff; margin-bottom: 4px;">
+                Органические нано-нуклеаторы
+              </div>
+              <p style="font-size: 12px; color: var(--text-muted); line-height: 1.45;">
+                Введение неорганических нано-центров нуклеации инициирует сверхплотную сетку кристаллитов без хрупкости. Степень кристалличности повышена с <b>18% до &gt;38%</b>.
+              </p>
+            </div>
+
+            <div class="deeptech-card">
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--neon-emerald); margin-bottom: 2px;">
+                ДВОЙНОЕ ПРИМЕНЕНИЕ (DUAL-OVENABLE)
+              </div>
+              <div style="font-weight: 700; font-size: 14px; color: #fff; margin-bottom: 4px;">
+                Диапазон: от -40°C до +250°C
+              </div>
+              <p style="font-size: 12px; color: var(--text-muted); line-height: 1.45;">
+                Покупатель может перенести блюдо из морозильника прямо в духовку или СВЧ в фабричной упаковке без вскрытия и перекладывания.
+              </p>
+            </div>
+
+            <div class="deeptech-card" style="border-color: rgba(16, 185, 129, 0.4);">
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--neon-emerald); margin-bottom: 2px;">
+                100% BOTTLE-TO-BOTTLE СОРТИРОВКА
+              </div>
+              <p style="font-size: 12px; color: var(--text-light); line-height: 1.45;">
+                Упаковка не содержит полиэтиленовых слоев и пигментов, блокирующих NIR. Оптические сканеры сортируют её в чистый поток rPET с выходом вторичного сырья <b>99.2%</b>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="notes-drawer" id="note-3">
+        <div class="notes-header"><span>Шпаргалка спикера (1:15 – 2:00)</span><span>Нажмите 'S' чтобы скрыть</span></div>
+        <div class="notes-text">
+          «Наше первое научно-инженерное ядро — это модификация вторичного ПЭТ. Обычный полиэтилентерефталат при температуре стеклования 70 градусов резко теряет модуль упругости — на графике DMA видно, как он падает в ноль. Мы ввели органические нано-нуклеаторы, повысили кристалличность выше 38%, что создало стабильное термо-плато до 250 градусов. При этом материал остаётся 100% моно-ПЭТ и уходит во вторичный рециклинг без засорения линий.»
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================================================
+         СЛАЙД 4: CORE DEEPTECH 2 — БИОМИМЕТИЧЕСКИЙ БАРЬЕР LIGNOSHIELD™
+         ====================================================================== -->
+    <div class="slide" data-slide="4">
+      <div class="slide-header">
+        <span class="slide-tag">БИОМИМЕТИКА • НАУЧНОЕ ЯДРО 2</span>
+        <h2 class="slide-title">Ионно-сшитая матрица LignoShield™</h2>
+        <p class="slide-subtitle">
+          Паропроницаемый гидрофобный нано-барьер из полисахаридов водорослей и волокон багассы
+        </p>
+      </div>
+
+      <div class="slide-body">
+        <div class="grid-2" style="max-width: 1020px; align-items: center;">
+          <!-- Схема молекулярного разреза структуры -->
+          <div class="deeptech-card" style="padding: 16px 20px; text-align: center;">
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--neon-emerald); margin-bottom: 12px;">
+              АРХИТЕКТУРА МАТЕРИАЛА В РАЗРЕЗЕ (CROSS-SECTION)
+            </div>
+
+            <svg viewBox="0 0 420 220" style="width: 100%; max-height: 200px;">
+              <!-- Слой 1: Нано-барьер альгинат/хитозан -->
+              <rect x="20" y="20" width="380" height="40" rx="6" fill="rgba(16, 185, 129, 0.25)" stroke="#10b981" stroke-width="2" />
+              <text x="210" y="44" fill="#34d399" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="bold" text-anchor="middle">
+                НАНОБАРЬЕР: Альгинат + Хитозан (Ca²+ сшивка)
+              </text>
+              <text x="210" y="55" fill="#94a3b8" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" text-anchor="middle">
+                Угол смачивания &gt; 110° • Блокировка масел Kit 12 • 0% PFAS
+              </text>
+
+              <!-- Стрелки пара -->
+              <path d="M 120,95 L 120,70" stroke="#38bdf8" stroke-width="2" stroke-dasharray="3" />
+              <path d="M 210,95 L 210,70" stroke="#38bdf8" stroke-width="2" stroke-dasharray="3" />
+              <path d="M 300,95 L 300,70" stroke="#38bdf8" stroke-width="2" stroke-dasharray="3" />
+
+              <!-- Слой 2: Диффузионная мембрана -->
+              <rect x="20" y="95" width="380" height="35" rx="6" fill="rgba(56, 189, 248, 0.15)" stroke="#38bdf8" stroke-width="1.5" />
+              <text x="210" y="116" fill="#38bdf8" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="bold" text-anchor="middle">
+                ПАРОПРОНИЦАЕМАЯ МЕМБРАНА (Micro-Vent)
+              </text>
+              <text x="210" y="126" fill="#94a3b8" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" text-anchor="middle">
+                Отвод влаги H₂O • Сохранение хрустящей корочки гриля
+              </text>
+
+              <!-- Слой 3: Основа из багассы -->
+              <rect x="20" y="150" width="380" height="50" rx="6" fill="rgba(148, 163, 184, 0.1)" stroke="#475569" stroke-width="1.5" />
+              <text x="210" y="174" fill="#ffffff" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="bold" text-anchor="middle">
+                ЛИГНОЦЕЛЛЮЛОЗНАЯ ОСНОВА (Багасса)
+              </text>
+              <text x="210" y="188" fill="#94a3b8" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" text-anchor="middle">
+                Вторичный жмых тростника • Домашний компост 60 дней (OK Compost HOME)
+              </text>
+            </svg>
+
+            <div style="font-size: 11px; color: var(--text-muted); margin-top: 6px;">
+              Двойное действие: удержание кипящего жира при свободном отводе избыточного конденсата.
+            </div>
+          </div>
+
+          <!-- Ключевые преимущества био-матрицы -->
+          <div style="display: flex; flex-direction: column; gap: 12px; text-align: left;">
+            <div class="deeptech-card">
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--neon-emerald); margin-bottom: 2px;">
+                БИОХИМИЧЕСКИЙ БАРЬЕР БЕЗ ФТОРА
+              </div>
+              <div style="font-weight: 700; font-size: 14px; color: #fff; margin-bottom: 4px;">
+                Ионный замок Ca<sup>2+</sup> (Alginate-Chitosan)
+              </div>
+              <p style="font-size: 12px; color: var(--text-muted); line-height: 1.45;">
+                Полиэлектролитный комплекс создаёт плотную гидратную сетку. Молекулы горячих триглицеридов физически не могут проникнуть в поры целлюлозы.
+              </p>
+            </div>
+
+            <div class="deeptech-card">
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--neon-emerald); margin-bottom: 2px;">
+                РЕШЕНИЕ ПРОБЛЕМЫ РАЗМОКАНИЯ
+              </div>
+              <div style="font-weight: 700; font-size: 14px; color: #fff; margin-bottom: 4px;">
+                Анти-парниковый эффект (Crisp Guard)
+              </div>
+              <p style="font-size: 12px; color: var(--text-muted); line-height: 1.45;">
+                В герметичных пакетах горячая курица-гриль «парится», и корочка размокает за 20 минут. Наша мембрана отводит пар, сохраняя премиальную хрусткость.
+              </p>
+            </div>
+
+            <div class="deeptech-card" style="border-color: rgba(16, 185, 129, 0.4);">
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--neon-emerald); margin-bottom: 2px;">
+                БЕЗОПАСНАЯ БИОДЕГРАДАЦИЯ
+              </div>
+              <p style="font-size: 12px; color: var(--text-light); line-height: 1.45;">
+                <b>OK Compost HOME</b>: распадается на органику, воду и CO₂ в домашней компостной куче за 60 суток без необходимости промышленного компостирования при 60°C.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="notes-drawer" id="note-4">
+        <div class="notes-header"><span>Шпаргалка спикера (2:00 – 2:40)</span><span>Нажмите 'S' чтобы скрыть</span></div>
+        <div class="notes-text">
+          «Второе направление — биокомпозит LignoShield на основе багассы и морских водорослей. Главный бич горячей кулинарии — эффект парника: курица выделяет пар, размокает и теряет товарный вид. Мы создали ионно-сшитую мембрану альгинат-хитозан: она селективно выводит пар наружу, но держит горячий жир по высшему стандарту Kit 12 без грамма токсичных PFAS. И главное — утилизируется в обычном домашнем компосте за 60 дней.»
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================================================
+         СЛАЙД 5: SCIENTIFIC BENCHMARKS & EXPERIMENTAL DATA
+         ====================================================================== -->
+    <div class="slide" data-slide="5">
+      <div class="slide-header">
+        <span class="slide-tag">ЭКСПЕРИМЕНТАЛЬНЫЕ ДАННЫЕ • ВАЛИДАЦИЯ</span>
+        <h2 class="slide-title">Сравнительные лабораторные бенчмарки</h2>
+        <p class="slide-subtitle">
+          Прямое физико-химическое и жизненное (LCA) сопоставление с традиционными упаковочными материалами
+        </p>
+      </div>
+
+      <div class="slide-body">
+        <div class="grid-3" style="max-width: 1040px;">
+          <!-- Бенчмарк 1: Термостабильность формы -->
+          <div class="deeptech-card" style="text-align: center;">
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-muted); margin-bottom: 8px;">
+              ДЕФОРМАЦИЯ ПРИ 120°C (60 МИН)
+            </div>
+            <div style="height: 140px; display: flex; align-items: flex-end; justify-content: space-around; padding-bottom: 10px; border-bottom: 1px solid var(--border-subtle);">
+              <!-- PE -->
+              <div style="display: flex; flex-direction: column; align-items: center; gap: 4px;">
+                <span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #f43f5e;">100%</span>
+                <div style="width: 32px; height: 110px; background: #f43f5e; border-radius: 4px 4px 0 0;"></div>
+                <span style="font-size: 10px; color: var(--text-muted);">LDPE</span>
+              </div>
+              <!-- PLA -->
+              <div style="display: flex; flex-direction: column; align-items: center; gap: 4px;">
+                <span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #f59e0b;">88%</span>
+                <div style="width: 32px; height: 95px; background: #f59e0b; border-radius: 4px 4px 0 0;"></div>
+                <span style="font-size: 10px; color: var(--text-muted);">PLA</span>
+              </div>
+              <!-- PackShift -->
+              <div style="display: flex; flex-direction: column; align-items: center; gap: 4px;">
+                <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: bold; color: #34d399;">&lt;1.2%</span>
+                <div style="width: 36px; height: 12px; background: #10b981; border-radius: 4px 4px 0 0; box-shadow: 0 0 10px #10b981;"></div>
+                <span style="font-size: 10px; font-weight: bold; color: #fff;">PackShift</span>
+              </div>
+            </div>
+            <p style="font-size: 11px; color: var(--text-light); margin-top: 10px; line-height: 1.35;">
+              Полное сохранение геометрии лотка в тепловой витрине Profi свыше 6 часов.
+            </p>
+          </div>
+
+          <!-- Бенчмарк 2: Углеродный след (LCA) -->
+          <div class="deeptech-card" style="text-align: center;">
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-muted); margin-bottom: 8px;">
+              УГЛЕРОДНЫЙ СЛЕД (кг CO₂e / кг)
+            </div>
+            <div style="height: 140px; display: flex; align-items: flex-end; justify-content: space-around; padding-bottom: 10px; border-bottom: 1px solid var(--border-subtle);">
+              <!-- Алюминий -->
+              <div style="display: flex; flex-direction: column; align-items: center; gap: 4px;">
+                <span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #f43f5e;">11.5</span>
+                <div style="width: 32px; height: 120px; background: #f43f5e; border-radius: 4px 4px 0 0;"></div>
+                <span style="font-size: 10px; color: var(--text-muted);">Алюм.</span>
+              </div>
+              <!-- Ламинат -->
+              <div style="display: flex; flex-direction: column; align-items: center; gap: 4px;">
+                <span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #f59e0b;">3.8</span>
+                <div style="width: 32px; height: 42px; background: #f59e0b; border-radius: 4px 4px 0 0;"></div>
+                <span style="font-size: 10px; color: var(--text-muted);">Ламинат</span>
+              </div>
+              <!-- PackShift -->
+              <div style="display: flex; flex-direction: column; align-items: center; gap: 4px;">
+                <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: bold; color: #34d399;">0.82</span>
+                <div style="width: 36px; height: 15px; background: #10b981; border-radius: 4px 4px 0 0; box-shadow: 0 0 10px #10b981;"></div>
+                <span style="font-size: 10px; font-weight: bold; color: #fff;">PackShift</span>
+              </div>
+            </div>
+            <p style="font-size: 11px; color: var(--text-light); margin-top: 10px; line-height: 1.35;">
+              Сокращение углеродного следа Scope 3 для сети Profi на <b>78% – 90%</b>.
+            </p>
+          </div>
+
+          <!-- Бенчмарк 3: Барьер жиростойкости без PFAS -->
+          <div class="deeptech-card" style="text-align: center;">
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-muted); margin-bottom: 8px;">
+              ЖИРОСТОЙКОСТЬ (TAPPI KIT TEST)
+            </div>
+            <div style="height: 140px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; border-bottom: 1px solid var(--border-subtle); padding-bottom: 10px;">
+              <div class="stat-number" style="font-size: 40px; color: var(--neon-emerald); line-height: 1;">
+                12 / 12
+              </div>
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #fff; background: rgba(16, 185, 129, 0.2); padding: 3px 8px; border-radius: 4px;">
+                МАКСИМАЛЬНЫЙ БАРЬЕР
+              </div>
+              <div style="font-size: 10px; color: var(--neon-emerald);">
+                0% фторорганических соединений (Zero PFAS)
+              </div>
+            </div>
+            <p style="font-size: 11px; color: var(--text-light); margin-top: 10px; line-height: 1.35;">
+              Тест горячим растительным и животным маслом (120°C): 0 протечек за 8 часов.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="notes-drawer" id="note-5">
+        <div class="notes-header"><span>Шпаргалка спикера (2:40 – 3:20)</span><span>Нажмите 'S' чтобы скрыть</span></div>
+        <div class="notes-text">
+          «Посмотрим на строгие экспериментальные данные. При 120 градусах традиционный полиэтилен полностью плавится, биопластик PLA теряет форму за 15 минут. PackShift показывает усадку менее 1.2% за 6 часов. По жизненному циклу углеродный след нашего rPET составляет всего 0.8 кг CO2 на килограмм по сравнению с 11.5 кг у алюминия. И по тесту жиростойкости TAPPI T559 мы получили максимальные 12 из 12 баллов без применения вечных химикатов PFAS.»
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================================================
+         СЛАЙД 6: INDUSTRIAL INTEGRATION: ZERO-CAPEX DROP-IN
+         ====================================================================== -->
+    <div class="slide" data-slide="6">
+      <div class="slide-header">
+        <span class="slide-tag">ПРОМЫШЛЕННАЯ СОВМЕСТИМОСТЬ • DROP-IN РЕШЕНИЕ</span>
+        <h2 class="slide-title">Интеграция в существующие упаковочные линии</h2>
+        <p class="slide-subtitle">
+          Масштабирование без закупки нового оборудования и модернизации фасовочных цехов
+        </p>
+      </div>
+
+      <div class="slide-body">
+        <div style="max-width: 1020px; width: 100%;">
+          <!-- Линейный процесс Roll-to-Roll -->
+          <div class="pipeline-flow" style="margin-bottom: 20px;">
+            <div class="pipeline-step">
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--neon-emerald); margin-bottom: 4px;">ШАГ 01</div>
+              <div style="font-weight: 700; font-size: 13px; color: #fff;">Сырьевой поток</div>
+              <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">Пищевые rPET-хлопья и жмых багассы</div>
+            </div>
+
+            <div class="pipeline-arrow">➔</div>
+
+            <div class="pipeline-step active-step">
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--neon-emerald); margin-bottom: 4px;">ШАГ 02</div>
+              <div style="font-weight: 700; font-size: 13px; color: #fff;">Компаундинг</div>
+              <div style="font-size: 11px; color: var(--neon-emerald); margin-top: 4px;">Нано-нуклеация и формование рулонов</div>
+            </div>
+
+            <div class="pipeline-arrow">➔</div>
+
+            <div class="pipeline-step">
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--neon-emerald); margin-bottom: 4px;">ШАГ 03</div>
+              <div style="font-weight: 700; font-size: 13px; color: #fff;">Стандартный термоформинг</div>
+              <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">Линии Multivac, Ulma, Ilpra, Variovac</div>
+            </div>
+
+            <div class="pipeline-arrow">➔</div>
+
+            <div class="pipeline-step">
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--neon-emerald); margin-bottom: 4px;">ШАГ 04</div>
+              <div style="font-weight: 700; font-size: 13px; color: #fff;">Полки и витрины Profi</div>
+              <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">Работа в стандартных тепловых витринах</div>
+            </div>
+          </div>
+
+          <!-- 3 ключевых фактора внедрения -->
+          <div class="grid-3">
+            <div class="deeptech-card" style="text-align: left;">
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--neon-emerald); margin-bottom: 2px;">
+                ZERO CAPEX ДЛЯ РИТЕЙЛА
+              </div>
+              <div style="font-weight: 700; font-size: 13px; color: #fff; margin-bottom: 4px;">
+                Нулевые капитальные затраты
+              </div>
+              <p style="font-size: 11.5px; color: var(--text-muted); line-height: 1.4;">
+                Ни ритейлеру Profi, ни его поставщикам готовой кулинарии не требуется менять парк фасовочных машин. Поставляется в стандартном рулонном формате.
+              </p>
+            </div>
+
+            <div class="deeptech-card" style="text-align: left;">
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--neon-emerald); margin-bottom: 2px;">
+                ТЕРМОСВАРКА И СКОРОСТЬ
+              </div>
+              <div style="font-weight: 700; font-size: 13px; color: #fff; margin-bottom: 4px;">
+                Штатное окно сварки: 145–160°C
+              </div>
+              <p style="font-size: 11.5px; color: var(--text-muted); line-height: 1.4;">
+                Время запайки цикла составляет 1.1–1.3 сек, что на 100% соответствует текущим скоростям промышленных линий упаковки кулинарии.
+              </p>
+            </div>
+
+            <div class="deeptech-card" style="text-align: left; border-color: rgba(16, 185, 129, 0.4);">
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--neon-emerald); margin-bottom: 2px;">
+                РЕГУЛЯТОРНАЯ СЕРТИФИКАЦИЯ
+              </div>
+              <div style="font-weight: 700; font-size: 13px; color: #fff; margin-bottom: 4px;">
+                EFSA &amp; FDA Food Contact
+              </div>
+              <p style="font-size: 11.5px; color: var(--text-light); line-height: 1.4;">
+                Полное соответствие директивам ЕС (EC No 1935/2004, EU 10/2011) по предельной миграции мономеров при контакте с горячей пищей.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="notes-drawer" id="note-6">
+        <div class="notes-header"><span>Шпаргалка спикера (3:20 – 3:55)</span><span>Нажмите 'S' чтобы скрыть</span></div>
+        <div class="notes-text">
+          «Технология ценна только тогда, когда её можно быстро развернуть. Наше решение является чистым Drop-In. Мы поставляем компаунд и рулонную плёнку, которая заряжается в стандартные термоформеры Multivac или Ilpra без перенастройки матриц. Время термосварки — 1.2 секунды при стандартной температуре. Ритейлер Profi не тратит ни одного евро на закупку новых станков.»
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================================================
+         СЛАЙД 7: SCALED UNIT ECONOMICS & PPWR REGULATORY SHIELD
+         ====================================================================== -->
+    <div class="slide" data-slide="7">
+      <div class="slide-header">
+        <span class="slide-tag">ЭКОНОМИКА МАСШТАБА • РЕГУЛЯТОРНАЯ БЕЗОПАСНОСТЬ</span>
+        <h2 class="slide-title">Unit-экономика и защита ритейлера от рисков</h2>
+        <p class="slide-subtitle">
+          Финансовая модель окупаемости, страховка от штрафов EU PPWR и снижение списаний
+        </p>
+      </div>
+
+      <div class="slide-body">
+        <div style="max-width: 1020px; width: 100%;">
+          <!-- 4 узла экономики и соответствия -->
+          <div class="grid-4" style="margin-bottom: 16px;">
+            <div class="deeptech-card" style="text-align: center;">
+              <div class="stat-number" style="font-size: 28px; margin-bottom: 2px;">1 : 1</div>
+              <div style="font-size: 12px; font-weight: 700; color: #fff; margin-bottom: 4px;">Паритет себестоимости</div>
+              <div style="font-size: 11px; color: var(--text-muted); line-height: 1.35;">
+                Выход на паритет с ископаемым пластиком при масштабе благодаря дешёвому rPET сырью.
+              </div>
+            </div>
+
+            <div class="deeptech-card" style="text-align: center;">
+              <div class="stat-number" style="font-size: 28px; margin-bottom: 2px;">€800 / т</div>
+              <div style="font-size: 12px; font-weight: 700; color: #fff; margin-bottom: 4px;">Защита от налога EPR</div>
+              <div style="font-size: 11px; color: var(--text-muted); line-height: 1.35;">
+                Полное освобождение от штрафов за неперерабатываемую упаковку (EU Plastic Levy).
+              </div>
+            </div>
+
+            <div class="deeptech-card" style="text-align: center;">
+              <div class="stat-number" style="font-size: 28px; margin-bottom: 2px;">-30%</div>
+              <div style="font-size: 12px; font-weight: 700; color: #fff; margin-bottom: 4px;">Снижение списаний</div>
+              <div style="font-size: 11px; color: var(--text-muted); line-height: 1.35;">
+                Сохранение сочности и корочки продлевает товарный вид блюд в витрине на 3+ часа.
+              </div>
+            </div>
+
+            <div class="deeptech-card" style="text-align: center; border-color: rgba(16, 185, 129, 0.4);">
+              <div class="stat-number" style="font-size: 28px; margin-bottom: 2px;">Class A</div>
+              <div style="font-size: 12px; font-weight: 700; color: #fff; margin-bottom: 4px;">RecyClass &amp; PPWR</div>
+              <div style="font-size: 11px; color: var(--text-muted); line-height: 1.35;">
+                Опережение регуляторных требований Европейского Союза на 4 года (PPWR 2030).
+              </div>
+            </div>
+          </div>
+
+          <!-- Баннер совокупного эффекта для сети из 100 супермаркетов -->
+          <div style="background: rgba(18, 24, 29, 0.85); border: 1px solid var(--border-emerald); border-radius: 12px; padding: 16px 24px; display: flex; justify-content: space-between; align-items: center;">
+            <div style="text-align: left;">
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--neon-emerald); letter-spacing: 1px;">
+                СОВОКУПНЫЙ ЭФФЕКТ ДЛЯ СЕТИ ИЗ 100 МАГАЗИНОВ PROFI:
+              </div>
+              <div style="font-size: 14px; font-weight: 700; color: #fff; margin-top: 2px;">
+                Экономия свыше €1.98 млн в год на эко-сборах и сохранённой продукции
+              </div>
+            </div>
+            <div style="display: flex; gap: 24px; font-family: 'JetBrains Mono', monospace; text-align: right;">
+              <div>
+                <div style="font-size: 18px; font-weight: 700; color: var(--neon-emerald);">-1 840 т</div>
+                <div style="font-size: 10px; color: var(--text-muted);">первичного пластика</div>
+              </div>
+              <div>
+                <div style="font-size: 18px; font-weight: 700; color: var(--neon-emerald);">-4 250 т</div>
+                <div style="font-size: 10px; color: var(--text-muted);">выбросов CO₂e</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="notes-drawer" id="note-7">
+        <div class="notes-header"><span>Шпаргалка спикера (3:55 – 4:30)</span><span>Нажмите 'S' чтобы скрыть</span></div>
+        <div class="notes-text">
+          «В экономике проекта заложен строгий реализм. На этапе масштабирования себестоимость выходит 1 к 1 с традиционной упаковкой. Но сеть сразу начинает экономить: европейский налог на неперерабатываемый пластик до 800 евро за тонну обнуляется благодаря сертификату RecyClass Grade A. Плюс отвод пара сохраняет товарный вид курицы-гриль, снижая вечерние списания кулинарии на 30%. Для 100 магазинов это почти 2 миллиона евро годового эффекта.»
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================================================
+         СЛАЙД 8: TECHNOLOGY READINESS (TRL 4 -> 6) & THE ASK
+         ====================================================================== -->
+    <div class="slide" data-slide="8">
+      <div class="slide-header">
+        <span class="slide-tag">ДОРОЖНАЯ КАРТА • ПАРТНЁРСТВО С PROFI</span>
+        <h2 class="slide-title">Статус готовности и предложение о сотрудничестве</h2>
+        <p class="slide-subtitle">
+          От лабораторного подтверждения TRL 4 к запуску пилота в тепловых витринах сети
+        </p>
+      </div>
+
+      <div class="slide-body">
+        <div style="max-width: 1020px; width: 100%;">
+          <!-- TRL Дорожная карта -->
+          <div class="pipeline-flow" style="margin-bottom: 18px;">
+            <div class="pipeline-step active-step" style="border-color: var(--neon-emerald);">
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--neon-emerald); font-weight: 700;">ТЕКУЩИЙ СТАТУС</div>
+              <div style="font-weight: 700; font-size: 14px; color: #fff;">TRL 4 (Лаборатория)</div>
+              <div style="font-size: 11px; color: var(--text-light); margin-top: 4px;">
+                Синтез компаунда подтверждён.<br><b style="color: var(--neon-emerald);">200 образцов готовы</b> к тестам
+              </div>
+            </div>
+
+            <div class="pipeline-arrow">➔</div>
+
+            <div class="pipeline-step">
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--neon-emerald); font-weight: 700;">НЕДЕЛИ 1–2</div>
+              <div style="font-weight: 700; font-size: 14px; color: #fff;">TRL 5 (Тест витрин)</div>
+              <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">
+                Испытания в витринах Profi при 85°C–120°C с замером миграции
+              </div>
+            </div>
+
+            <div class="pipeline-arrow">➔</div>
+
+            <div class="pipeline-step">
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--neon-emerald); font-weight: 700;">НЕДЕЛИ 3–5</div>
+              <div style="font-weight: 700; font-size: 14px; color: #fff;">TRL 6 (Пилот)</div>
+              <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">
+                Пилотная выкладка в 5 флагманских супермаркетах Profi
+              </div>
+            </div>
+
+            <div class="pipeline-arrow">➔</div>
+
+            <div class="pipeline-step">
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--neon-emerald); font-weight: 700;">НЕДЕЛЯ 6+</div>
+              <div style="font-weight: 700; font-size: 14px; color: #fff;">TRL 7 (Масштаб)</div>
+              <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">
+                Подписание контракта на тиражирование по всей сети
+              </div>
+            </div>
+          </div>
+
+          <!-- THE ASK (Центральный призыв к жюри и Profi) -->
+          <div style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(18, 24, 29, 0.95) 100%); border: 2px solid var(--neon-emerald); border-radius: 14px; padding: 22px 30px; text-align: center; box-shadow: 0 0 35px rgba(16, 185, 129, 0.2);">
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--neon-emerald); font-weight: 700; letter-spacing: 2px; margin-bottom: 6px;">
+              НАШ ЗАПРОС К ЖЮРИ И СЕТИ PROFI (THE ASK)
+            </div>
+            <h3 style="font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 8px;">
+              Проведение 2-недельного натурного тестирования готовой партии из 200 образцов в реальных тепловых витринах Profi
+            </h3>
+            <p style="font-size: 13px; color: var(--text-light); max-width: 780px; margin: 0 auto; line-height: 1.5;">
+              Мы предоставляем готовую упаковку и научную команду. Сеть Profi предоставляет доступ к тепловым витринам для валидации органолептики и термостойкости. Давайте создадим первую в Европе 100% циркулярную витрину горячей кулинарии вместе!
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="notes-drawer" id="note-8">
+        <div class="notes-header"><span>Шпаргалка спикера (4:30 – 5:00)</span><span>Нажмите 'S' чтобы скрыть</span></div>
+        <div class="notes-text">
+          «Мы пришли на хакатон не просто с идеей, а с валидированной технологией TRL 4. У нас уже отлита партия из 200 предсерийных образцов. Наш запрос к сети Profi — это не абстрактные гранты, а партнёрство: доступ к тепловым витринам на 2 недели для финального подтверждения. Мы готовы сделать Profi лидером устойчивого ритейла Европы. Спасибо за внимание, готовы к вашим вопросам!»
+        </div>
+      </div>
+    </div>
+
+    <!-- Нижняя панель управления и таймер -->
+    <div class="bottom-control-bar">
+      <div class="hotkey-hints">
+        <span><span class="kbd-btn">←</span> <span class="kbd-btn">→</span> Слайды</span>
+        <span><span class="kbd-btn">S</span> Шпаргалка</span>
+        <span><span class="kbd-btn">F</span> Полный экран</span>
+      </div>
+
+      <div class="nav-buttons-group">
+        <button class="nav-btn" onclick="prevSlide()">◀ Назад</button>
+        <button class="nav-btn" onclick="toggleNotes()">Шпаргалка (S)</button>
+        <button class="nav-btn" onclick="nextSlide()">Вперёд ▶</button>
+      </div>
+
+      <div class="timer-display" id="deckTimer" onclick="toggleTimer()" title="Кликните для паузы/сброса">
+        ⏱️ 05:00
+      </div>
+    </div>
+
+    <!-- Полоса прогресса в самом низу -->
+    <div class="deck-progress-bar" id="deckProgressBar" style="width: 12.5%;"></div>
+
+  </div>
+
+  
+</body>
+</html>
