@@ -420,6 +420,11 @@ header.header-project {
   text-align: center;
   box-shadow: 0 8px 24px rgba(18, 53, 36, 0.06);
   transition: all 0.28s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
 }
 
 .proof-card:hover {
