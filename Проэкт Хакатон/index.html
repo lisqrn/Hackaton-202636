@@ -6,7 +6,9 @@
   <link rel="icon" type="image/svg+xml"
     href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌱</text></svg>" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Profi EcoPack — Оптимизация пищевой упаковки</title>
+  <title>PackShift — Циркулярная эко-упаковка для ритейла Profi | Deeptech Gigahack 2026</title>
+  <meta name="description"
+    content="Инновационная циркулярная упаковка без первичного пластика для сети супермаркетов Profi. Решения для гриля 250°C, овощей EMAP, мяса без абсорбирующих салфеток и свежей выпечки." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -15,39 +17,656 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body
-  class="bg-[#faf4e4] text-[#123524] font-sans antialiased min-h-screen selection:bg-[#22c55e] selection:text-[#123524]">
-  <div id="root"></div>
-  <script type="module" src="/src/main.tsx"></script>
+<body>
+  <!-- Header & Navigation -->
   <header class="header-project">
-    <section class="nav-bar">
+    <div class="nav-bar">
       <div class="logo-img">
-        <img src="img/logo.png" alt="image" class="logo-log">
+        <a href="#hero" class="logo-link">
+          <img src="img/logo.png" alt="PackShift Logo" class="logo-log">
+        </a>
       </div>
       <div class="nav-bar-sect">
         <nav class="btn-nav-bar">
-          <a href="#grill" class="desc-nav-bar">Готовая Кулинария (Гриль)</a>
+          <a href="#grill" class="desc-nav-bar">Гриль & Кулинария (250°C)</a>
           <a href="#vegetables" class="desc-nav-bar">Свежие овощи</a>
           <a href="#meat" class="desc-nav-bar">Мясной отдел</a>
           <a href="#cookies" class="desc-nav-bar">Пекарня</a>
+          <a href="#calculator" class="desc-nav-bar nav-cta">Рассчитать эффект</a>
         </nav>
       </div>
-    </section>
+    </div>
   </header>
 
+  <!-- Main Content -->
+  <main class="page-container">
 
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        <span>Deeptech Gigahack 2026 • Трек Biomentorhub × Profi</span>
+      </div>
 
+      <h1 class="hero-title">
+        Революция пищевой упаковки ритейла:<br>
+        <span class="text-highlight">0% первичного пластика</span>, 100% циркулярность
+      </h1>
 
+      <p class="hero-subtitle">
+        Инженерные решения для сети супермаркетов <strong>Profi</strong>: биомиметические барьеры против жира,
+        термостойкость до 250°C без токсичных PFAS, продление свежести продуктов и прямое снижение эко-сбора.
+      </p>
 
+      <div class="hero-actions">
+        <a href="#calculator" class="btn-primary">
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="4" y="2" width="16" height="20" rx="2"></rect>
+            <line x1="8" y1="6" x2="16" y2="6"></line>
+            <line x1="16" y1="14" x2="16" y2="18"></line>
+            <path d="M16 10h.01"></path>
+            <path d="M12 10h.01"></path>
+            <path d="M8 10h.01"></path>
+            <path d="M12 14h.01"></path>
+            <path d="M8 14h.01"></path>
+            <path d="M12 18h.01"></path>
+            <path d="M8 18h.01"></path>
+          </svg>
+          Калькулятор эффекта сети
+        </a>
+        <a href="#grill" class="btn-secondary">
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"></path>
+          </svg>
+          Вызов гриля (180°–250°C)
+        </a>
+      </div>
 
+      <!-- Hero Proof Metrics Strip -->
+      <div class="hero-proof-grid">
+        <div class="proof-card">
+          <div class="proof-metric">-88%</div>
+          <div class="proof-label">Первичный пластик</div>
+          <div class="proof-desc">Замена на rPET и биополимеры из растительного сырья</div>
+        </div>
+        <div class="proof-card highlight-card">
+          <div class="proof-metric">250°C</div>
+          <div class="proof-label">Термостойкость гриля</div>
+          <div class="proof-desc">До 6 часов в тепловой витрине без размягчения и протечек</div>
+        </div>
+        <div class="proof-card">
+          <div class="proof-metric">+4 дня</div>
+          <div class="proof-label">Свежесть продуктов</div>
+          <div class="proof-desc">Лазерная микроперфорация EMAP снижает списания на 32%</div>
+        </div>
+        <div class="proof-card">
+          <div class="proof-metric">Class A</div>
+          <div class="proof-label">RecyClass & PPWR</div>
+          <div class="proof-desc">100% моно-материалы, готовые к переработке в ЕС и СНГ</div>
+        </div>
+      </div>
+    </section>
 
+    <!-- Hot Food Counter Special Annex Section -->
+    <section id="grill" class="section-container annex-section">
+      <div class="section-header">
+        <div class="section-tag-special">Специальный вызов хакатона</div>
+        <h2 class="section-title">Готовая кулинария: Упаковка гриля высокой температуры</h2>
+        <p class="section-lead">
+          Критический вызов для ритейлера <strong>Profi</strong>: курица-гриль и горячие полуфабрикаты содержатся
+          в тепловых витринах при температуре <strong>85°C – 120°C до 6 часов</strong>, а при фасовке подвергаются
+          пиковым температурам до <strong>250°C</strong>. Мы разработали два решения, исключающих перфторалкильные соединения (PFAS) и разрушение упаковки.
+        </p>
+      </div>
 
+      <div class="comparison-grid">
+        <!-- Solution A -->
+        <div class="solution-card">
+          <div class="solution-badge">Решение А • Моно-пакет</div>
+          <h3 class="solution-title">PackShift CPET Ultra-Flex</h3>
+          <p class="solution-lead-desc">
+            Высококристаллический термостойкий моно-пакет на базе модифицированного rPET (степень кристалличности &gt; 38%).
+          </p>
+          <ul class="spec-list">
+            <li>
+              <span class="spec-name">Термостойкость:</span>
+              <span class="spec-val">от -40°C до +250°C (Dual-Ovenable)</span>
+            </li>
+            <li>
+              <span class="spec-name">Тепловая витрина:</span>
+              <span class="spec-val">6+ часов при 95°C без усадки и запаха</span>
+            </li>
+            <li>
+              <span class="spec-name">Жиростойкость:</span>
+              <span class="spec-val">100% барьер (Kit Test 12) без PFAS</span>
+            </li>
+            <li>
+              <span class="spec-name">Циркулярность:</span>
+              <span class="spec-val">100% rPET моно-поток (RecyClass Class A)</span>
+            </li>
+            <li>
+              <span class="spec-name">Преимущество:</span>
+              <span class="spec-val">Покупатель может разогревать дома прямо в пакете</span>
+            </li>
+          </ul>
+          <div class="card-footer-pill">
+            <span>Экономия себестоимости: <strong>-14%</strong> vs многослойный ламинат</span>
+          </div>
+        </div>
 
+        <!-- Solution B -->
+        <div class="solution-card featured">
+          <div class="solution-badge badge-eco">Решение Б • Био-композит</div>
+          <h3 class="solution-title">LignoShield™ ThermoBox</h3>
+          <p class="solution-lead-desc">
+            Экологичный термобокс из формованной багассы сахарного тростника с напылением альгинат-хитозанового био-барьера.
+          </p>
+          <ul class="spec-list">
+            <li>
+              <span class="spec-name">Термостойкость:</span>
+              <span class="spec-val">до +220°C кратковременно, 6ч в витрине</span>
+            </li>
+            <li>
+              <span class="spec-name">Дышащая мембрана:</span>
+              <span class="spec-val">Отводит пар, сохраняя хрустящую корочку гриля</span>
+            </li>
+            <li>
+              <span class="spec-name">Эко-барьер от жира:</span>
+              <span class="spec-val">Водный нано-слой из морских водорослей</span>
+            </li>
+            <li>
+              <span class="spec-name">Утилизация:</span>
+              <span class="spec-val">Домашнее компостирование за 60 дней (OK Compost)</span>
+            </li>
+            <li>
+              <span class="spec-name">Экология:</span>
+              <span class="spec-val">0% пластика, 0% фтора, углеродно-нейтрально</span>
+            </li>
+          </ul>
+          <div class="card-footer-pill pill-eco">
+            <span>Идеально для премиальной эко-линейки <strong>Profi Bio</strong></span>
+          </div>
+        </div>
+      </div>
 
+      <!-- Technical Comparison Matrix -->
+      <div class="tech-table-wrapper">
+        <h4 class="table-caption">Сравнительная матрица характеристик</h4>
+        <div class="table-responsive">
+          <table class="tech-table">
+            <thead>
+              <tr>
+                <th>Параметр</th>
+                <th>Традиционная упаковка (PE/ALU)</th>
+                <th>PackShift CPET Ultra</th>
+                <th>LignoShield™ BioBox</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Содержание первичного пластика</strong></td>
+                <td class="text-bad">100% первичный полиэтилен</td>
+                <td class="text-good">0% (100% переработанный rPET)</td>
+                <td class="text-good">0% (растительное волокно)</td>
+              </tr>
+              <tr>
+                <td><strong>Пиковая температура</strong></td>
+                <td>120°C (риск плавления)</td>
+                <td class="text-good">250°C (Dual-Oven)</td>
+                <td class="text-good">220°C</td>
+              </tr>
+              <tr>
+                <td><strong>Безопасность (PFAS-free)</strong></td>
+                <td class="text-bad">Часто содержит перфторсоединения</td>
+                <td class="text-good">Сертифицирован 0% PFAS</td>
+                <td class="text-good">Био-альгинат (природный)</td>
+              </tr>
+              <tr>
+                <td><strong>Хрустящая корочка (отвод пара)</strong></td>
+                <td class="text-bad">Парник, размокание мяса</td>
+                <td>Микроклапан сброса пара</td>
+                <td class="text-good">Паропроницаемая эко-структура</td>
+              </tr>
+              <tr>
+                <td><strong>Переработка / Утилизация</strong></td>
+                <td class="text-bad">Не перерабатывается (полигон)</td>
+                <td class="text-good">Поток ПЭТ-бутылок (Class A)</td>
+                <td class="text-good">Домашний компост или макулатура</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
 
+    <!-- 4 Retail Departments Showcase -->
+    <section id="departments" class="section-container">
+      <div class="section-header">
+        <div class="section-tag">Каталог решений по отделам</div>
+        <h2 class="section-title">Комплексная оптимизация для 4 зон супермаркета</h2>
+        <p class="section-lead">
+          Каждый отдел торговой сети Profi имеет специфические биохимические и физические требования.
+          Мы спроектировали узкоспециализированные моно-структуры под каждый продукт.
+        </p>
+      </div>
 
+      <div class="departments-grid">
+        <!-- Department 1: Vegetables -->
+        <article id="vegetables" class="dept-card">
+          <div class="dept-header">
+            <div class="dept-icon">🥬</div>
+            <div class="dept-title-group">
+              <span class="dept-category">Отдел свежих овощей и зелени</span>
+              <h3 class="dept-name">EMAP Laser-Breathe™</h3>
+            </div>
+          </div>
+          <p class="dept-desc">
+            Моно-плёнка rBOPP с прецизионной лазерной микроперфорацией. Создаёт динамическую модифицированную газовую среду
+            с оптимальным соотношением O₂ (3-5%) и CO₂ (5-8%), балансируя дыхание овощей и ягод.
+          </p>
+          <div class="dept-stats-row">
+            <div class="dept-stat">
+              <span class="stat-number">+4 дня</span>
+              <span class="stat-name">Срок хранения</span>
+            </div>
+            <div class="dept-stat">
+              <span class="stat-number">-32%</span>
+              <span class="stat-name">Списания в ритейле</span>
+            </div>
+            <div class="dept-stat">
+              <span class="stat-number">Анти-туман</span>
+              <span class="stat-name">Zero-condensation</span>
+            </div>
+          </div>
+          <div class="dept-material-badge">
+            Материал: Моно-полипропилен 100% Recyclable • Без микропластикового клея
+          </div>
+        </article>
 
+        <!-- Department 2: Meat & Fish -->
+        <article id="meat" class="dept-card">
+          <div class="dept-header">
+            <div class="dept-icon">🥩</div>
+            <div class="dept-title-group">
+              <span class="dept-category">Мясной и рыбный отдел</span>
+              <h3 class="dept-name">Capillary Tray (Pad-Less)</h3>
+            </div>
+          </div>
+          <p class="dept-desc">
+            Глубокоформованный лоток из моно-rPET со встроенным капиллярным гидро-замком. Жидкость (экссудат) удерживается
+            геометрией ячеек до 45 мл без токсичных синтетических салфеток-вкладышей, делая лоток 100% пригодным к сортировке.
+          </p>
+          <div class="dept-stats-row">
+            <div class="dept-stat">
+              <span class="stat-number">0 шт</span>
+              <span class="stat-name">Грязных салфеток</span>
+            </div>
+            <div class="dept-stat">
+              <span class="stat-number">100%</span>
+              <span class="stat-name">Чистая переработка</span>
+            </div>
+            <div class="dept-stat">
+              <span class="stat-number">EVOH &lt;5%</span>
+              <span class="stat-name">Газобарьер MAP</span>
+            </div>
+          </div>
+          <div class="dept-material-badge">
+            Материал: 85% пищевой rPET + 15% первичный контактный слой • Стандарт RecyClass
+          </div>
+        </article>
 
+        <!-- Department 3: Bakery -->
+        <article id="cookies" class="dept-card">
+          <div class="dept-header">
+            <div class="dept-icon">🥐</div>
+            <div class="dept-title-group">
+              <span class="dept-category">Пекарня и выпечка</span>
+              <h3 class="dept-name">NatureVent Crisp™</h3>
+            </div>
+          </div>
+          <p class="dept-desc">
+            Крафт-пакеты из сертифицированной небеленой целлюлозы FSC с прозрачным смотровым окном из био-плёнки NatureFlex™
+            на основе древесной массы. Сохраняет хрустящую корочку багетов и круассанов без парникового эффекта.
+          </p>
+          <div class="dept-stats-row">
+            <div class="dept-stat">
+              <span class="stat-number">100%</span>
+              <span class="stat-name">Переработка бумаги</span>
+            </div>
+            <div class="dept-stat">
+              <span class="stat-number">Bio-Wax</span>
+              <span class="stat-name">Водный жиробарьер</span>
+            </div>
+            <div class="dept-stat">
+              <span class="stat-number">Pulpable</span>
+              <span class="stat-name">Тест CEPI пройден</span>
+            </div>
+          </div>
+          <div class="dept-material-badge">
+            Материал: Крафт FSC + плёнка из целлюлозы • 0% полиэтиленовой ламинации
+          </div>
+        </article>
+
+        <!-- Department 4: Hot Culinary & Ready-to-eat -->
+        <article class="dept-card">
+          <div class="dept-header">
+            <div class="dept-icon">🍗</div>
+            <div class="dept-title-group">
+              <span class="dept-category">Кулинария и готовые блюда</span>
+              <h3 class="dept-name">HeatShield Dual-Oven</h3>
+            </div>
+          </div>
+          <p class="dept-desc">
+            Контейнеры для порционных горячих блюд (плов, запеканки, гарниры), устойчивые к маслу и соусам.
+            Возможность прямого разогрева в микроволновой печи и духовке покупателем при температуре до 220°C.
+          </p>
+          <div class="dept-stats-row">
+            <div class="dept-stat">
+              <span class="stat-number">220°C</span>
+              <span class="stat-name">Max температура</span>
+            </div>
+            <div class="dept-stat">
+              <span class="stat-number">Kit 12</span>
+              <span class="stat-name">Жиростойкость</span>
+            </div>
+            <div class="dept-stat">
+              <span class="stat-number">-40% CO₂</span>
+              <span class="stat-name">Углеродный след</span>
+            </div>
+          </div>
+          <div class="dept-material-badge">
+            Материал: Формованное термоволокно + защитный барьер на водной основе
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Interactive Retail Impact Calculator -->
+    <section id="calculator" class="section-container calc-section">
+      <div class="section-header">
+        <div class="section-tag">Интерактивная аналитика для менеджмента</div>
+        <h2 class="section-title">Калькулятор ESG-эффекта и экономии для сети Profi</h2>
+        <p class="section-lead">
+          Оцените совокупный эффект от перехода на циркулярную упаковку PackShift в зависимости от количества супермаркетов в вашей сети.
+        </p>
+      </div>
+
+      <div class="calculator-card">
+        <!-- Slider Control -->
+        <div class="slider-control-block">
+          <div class="slider-labels">
+            <span class="slider-title">Количество супермаркетов Profi:</span>
+            <span class="slider-counter" id="storeCountDisplay">120 магазинов</span>
+          </div>
+          <div class="slider-wrapper">
+            <input type="range" id="storeSlider" min="10" max="500" value="120" step="5" class="custom-slider">
+            <div class="slider-ticks">
+              <span>10 точек (Пилот)</span>
+              <span>120 (Флагманы)</span>
+              <span>250 (Регион)</span>
+              <span>500 (Вся сеть)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Calculated Metrics Outputs -->
+        <div class="calc-results-grid">
+          <div class="metric-result-card">
+            <div class="metric-icon-wrap">🛡️</div>
+            <div class="metric-big-val" id="plasticSavedVal">2 208</div>
+            <div class="metric-unit">тонн первичного пластика в год</div>
+            <p class="metric-subtext">Полное замещение на циркулярные моно-структуры и био-композиты</p>
+          </div>
+
+          <div class="metric-result-card">
+            <div class="metric-icon-wrap">🌍</div>
+            <div class="metric-big-val" id="co2SavedVal">5 100</div>
+            <div class="metric-unit">тонн CO₂-эквивалента предотвращено</div>
+            <p class="metric-subtext">Сокращение Scope 3 выбросов сети Profi согласно директиве CSRD</p>
+          </div>
+
+          <div class="metric-result-card highlight">
+            <div class="metric-icon-wrap">💶</div>
+            <div class="metric-big-val" id="taxSavedVal">€1 536 000</div>
+            <div class="metric-unit">годовая экономия на эко-сборах (EPR)</div>
+            <p class="metric-subtext">Снижение ставки налога на трудноперерабатываемую упаковку в ЕС и СНГ</p>
+          </div>
+
+          <div class="metric-result-card">
+            <div class="metric-icon-wrap">📉</div>
+            <div class="metric-big-val" id="foodLossSavedVal">€840 000</div>
+            <div class="metric-unit">сохраненной продукции (Food Waste)</div>
+            <p class="metric-subtext">Благодаря продлению свежести в отделах овощей и гриля на 3-4 дня</p>
+          </div>
+        </div>
+
+        <!-- Department Breakdown Summary -->
+        <div class="calc-footer-info">
+          <div class="calc-footer-item">
+            <span class="dot-indicator"></span>
+            <span><strong>Гриль:</strong> Полная замена фольгированных и PFAS пакетов на CPET/Биобокс</span>
+          </div>
+          <div class="calc-footer-item">
+            <span class="dot-indicator"></span>
+            <span><strong>Овощи:</strong> Устранение конденсата и гниения ягод на витрине</span>
+          </div>
+          <div class="calc-footer-item">
+            <span class="dot-indicator"></span>
+            <span><strong>Мясо:</strong> Экономия 1.8 млн салфеток-вкладышей в год на каждые 100 магазинов</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust, Standards & Compliance -->
+    <section id="compliance" class="section-container">
+      <div class="section-header">
+        <div class="section-tag">Международная сертификация</div>
+        <h2 class="section-title">Соответствие европейским и национальным регуляциям</h2>
+        <p class="section-lead">
+          Упаковка разработана с упреждением требований <strong>EU Packaging and Packaging Waste Regulation (PPWR 2030)</strong>.
+        </p>
+      </div>
+
+      <div class="standards-grid">
+        <div class="standard-card">
+          <div class="standard-badge">RecyClass</div>
+          <h4 class="standard-title">Grade A Recyclability</h4>
+          <p class="standard-desc">
+            Подтвержденная совместимость с существующей европейской и национальной инфраструктурой оптической сортировки и механической переработки.
+          </p>
+        </div>
+
+        <div class="standard-card">
+          <div class="standard-badge">EU PPWR</div>
+          <h4 class="standard-title">PPWR 2030 Ready</h4>
+          <p class="standard-desc">
+            Соответствие строгим квотам на минимальное содержание вторичного сырья (&gt;35% rPET для контакта с пищей) и запрет микропластика.
+          </p>
+        </div>
+
+        <div class="standard-card">
+          <div class="standard-badge">Zero Toxic</div>
+          <h4 class="standard-title">100% PFAS-Free</h4>
+          <p class="standard-desc">
+            Лабораторный тест на отсутствие пер- и полифторалкильных веществ в контакте с горячим маслом и жиром до 250°C.
+          </p>
+        </div>
+
+        <div class="standard-card">
+          <div class="standard-badge">Food Safe</div>
+          <h4 class="standard-title">EFSA / FDA Approved</h4>
+          <p class="standard-desc">
+            Сертификация безопасности контакта с пищевыми продуктами для горячих, влажных и кислых сред (Regulation EU No 10/2011).
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pilot Implementation Plan -->
+    <section id="pilot" class="section-container pilot-section">
+      <div class="section-header">
+        <div class="section-tag">Дорожная карта внедрения</div>
+        <h2 class="section-title">План пилотного запуска в супермаркетах Profi</h2>
+        <p class="section-lead">
+          Быстрая интеграция на существующие упаковочные линии и витрины сети без капитальных затрат (CapEx = 0).
+        </p>
+      </div>
+
+      <div class="timeline-grid">
+        <div class="timeline-step">
+          <div class="step-num">Этап 1</div>
+          <h4 class="step-title">Лабораторный тест</h4>
+          <p class="step-desc">
+            Проверка термопакетов CPET и биобоксов на реальных тепловых витринах гриля Profi (температура 95°C, выдержка 6 часов).
+          </p>
+          <div class="step-time">Срок: 2 недели</div>
+        </div>
+
+        <div class="timeline-step">
+          <div class="step-num">Этап 2</div>
+          <h4 class="step-title">Пилот в 5 магазинах</h4>
+          <p class="step-desc">
+            Запуск в тестовых флагманских супермаркетах в отделах Гриль и Овощи. Сбор обратной связи от покупателей и сотрудников витрины.
+          </p>
+          <div class="step-time">Срок: 4 недели</div>
+        </div>
+
+        <div class="timeline-step">
+          <div class="step-num">Этап 3</div>
+          <h4 class="step-title">Масштабирование на сеть</h4>
+          <p class="step-desc">
+            Полноформатное развертывание в сети Profi, запуск автоматизированной системы отслеживания сокращения углеродного следа.
+          </p>
+          <div class="step-time">Срок: Квартал 2</div>
+        </div>
+      </div>
+
+      <!-- Action Box -->
+      <div class="action-banner">
+        <div class="action-banner-content">
+          <h3 class="action-banner-title">Готовы протестировать образцы в отделе гриля Profi?</h3>
+          <p class="action-banner-text">
+            Мы предоставляем комплект из 200 образцов пакетов CPET Ultra и биобоксов LignoShield для проведения тестов на вашей витрине.
+          </p>
+        </div>
+        <div class="action-banner-btn-box">
+          <a href="mailto:pilot@packshift.eco?subject=Profi%20Pilot%20Request%20-%20Deeptech%20Gigahack" class="btn-primary">
+            Запросить тестовую партию
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer-project">
+    <div class="footer-container">
+      <div class="footer-brand-col">
+        <div class="footer-logo-wrap">
+          <img src="img/logo.png" alt="PackShift" class="footer-logo">
+        </div>
+        <p class="footer-bio">
+          Инновационная упаковочная платформа для современного ритейла.
+          Разработано специально для сети супермаркетов <strong>Profi</strong> в рамках <strong>Deeptech Gigahack 2026</strong>.
+        </p>
+        <div class="footer-track-badge">
+          Организаторы: Biomentorhub × Profi Track
+        </div>
+      </div>
+
+      <div class="footer-links-col">
+        <h5 class="footer-col-title">Решения по отделам</h5>
+        <ul class="footer-links">
+          <li><a href="#grill">Готовая кулинария и Гриль (250°C)</a></li>
+          <li><a href="#vegetables">Свежие овощи (EMAP)</a></li>
+          <li><a href="#meat">Мясной отдел (Capillary Tray)</a></li>
+          <li><a href="#cookies">Пекарня (NatureVent Crisp)</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h5 class="footer-col-title">Аналитика и Стандарты</h5>
+        <ul class="footer-links">
+          <li><a href="#calculator">Калькулятор окупаемости</a></li>
+          <li><a href="#compliance">Стандарты RecyClass & PPWR</a></li>
+          <li><a href="#pilot">План пилотного запуска</a></li>
+          <li><a href="mailto:contact@packshift.eco">Связаться с командой</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom-bar">
+      <p>© 2026 PackShift (Profi EcoPack) • Все права защищены. Deeptech Gigahack 2026 Competition Entry.</p>
+    </div>
+  </footer>
+
+  <!-- Vanilla JS for Interactive Logic -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Calculator Interaction
+      const slider = document.getElementById('storeSlider');
+      const storeDisplay = document.getElementById('storeCountDisplay');
+      const plasticVal = document.getElementById('plasticSavedVal');
+      const co2Val = document.getElementById('co2SavedVal');
+      const taxVal = document.getElementById('taxSavedVal');
+      const foodLossVal = document.getElementById('foodLossSavedVal');
+
+      const formatNumber = (num) => {
+        return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+      };
+
+      const updateCalculations = () => {
+        const stores = parseInt(slider.value, 10);
+        storeDisplay.textContent = `${stores} ${getStoreWord(stores)}`;
+
+        // Formula multipliers:
+        // ~18.4 tons of virgin plastic saved per store / year
+        const plastic = Math.round(stores * 18.4);
+        // ~42.5 tons CO2e avoided per store / year
+        const co2 = Math.round(stores * 42.5);
+        // ~€12 800 EPR eco-tax savings per store / year
+        const tax = Math.round(stores * 12800);
+        // ~€7 000 food waste prevention per store / year
+        const foodLoss = Math.round(stores * 7000);
+
+        plasticVal.textContent = formatNumber(plastic);
+        co2Val.textContent = formatNumber(co2);
+        taxVal.textContent = `€${formatNumber(tax)}`;
+        foodLossVal.textContent = `€${formatNumber(foodLoss)}`;
+      };
+
+      function getStoreWord(num) {
+        const mod10 = num % 10;
+        const mod100 = num % 100;
+        if (mod100 >= 11 && mod100 <= 14) return 'магазинов';
+        if (mod10 === 1) return 'магазин';
+        if (mod10 >= 2 && mod10 <= 4) return 'магазина';
+        return 'магазинов';
+      }
+
+      if (slider) {
+        slider.addEventListener('input', updateCalculations);
+        updateCalculations();
+      }
+
+      // 2. Smooth anchor scrolling with offset
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          const targetElem = document.querySelector(targetId);
+          if (targetElem) {
+            e.preventDefault();
+            const yOffset = -120;
+            const y = targetElem.getBoundingClientRect().top + window.pageYOffset + yOffset;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+          }
+        });
+      });
+    });
+  </script>
 </body>
 
 </html>
