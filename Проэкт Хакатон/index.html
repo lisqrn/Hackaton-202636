@@ -26,14 +26,19 @@
           <img src="img/logo.png" alt="PackShift Logo" class="logo-log">
         </a>
       </div>
-      <div class="nav-bar-sect">
+            <div class="nav-bar-sect">
         <nav class="btn-nav-bar">
-          <a href="#grill" class="desc-nav-bar">Гриль (250°C)</a>
-          <a href="#departments" class="desc-nav-bar">Отделы & Модели</a>
-          <a href="#comparison" class="desc-nav-bar">Было / Стало</a>
-          <a href="#analytics" class="desc-nav-bar">Графика & Анализ</a>
-          <a href="#calculator" class="desc-nav-bar nav-cta">Калькулятор эффекта</a>
+          <a href="#grill" class="desc-nav-bar" data-i18n="nav_grill">Гриль (250°C)</a>
+          <a href="#departments" class="desc-nav-bar" data-i18n="nav_dept">Отделы & Модели</a>
+          <a href="#comparison" class="desc-nav-bar" data-i18n="nav_comp">Было / Стало</a>
+          <a href="#analytics" class="desc-nav-bar" data-i18n="nav_analytics">Графика & Анализ</a>
+          <a href="#calculator" class="desc-nav-bar nav-cta" data-i18n="nav_calc">Калькулятор эффекта</a>
         </nav>
+        <div class="lang-switch-wrap" role="group" aria-label="Language Switcher">
+          <button type="button" class="lang-btn active" data-lang="ru">RU</button>
+          <button type="button" class="lang-btn" data-lang="md">MD</button>
+          <button type="button" class="lang-btn" data-lang="en">EN</button>
+        </div>
       </div>
     </div>
   </header>
@@ -45,15 +50,15 @@
     <section id="hero" class="hero-section">
       <div class="hero-badge">
         <span class="badge-dot"></span>
-        <span>Deeptech Gigahack 2026 • Трек Biomentorhub × Profi</span>
+        <span data-i18n="hero_badge">Deeptech Gigahack 2026 • Трек Biomentorhub × Profi</span>
       </div>
 
-      <h1 class="hero-title">
+      <h1 class="hero-title" data-i18n="hero_title">
         Революция пищевой упаковки ритейла:<br>
         <span class="text-highlight">0% первичного пластика</span>, 100% циркулярность
       </h1>
 
-      <p class="hero-subtitle">
+      <p class="hero-subtitle" data-i18n="hero_subtitle">
         Инженерный стандарт циркулярной упаковки для сети супермаркетов <strong>Profi</strong>: рецептуры моно-структур без первичного пластика, термостойкость до 250°C без токсичных PFAS и прямое внедрение на оборудовании аккредитованных поставщиков ритейла (Drop-in Technology, CapEx = 0).
       </p>
 
@@ -71,7 +76,7 @@
             <path d="M12 18h.01"></path>
             <path d="M8 18h.01"></path>
           </svg>
-          Калькулятор эффекта сети
+          <span data-i18n="hero_btn_calc">Калькулятор эффекта сети</span>
         </a>
         <a href="#comparison" class="btn-secondary">
           <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -81,7 +86,7 @@
             <line x1="15" y1="15" x2="21" y2="21"></line>
             <line x1="4" y1="4" x2="9" y2="9"></line>
           </svg>
-          Сравнение: Было / Стало
+          <span data-i18n="hero_btn_comp">Сравнение: Было / Стало</span>
         </a>
         <a href="#analytics" class="btn-secondary">
           <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -89,17 +94,33 @@
             <line x1="12" y1="20" x2="12" y2="4"></line>
             <line x1="6" y1="20" x2="6" y2="14"></line>
           </svg>
-          Инженерные графики
+          <span data-i18n="hero_btn_charts">Инженерные графики</span>
         </a>
       </div>
 
       <!-- Hero Proof Metrics Strip -->
-      <div class="hero-proof-grid">
+            <div class="hero-proof-grid">
         <div class="proof-card">
-          <div class="proof-metric">-88%</div>
-          <div class="proof-label">Первичный пластик</div>
-          <div class="proof-desc">Замена на rPET и биополимеры из растительного сырья</div>
+          <div class="proof-metric" data-i18n="proof_m1_val">-88%</div>
+          <div class="proof-label" data-i18n="proof_m1_lbl">Первичный пластик</div>
+          <p class="proof-desc" data-i18n="proof_m1_desc">Замена на rPET и биополимеры из растительного сырья</p>
         </div>
+        <div class="proof-card">
+          <div class="proof-metric" data-i18n="proof_m2_val">250°C</div>
+          <div class="proof-label" data-i18n="proof_m2_lbl">Термостойкость гриля</div>
+          <p class="proof-desc" data-i18n="proof_m2_desc">До 6 часов в тепловой витрине без размягчения и протечек</p>
+        </div>
+        <div class="proof-card">
+          <div class="proof-metric" data-i18n="proof_m3_val">+4 дня</div>
+          <div class="proof-label" data-i18n="proof_m3_lbl">Свежесть продуктов</div>
+          <p class="proof-desc" data-i18n="proof_m3_desc">Лазерная микроперфорация EMAP снижает списания на 32%</p>
+        </div>
+        <div class="proof-card">
+          <div class="proof-metric" data-i18n="proof_m4_val">Class A</div>
+          <div class="proof-label" data-i18n="proof_m4_lbl">RecyClass & PPWR</div>
+          <p class="proof-desc" data-i18n="proof_m4_desc">100% моно-материалы, готовые к переработке в ЕС и СНГ</p>
+        </div>
+      </div>
         <div class="proof-card highlight-card">
           <div class="proof-metric">250°C</div>
           <div class="proof-label">Термостойкость гриля</div>
@@ -119,14 +140,12 @@
     </section>
 
     <!-- Hot Food Counter Special Annex Section -->
-    <section id="grill" class="section-container annex-section">
+    <section id="grill" class="section-container">
       <div class="section-header">
-        <div class="section-tag-special">Специальный вызов хакатона</div>
-        <h2 class="section-title">Готовая кулинария: Упаковка гриля высокой температуры</h2>
-        <p class="section-lead">
-          Критический вызов для ритейлера <strong>Profi</strong>: курица-гриль и горячие полуфабрикаты содержатся
-          в тепловых витринах при температуре <strong>85°C – 120°C до 6 часов</strong>, а при фасовке подвергаются
-          пиковым температурам до <strong>250°C</strong>. Мы разработали два решения, исключающих перфторалкильные соединения (PFAS) и разрушение упаковки.
+        <div class="section-tag" data-i18n="grill_tag">Специальный вызов хакатона</div>
+        <h2 class="section-title" data-i18n="grill_title">Готовая кулинария: Упаковка гриля высокой температуры</h2>
+        <p class="section-lead" data-i18n="grill_lead">
+          Критический вызов для ритейлера <strong>Profi</strong>: курица-гриль и горячие полуфабрикаты содержатся в тепловых витринах при температуре <strong>85°C – 120°C до 6 часов</strong>, а при фасовке подвергаются пиковым температурам до <strong>250°C</strong>. Мы разработали два решения, исключающих перфторалкильные соединения (PFAS) и разрушение упаковки.
         </p>
       </div>
 
@@ -137,41 +156,37 @@
             <img src="img/cpet_grill.jpg" alt="PackShift CPET RoastPro-1000" class="product-photo">
             <span class="product-badge-overlay">Арт. PS-CPET-1000</span>
           </div>
-          <div class="solution-badge">Решение А • Термо-монополимер</div>
-          <h3 class="solution-title">PackShift CPET RoastPro-1000</h3>
-          <div class="specs-pill-row">
-            <span class="spec-pill pill-green">Объём: 1000 мл</span>
-            <span class="spec-pill">Габариты: 220×170×90 мм</span>
-            <span class="spec-pill">t: -40°C .. +250°C</span>
-            <span class="spec-pill pill-green">RecyClass Class A</span>
-          </div>
-          <p class="solution-lead-desc">
-            Жаропрочный кристаллический термоконтейнер из модифицированного rPET (&gt;38% кристалличности). Спроектирован для термоформования на стандартных линиях поставщиков Profi.
+                    <div class="solution-badge" data-i18n="sol_a_badge">Решение А • Термо-монополимер</div>
+          <h3 class="solution-title">PackShift CPET Ultra™</h3>
+          <p class="solution-lead-desc" data-i18n="sol_a_desc">
+            Жаропрочный кристаллический термоконтейнер из модифицированного rPET (>38% кристалличности). Спроектирован для термоформования на стандартных линиях поставщиков Profi.
           </p>
+
           <ul class="spec-list">
             <li>
-              <span class="spec-name">Термостойкость (ASTM D4065):</span>
-              <span class="spec-val">от -40°C до +250°C (Dual-Oven)</span>
+              <span class="spec-name" data-i18n="sol_a_f1_n">Термостойкость (ASTM D4065):</span>
+              <span class="spec-val" data-i18n="sol_a_f1_v">от -40°C до +250°C (Dual-Oven)</span>
             </li>
             <li>
-              <span class="spec-name">Тепловая витрина:</span>
-              <span class="spec-val">6+ часов при 95°C без усадки и запаха</span>
+              <span class="spec-name" data-i18n="sol_a_f2_n">Тепловая витрина:</span>
+              <span class="spec-val" data-i18n="sol_a_f2_v">6+ часов при 95°C без усадки и запаха</span>
             </li>
             <li>
-              <span class="spec-name">Жиростойкость (Kit Test TAPPI T559):</span>
-              <span class="spec-val">Kit 12 (100% барьер без PFAS)</span>
+              <span class="spec-name" data-i18n="sol_a_f3_n">Жиростойкость (Kit Test TAPPI T559):</span>
+              <span class="spec-val" data-i18n="sol_a_f3_v">Kit 12 (100% барьер без PFAS)</span>
             </li>
             <li>
-              <span class="spec-name">Клапан сброса пара:</span>
-              <span class="spec-val">Саморегулируемый микрозамок</span>
+              <span class="spec-name" data-i18n="sol_a_f4_n">Клапан сброса пара:</span>
+              <span class="spec-val" data-i18n="sol_a_f4_v">Саморегулируемый микрозамок</span>
             </li>
             <li>
-              <span class="spec-name">Циркулярность:</span>
-              <span class="spec-val">100% поток ПЭТ-бутылок (RecyClass A)</span>
+              <span class="spec-name" data-i18n="sol_a_f5_n">Циркулярность:</span>
+              <span class="spec-val" data-i18n="sol_a_f5_v">100% поток ПЭТ-бутылок (RecyClass A)</span>
             </li>
           </ul>
-          <div class="card-footer-pill">
-            <span>Инженерная спецификация ТУ для конвертеров ритейла • Себестоимость: <strong>-14%</strong></span>
+
+          <div class="card-footer-pill" data-i18n="sol_a_foot">
+            Инженерная спецификация ТУ для конвертеров ритейла • Себестоимость: <strong>-14%</strong>
           </div>
         </div>
 
@@ -273,187 +288,180 @@
     <!-- 4 Retail Departments Showcase -->
     <section id="departments" class="section-container">
       <div class="section-header">
-        <div class="section-tag">Каталог решений по отделам</div>
-        <h2 class="section-title">Комплексная оптимизация для 4 зон супермаркета</h2>
-        <p class="section-lead">
-          Каждый отдел торговой сети Profi имеет специфические биохимические и физические требования.
-          Мы спроектировали узкоспециализированные моно-структуры под каждый продукт.
+        <div class="section-tag" data-i18n="dept_tag">Каталог решений по отделам</div>
+        <h2 class="section-title" data-i18n="dept_title">Комплексная оптимизация для 4 зон супермаркета</h2>
+        <p class="section-lead" data-i18n="dept_lead">
+          Каждый отдел торговой сети Profi имеет специфические биохимические и физические требования. Мы спроектировали узкоспециализированные моно-структуры под каждый продукт.
         </p>
       </div>
 
-      <div class="departments-grid">
-        <!-- Department 1: Vegetables -->
-        <article id="vegetables" class="dept-card">
-          <div class="product-image-wrap">
+            <div class="departments-grid">
+        <div class="dept-card">
+          <div class="dept-img-wrap">
             <img src="img/produce_bag.jpg" alt="LaserBreathe FreshFlow-350" class="product-photo">
-            <span class="product-badge-overlay">Арт. PS-EMAP-350</span>
+            <span class="dept-badge">EMAP Mono-PP</span>
           </div>
-          <div class="dept-header">
-            <div class="dept-icon">🥬</div>
-            <div class="dept-title-group">
-              <span class="dept-category">Отдел свежих овощей, ягод и зелени</span>
-              <h3 class="dept-name">LaserBreathe FreshFlow-350</h3>
+          <div class="dept-content">
+            <div class="dept-category" data-i18n="dept1_cat">Отдел свежих овощей, ягод и зелени</div>
+            <h3 class="dept-title">LaserBreathe FreshFlow-350</h3>
+            <div class="model-code">SKU: PS-VEG-350 • Моно-ориентированный PP</div>
+            <p class="dept-desc" data-i18n="dept1_desc">
+              Эко-пакет из ориентированного моно-полипропилена с микроперфорацией. Создаёт динамическую модифицированную газовую среду (EMAP), балансируя O₂ (3-5%) и CO₂ (5-8%). Гидрофильный антифог исключает капельный туман.
+            </p>
+            <div class="dept-specs-grid">
+              <div class="dept-spec-item">
+                <span class="dept-spec-num" data-i18n="dept1_s1_n">+4 дня</span>
+                <span class="dept-spec-label" data-i18n="dept1_s1_l">Срок хранения</span>
+              </div>
+              <div class="dept-spec-item">
+                <span class="dept-spec-num" data-i18n="dept1_s2_n">0% тумана</span>
+                <span class="dept-spec-label" data-i18n="dept1_s2_l">Антифог-барьер</span>
+              </div>
+              <div class="dept-spec-item">
+                <span class="dept-spec-num" data-i18n="dept1_s3_n">120 мкм</span>
+                <span class="dept-spec-label" data-i18n="dept1_s3_l">Лазерные микропоры</span>
+              </div>
+              <div class="dept-spec-item">
+                <span class="dept-spec-num" data-i18n="dept1_s4_n">Class A</span>
+                <span class="dept-spec-label" data-i18n="dept1_s4_l">Поток переработки</span>
+              </div>
+            </div>
+            <div class="dept-footer">
+              <div class="dept-pricing">
+                <span class="price-val" data-i18n="dept1_p_val">€0.024</span>
+                <span class="price-unit" data-i18n="dept1_p_unit">/ шт (партия от 100k)</span>
+              </div>
+              <div class="dept-tag-pill" data-i18n="dept1_pill">Списания: -32%</div>
             </div>
           </div>
-          <div class="specs-pill-row">
-            <span class="spec-pill pill-green">Вместимость: 300–500 г</span>
-            <span class="spec-pill">Формат: 240×160 мм (Flow-pack)</span>
-            <span class="spec-pill">Плёнка: rBOPP 35 мкм</span>
-            <span class="spec-pill pill-green">Лазерные поры 120 мкм</span>
-          </div>
-          <p class="dept-desc">
-            Эко-пакет из ориентированного моно-полипропилена с микроперфорацией. Создаёт динамическую модифицированную газовую среду (EMAP), балансируя O₂ (3-5%) и CO₂ (5-8%). Гидрофильный антифог исключает капельный туман.
-          </p>
-          <div class="dept-stats-row">
-            <div class="dept-stat">
-              <span class="stat-number">+4 дня</span>
-              <span class="stat-name">Срок хранения</span>
-            </div>
-            <div class="dept-stat">
-              <span class="stat-number">-32%</span>
-              <span class="stat-name">Списания в ритейле</span>
-            </div>
-            <div class="dept-stat">
-              <span class="stat-number">Анти-туман</span>
-              <span class="stat-name">Zero-condensation</span>
-            </div>
-          </div>
-          <div class="dept-material-badge">
-            Материал: Моно-rBOPP 100% Recyclable • Без микропластикового клея • Стандарт PPWR
-          </div>
-        </article>
-
-        <!-- Department 2: Meat & Fish -->
-        <article id="meat" class="dept-card">
-          <div class="product-image-wrap">
+        </div>
+        <div class="dept-card">
+          <div class="dept-img-wrap">
             <img src="img/meat_tray.jpg" alt="CapillaryPadless-500" class="product-photo">
-            <span class="product-badge-overlay">Арт. PS-PADLESS-500</span>
+            <span class="dept-badge">100% rPET Моно</span>
           </div>
-          <div class="dept-header">
-            <div class="dept-icon">🥩</div>
-            <div class="dept-title-group">
-              <span class="dept-category">Мясной и рыбный отдел</span>
-              <h3 class="dept-name">CapillaryPadless-500</h3>
+          <div class="dept-content">
+            <div class="dept-category" data-i18n="dept2_cat">Мясной и рыбный отдел</div>
+            <h3 class="dept-title">CapillaryPadless-500</h3>
+            <div class="model-code">SKU: PS-MEA-500 • Кристаллический сотовый rPET</div>
+            <p class="dept-desc" data-i18n="dept2_desc">
+              Лоток со встроенным сотовым капиллярным дном. Впитывает и надёжно запирает экссудат (мясной сок) за счёт поверхностного натяжения без синтетических целлюлозно-полимерных салфеток.
+            </p>
+            <div class="dept-specs-grid">
+              <div class="dept-spec-item">
+                <span class="dept-spec-num" data-i18n="dept2_s1_n">0 шт</span>
+                <span class="dept-spec-label" data-i18n="dept2_s1_l">Салфеток-вкладышей</span>
+              </div>
+              <div class="dept-spec-item">
+                <span class="dept-spec-num" data-i18n="dept2_s2_n">45 мл</span>
+                <span class="dept-spec-label" data-i18n="dept2_s2_l">Удержание экссудата</span>
+              </div>
+              <div class="dept-spec-item">
+                <span class="dept-spec-num" data-i18n="dept2_s3_n">100%</span>
+                <span class="dept-spec-label" data-i18n="dept2_s3_l">Вторичный rPET</span>
+              </div>
+              <div class="dept-spec-item">
+                <span class="dept-spec-num" data-i18n="dept2_s4_n">99.2%</span>
+                <span class="dept-spec-label" data-i18n="dept2_s4_l">Оптическая чистота</span>
+              </div>
+            </div>
+            <div class="dept-footer">
+              <div class="dept-pricing">
+                <span class="price-val" data-i18n="dept2_p_val">€0.048</span>
+                <span class="price-unit" data-i18n="dept2_p_unit">/ шт (партия от 100k)</span>
+              </div>
+              <div class="dept-tag-pill" data-i18n="dept2_pill">EPR налог: 0%</div>
             </div>
           </div>
-          <div class="specs-pill-row">
-            <span class="spec-pill pill-green">Вместимость: 400–600 г</span>
-            <span class="spec-pill">Размер: 230×145×40 мм</span>
-            <span class="spec-pill">Гидрозамок: 45 мл экссудата</span>
-            <span class="spec-pill pill-green">85% rPET моно-поток</span>
-          </div>
-          <p class="dept-desc">
-            Глубокоформованный лоток из моно-rPET со встроенным капиллярным гидро-замком. Жидкость удерживается поверхностным натяжением ячеек дна без токсичных синтетических салфеток, делая лоток 100% пригодным к вторичной переработке.
-          </p>
-          <div class="dept-stats-row">
-            <div class="dept-stat">
-              <span class="stat-number">0 шт</span>
-              <span class="stat-name">Грязных салфеток</span>
-            </div>
-            <div class="dept-stat">
-              <span class="stat-number">100%</span>
-              <span class="stat-name">Чистая переработка</span>
-            </div>
-            <div class="dept-stat">
-              <span class="stat-number">EVOH &lt;5%</span>
-              <span class="stat-name">Газобарьер MAP</span>
-            </div>
-          </div>
-          <div class="dept-material-badge">
-            Материал: 85% пищевой rPET + 15% контактный слой • Сертификация RecyClass Class A
-          </div>
-        </article>
-
-        <!-- Department 3: Bakery -->
-        <article id="cookies" class="dept-card">
-          <div class="product-image-wrap">
+        </div>
+        <div class="dept-card">
+          <div class="dept-img-wrap">
             <img src="img/bakery_bag.jpg" alt="NatureVent Bakery-XL" class="product-photo">
-            <span class="product-badge-overlay">Арт. PS-VENT-XL</span>
+            <span class="dept-badge">FSC + NatureFlex</span>
           </div>
-          <div class="dept-header">
-            <div class="dept-icon">🥐</div>
-            <div class="dept-title-group">
-              <span class="dept-category">Пекарня и свежая выпечка</span>
-              <h3 class="dept-name">NatureVent Bakery-XL</h3>
+          <div class="dept-content">
+            <div class="dept-category" data-i18n="dept3_cat">Отдел собственной пекарни и хлеба</div>
+            <h3 class="dept-title">NatureVent Bakery-XL</h3>
+            <div class="model-code">SKU: PS-BAK-700 • Крафт + древесная целлюлоза</div>
+            <p class="dept-desc" data-i18n="dept3_desc">
+              Пакет для багетов и горячего хлеба с прозрачным окном из регенерированной целлюлозы NatureFlex (не полипропилен!). Полностью перерабатывается вместе с макулатурой без необходимости разделения слоёв.
+            </p>
+            <div class="dept-specs-grid">
+              <div class="dept-spec-item">
+                <span class="dept-spec-num" data-i18n="dept3_s1_n">100%</span>
+                <span class="dept-spec-label" data-i18n="dept3_s1_l">Биоразлагаемо</span>
+              </div>
+              <div class="dept-spec-item">
+                <span class="dept-spec-num" data-i18n="dept3_s2_n">CEPI</span>
+                <span class="dept-spec-label" data-i18n="dept3_s2_l">Тест переработки бумаги</span>
+              </div>
+              <div class="dept-spec-item">
+                <span class="dept-spec-num" data-i18n="dept3_s3_n">120°C</span>
+                <span class="dept-spec-label" data-i18n="dept3_s3_l">Термостойкость печи</span>
+              </div>
+              <div class="dept-spec-item">
+                <span class="dept-spec-num" data-i18n="dept3_s4_n">FSC</span>
+                <span class="dept-spec-label" data-i18n="dept3_s4_l">Сертифицированный лес</span>
+              </div>
+            </div>
+            <div class="dept-footer">
+              <div class="dept-pricing">
+                <span class="price-val" data-i18n="dept3_p_val">€0.031</span>
+                <span class="price-unit" data-i18n="dept3_p_unit">/ шт (партия от 100k)</span>
+              </div>
+              <div class="dept-tag-pill" data-i18n="dept3_pill">В синий контейнер</div>
             </div>
           </div>
-          <div class="specs-pill-row">
-            <span class="spec-pill pill-green">Формат: 350×180×60 мм</span>
-            <span class="spec-pill">Основа: крафт FSC 70 г/м²</span>
-            <span class="spec-pill">Окно: Bio-NatureFlex™ 30 мкм</span>
-            <span class="spec-pill pill-green">Тест CEPI: 100% макулатура</span>
-          </div>
-          <p class="dept-desc">
-            Крафт-пакеты из небеленой целлюлозы FSC с прозрачным смотровым окном из био-плёнки NatureFlex™ на основе древесной массы. Сохраняет хрустящую корочку багетов и круассанов без отпотевания и парникового эффекта.
-          </p>
-          <div class="dept-stats-row">
-            <div class="dept-stat">
-              <span class="stat-number">100%</span>
-              <span class="stat-name">Переработка бумаги</span>
-            </div>
-            <div class="dept-stat">
-              <span class="stat-number">Bio-Wax</span>
-              <span class="stat-name">Водный жиробарьер</span>
-            </div>
-            <div class="dept-stat">
-              <span class="stat-number">Pulpable</span>
-              <span class="stat-name">Тест CEPI пройден</span>
-            </div>
-          </div>
-          <div class="dept-material-badge">
-            Материал: Крафт FSC + плёнка из целлюлозы • 0% полиэтиленовой ламинации • Утилизация в макулатуру
-          </div>
-        </article>
-
-        <!-- Department 4: Hot Culinary & Ready-to-eat -->
-        <article class="dept-card">
-          <div class="product-image-wrap">
+        </div>
+        <div class="dept-card">
+          <div class="dept-img-wrap">
             <img src="img/bagasse_box.jpg" alt="HeatShield Dual-Oven Deli" class="product-photo">
-            <span class="product-badge-overlay">Арт. PS-DELI-800</span>
+            <span class="dept-badge">Багасса + Альгинат</span>
           </div>
-          <div class="dept-header">
-            <div class="dept-icon">🍗</div>
-            <div class="dept-title-group">
-              <span class="dept-category">Кулинария и готовые блюда</span>
-              <h3 class="dept-name">HeatShield Dual-Oven Deli</h3>
+          <div class="dept-content">
+            <div class="dept-category" data-i18n="dept4_cat">Отдел кулинарии и готовых горячих блюд</div>
+            <h3 class="dept-title">HeatShield Dual-Oven Deli</h3>
+            <div class="model-code">SKU: PS-DELI-850 • Термо-багасса тростника</div>
+            <p class="dept-desc" data-i18n="dept4_desc">
+              Термобокс с био-барьером на основе морских водорослей. Выдерживает разогрев в микроволновке и духовке до 220°C. 0% перфторалкильных веществ (PFAS), 100% домашнее компостирование за 60 дней.
+            </p>
+            <div class="dept-specs-grid">
+              <div class="dept-spec-item">
+                <span class="dept-spec-num" data-i18n="dept4_s1_n">220°C</span>
+                <span class="dept-spec-label" data-i18n="dept4_s1_l">Пиковый нагрев</span>
+              </div>
+              <div class="dept-spec-item">
+                <span class="dept-spec-num" data-i18n="dept4_s2_n">0% PFAS</span>
+                <span class="dept-spec-label" data-i18n="dept4_s2_l">Без фторорганики</span>
+              </div>
+              <div class="dept-spec-item">
+                <span class="dept-spec-num" data-i18n="dept4_s3_n">60 дней</span>
+                <span class="dept-spec-label" data-i18n="dept4_s3_l">Домашний компост</span>
+              </div>
+              <div class="dept-spec-item">
+                <span class="dept-spec-num" data-i18n="dept4_s4_n">-89%</span>
+                <span class="dept-spec-label" data-i18n="dept4_s4_l">CO₂ vs Алюминий</span>
+              </div>
+            </div>
+            <div class="dept-footer">
+              <div class="dept-pricing">
+                <span class="price-val" data-i18n="dept4_p_val">€0.062</span>
+                <span class="price-unit" data-i18n="dept4_p_unit">/ шт (партия от 100k)</span>
+              </div>
+              <div class="dept-tag-pill" data-i18n="dept4_pill">100% Эко-стандарт</div>
             </div>
           </div>
-          <div class="specs-pill-row">
-            <span class="spec-pill pill-green">Объём: 800 мл</span>
-            <span class="spec-pill">Размер: 210×155×70 мм</span>
-            <span class="spec-pill">t: -20°C .. +220°C</span>
-            <span class="spec-pill pill-green">0% PFAS (Kit 12)</span>
-          </div>
-          <p class="dept-desc">
-            Контейнеры для горячих блюд (плов, запеканки, рагу), устойчивые к горячему маслу и соусам. Прямой разогрев покупателем в СВЧ и духовке до 220°C. Натуральное сырье из багассы не выделяет вредных летучих веществ.
-          </p>
-          <div class="dept-stats-row">
-            <div class="dept-stat">
-              <span class="stat-number">220°C</span>
-              <span class="stat-name">Max температура</span>
-            </div>
-            <div class="dept-stat">
-              <span class="stat-number">Kit 12</span>
-              <span class="stat-name">Жиростойкость</span>
-            </div>
-            <div class="dept-stat">
-              <span class="stat-number">-89% CO₂</span>
-              <span class="stat-name">Углеродный след</span>
-            </div>
-          </div>
-          <div class="dept-material-badge">
-            Материал: Формованное термоволокно багассы + альгинатный эко-барьер • OK Compost HOME
-          </div>
-        </article>
+        </div>
       </div>
     </section>
 
     <!-- Direct Side-by-Side Comparison: Traditional vs PackShift -->
+        <!-- Direct Side-by-Side Comparison: Traditional vs PackShift -->
     <section id="comparison" class="section-container">
       <div class="section-header">
-        <div class="section-tag">Инженерное сравнение</div>
-        <h2 class="section-title">Было vs Стало: Традиционная vs Циркулярная упаковка</h2>
-        <p class="section-lead">
+        <div class="section-tag" data-i18n="comp_tag">Инженерное сравнение</div>
+        <h2 class="section-title" data-i18n="comp_title">Было vs Стало: Традиционная vs Циркулярная упаковка</h2>
+        <p class="section-lead" data-i18n="comp_lead">
           Наглядный сравнительный анализ: почему устаревшая упаковка ритейла генерирует многомиллионные эко-сборы и пищевые списания, и как стандарт PackShift решает эти проблемы на уровне физики и материаловедения.
         </p>
       </div>
@@ -464,32 +472,68 @@
           <div class="comparison-card-header">
             <div class="comp-icon">🥩</div>
             <div class="comp-title-group">
-              <span class="comp-subtitle">Мясной и рыбный отдел</span>
-              <h3>Мясной лоток и сбор экссудата</h3>
+              <span class="comp-subtitle" data-i18n="comp1_sub">Мясной и рыбный отдел</span>
+              <h3 data-i18n="comp1_title">Мясной лоток и сбор экссудата</h3>
             </div>
           </div>
           <div class="comparison-side-by-side">
             <div class="side-box box-old">
               <span class="side-tag tag-old">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                Было: Традиционный лоток
+                <span data-i18n="comp1_old_tag">Было: Традиционный лоток</span>
               </span>
-              <div class="side-title">Синтетическая салфетка-вкладыш</div>
-              <p class="side-text">
+              <div class="side-title" data-i18n="comp1_old_t">Синтетическая салфетка-вкладыш</div>
+              <div class="comp-visual-box">
+                <svg viewBox="0 0 250 95" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="15" y="10" width="220" height="75" rx="8" fill="#fff" stroke="#fca5a5" stroke-width="1.5" />
+                  <rect x="23" y="18" width="204" height="59" rx="5" fill="#fff1f2" stroke="#fecdd3" stroke-dasharray="3 3" />
+                  <rect x="45" y="26" width="160" height="38" rx="4" fill="#fee2e2" stroke="#f87171" stroke-width="1.2" />
+                  <path d="M55 44 Q70 50 85 45 Q100 40 120 46 Q140 52 165 44 Q180 48 195 43 L195 60 L55 60 Z" fill="#fca5a5" opacity="0.6"/>
+                  <g transform="translate(60, 34)"><circle cx="0" cy="0" r="5" fill="#ef4444" opacity="0.8"/><path d="M-2 -2 L2 2 M-2 2 L2 -2" stroke="#fff" stroke-width="1.5"/></g>
+                  <g transform="translate(190, 34)"><circle cx="0" cy="0" r="5" fill="#ef4444" opacity="0.8"/><path d="M-2 -2 L2 2 M-2 2 L2 -2" stroke="#fff" stroke-width="1.5"/></g>
+                  <path d="M125 50 C123 54 120 58 125 61 C130 58 127 54 125 50 Z" fill="#dc2626"/>
+                  <rect x="42" y="68" width="166" height="18" rx="4" fill="#fef2f2" stroke="#ef4444" stroke-width="1"/>
+                  <text x="125" y="80.5" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="#b91c1c" text-anchor="middle">⚠️ Салфетка SAP • Инкубатор бактерий</text>
+                </svg>
+              </div>
+              <p class="side-text" data-i18n="comp1_old_d">
                 В лоток вложена салфетка из целлюлозы, полиэтилена и суперабсорбента (SAP). Впитывает сок, но становится инкубатором бактерий. При сортировке загрязненная салфетка исключает рециклинг всего лотка.
               </p>
-              <div class="side-metric-tag bad">100% на свалку • Штрафной налог EPR</div>
+              <div class="side-metric-tag bad" data-i18n="comp1_old_m">100% на свалку • Штрафной налог EPR</div>
             </div>
             <div class="side-box box-new">
               <span class="side-tag tag-new">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                Стало: PackShift Capillary
+                <span data-i18n="comp1_new_tag">Стало: PackShift Capillary</span>
               </span>
-              <div class="side-title">Встроенный гидро-замок без салфеток</div>
-              <p class="side-text">
+              <div class="side-title" data-i18n="comp1_new_t">Встроенный гидро-замок без салфеток</div>
+              <div class="comp-visual-box">
+                <svg viewBox="0 0 250 95" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="15" y="10" width="220" height="75" rx="8" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5" />
+                  <rect x="25" y="17" width="200" height="28" rx="4" fill="#ffffff" stroke="#bbf7d0" stroke-width="1"/>
+                  <text x="125" y="34" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="700" fill="#166534" text-anchor="middle">Зона продукта (Сухо и чисто • 0 салфеток)</text>
+                  <g stroke="#22c55e" stroke-width="1" fill="#dcfce7">
+                    <path d="M35 52 l5 -4 h8 l5 4 l-5 4 h-8 z" />
+                    <path d="M57 52 l5 -4 h8 l5 4 l-5 4 h-8 z" />
+                    <path d="M79 52 l5 -4 h8 l5 4 l-5 4 h-8 z" />
+                    <path d="M101 52 l5 -4 h8 l5 4 l-5 4 h-8 z" />
+                    <path d="M123 52 l5 -4 h8 l5 4 l-5 4 h-8 z" />
+                    <path d="M145 52 l5 -4 h8 l5 4 l-5 4 h-8 z" />
+                    <path d="M167 52 l5 -4 h8 l5 4 l-5 4 h-8 z" />
+                    <path d="M189 52 l5 -4 h8 l5 4 l-5 4 h-8 z" />
+                  </g>
+                  <path d="M44 37 L44 46 M42 44 L44 46 L46 44" stroke="#15803d" stroke-width="1.5" stroke-linecap="round"/>
+                  <path d="M88 37 L88 46 M86 44 L88 46 L90 44" stroke="#15803d" stroke-width="1.5" stroke-linecap="round"/>
+                  <path d="M132 37 L132 46 M130 44 L132 46 L134 44" stroke="#15803d" stroke-width="1.5" stroke-linecap="round"/>
+                  <path d="M176 37 L176 46 M174 44 L176 46 L178 44" stroke="#15803d" stroke-width="1.5" stroke-linecap="round"/>
+                  <rect x="36" y="68" width="178" height="18" rx="4" fill="#15803d" />
+                  <text x="125" y="80.5" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">✓ Капиллярные микро-соты • 100% rPET</text>
+                </svg>
+              </div>
+              <p class="side-text" data-i18n="comp1_new_d">
                 Дно лотка отформовано в виде массива микро-сот с капиллярным эффектом. Экссудат надежно заперт силами поверхностного натяжения даже при наклоне. 0 салфеток, 100% моно-rPET поступает в чистый рециклинг.
               </p>
-              <div class="side-metric-tag good">RecyClass Class A • 0 салфеток</div>
+              <div class="side-metric-tag good" data-i18n="comp1_new_m">RecyClass Class A • 0 салфеток</div>
             </div>
           </div>
         </div>
@@ -499,32 +543,67 @@
           <div class="comparison-card-header">
             <div class="comp-icon">🍗</div>
             <div class="comp-title-group">
-              <span class="comp-subtitle">Кулинария и гриль (250°C)</span>
-              <h3>Контейнеры для горячей кулинарии</h3>
+              <span class="comp-subtitle" data-i18n="comp2_sub">Кулинария и гриль (250°C)</span>
+              <h3 data-i18n="comp2_title">Контейнеры для горячей кулинарии</h3>
             </div>
           </div>
           <div class="comparison-side-by-side">
             <div class="side-box box-old">
               <span class="side-tag tag-old">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                Было: Фольга / Полипропилен
+                <span data-i18n="comp2_old_tag">Было: Фольга / Полипропилен</span>
               </span>
-              <div class="side-title">Ламинат PE/ALU или PP с PFAS</div>
-              <p class="side-text">
+              <div class="side-title" data-i18n="comp2_old_t">Ламинат PE/ALU или PP с PFAS</div>
+              <div class="comp-visual-box">
+                <svg viewBox="0 0 250 95" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M25 22 Q125 15 225 22 L215 72 Q125 78 35 72 Z" fill="#fff1f2" stroke="#fca5a5" stroke-width="1.5"/>
+                  <path d="M110 5 L125 17 L140 5" stroke="#f87171" stroke-width="2" stroke-linecap="round"/>
+                  <line x1="85" y1="8" x2="95" y2="17" stroke="#f87171" stroke-width="1.5"/>
+                  <line x1="165" y1="8" x2="155" y2="17" stroke="#f87171" stroke-width="1.5"/>
+                  <g fill="#38bdf8" opacity="0.8">
+                    <circle cx="65" cy="30" r="2.5"/><circle cx="95" cy="27" r="3"/><circle cx="125" cy="29" r="2.5"/><circle cx="155" cy="28" r="3.5"/><circle cx="185" cy="31" r="2"/>
+                    <path d="M95 31 C93 35 91 39 95 42 C99 39 97 35 95 31 Z"/>
+                    <path d="M155 32 C153 36 151 40 155 43 C159 40 157 36 155 32 Z"/>
+                  </g>
+                  <path d="M60 52 Q125 43 190 52 Q125 63 60 52 Z" fill="#fed7aa" stroke="#fb923c" stroke-width="1"/>
+                  <text x="125" y="56" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" font-weight="700" fill="#c2410c" text-anchor="middle">Размокание • Эффект парника</text>
+                  <rect x="36" y="68" width="178" height="18" rx="4" fill="#fef2f2" stroke="#ef4444" stroke-width="1"/>
+                  <text x="125" y="80.5" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="#b91c1c" text-anchor="middle">⚠️ Парниковый конденсат • Риск PFAS</text>
+                </svg>
+              </div>
+              <p class="side-text" data-i18n="comp2_old_d">
                 Пакеты размягчаются в витрине при 90°C. Пар не отводится («парниковый эффект»), кожица размокает за 40 минут. Фольга запрещена для разогрева в микроволновке. Содержит стойкие токсичные соединения PFAS.
               </p>
-              <div class="side-metric-tag bad">Токсичные PFAS • Размокание мяса</div>
+              <div class="side-metric-tag bad" data-i18n="comp2_old_m">Токсичные PFAS • Размокание мяса</div>
             </div>
             <div class="side-box box-new">
               <span class="side-tag tag-new">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                Стало: CPET & LignoBox
+                <span data-i18n="comp2_new_tag">Стало: CPET & LignoBox</span>
               </span>
-              <div class="side-title">Dual-Ovenable 250°C + пароотвод</div>
-              <p class="side-text">
+              <div class="side-title" data-i18n="comp2_new_t">Dual-Ovenable 250°C + пароотвод</div>
+              <div class="comp-visual-box">
+                <svg viewBox="0 0 250 95" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="25" y="22" width="200" height="46" rx="6" fill="#123524" stroke="#22c55e" stroke-width="1.5"/>
+                  <rect x="35" y="30" width="180" height="30" rx="4" fill="#1a4d36" stroke="#4ade80" stroke-width="0.8"/>
+                  <g stroke="#86efac" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="2 3">
+                    <path d="M85 22 C83 16 87 12 85 7"/>
+                    <path d="M125 22 C123 16 127 12 125 7"/>
+                    <path d="M165 22 C163 16 167 12 165 7"/>
+                  </g>
+                  <path d="M83 9 L85 6 L87 9" stroke="#86efac" stroke-width="1.5" stroke-linecap="round"/>
+                  <path d="M123 9 L125 6 L127 9" stroke="#86efac" stroke-width="1.5" stroke-linecap="round"/>
+                  <path d="M163 9 L165 6 L167 9" stroke="#86efac" stroke-width="1.5" stroke-linecap="round"/>
+                  <path d="M60 46 Q125 36 190 46 Q125 54 60 46 Z" fill="#f59e0b" opacity="0.95"/>
+                  <text x="125" y="47" font-family="'Plus Jakarta Sans', sans-serif" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">Хрустящая корочка (Steam Out ↑)</text>
+                  <rect x="36" y="68" width="178" height="18" rx="4" fill="#22c55e" />
+                  <text x="125" y="80.5" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">✓ Dual-Oven 250°C • Микроклапан пара</text>
+                </svg>
+              </div>
+              <p class="side-text" data-i18n="comp2_new_d">
                 Кристаллический моно-rPET или био-багасса держат 6+ часов при 95°C и выдерживают нагрев до 250°C. Микроклапан стравливает пар — корочка остается хрустящей. Разогрев дома и в СВЧ, и в духовке без перекладывания.
               </p>
-              <div class="side-metric-tag good">0% PFAS • Хрустящая корочка • 250°C</div>
+              <div class="side-metric-tag good" data-i18n="comp2_new_m">0% PFAS • Хрустящая корочка • 250°C</div>
             </div>
           </div>
         </div>
@@ -534,32 +613,66 @@
           <div class="comparison-card-header">
             <div class="comp-icon">🥬</div>
             <div class="comp-title-group">
-              <span class="comp-subtitle">Свежие овощи и ягоды</span>
-              <h3>Фасовка томатов, ягод и зелени</h3>
+              <span class="comp-subtitle" data-i18n="comp3_sub">Свежие овощи и ягоды</span>
+              <h3 data-i18n="comp3_title">Фасовка томатов, ягод и зелени</h3>
             </div>
           </div>
           <div class="comparison-side-by-side">
             <div class="side-box box-old">
               <span class="side-tag tag-old">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                Было: Глухая полиэтиленовая плёнка
+                <span data-i18n="comp3_old_tag">Было: Глухая полиэтиленовая плёнка</span>
               </span>
-              <div class="side-title">Парниковый туман и гниение</div>
-              <p class="side-text">
+              <div class="side-title" data-i18n="comp3_old_t">Парниковый туман и гниение</div>
+              <div class="comp-visual-box">
+                <svg viewBox="0 0 250 95" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="25" y="12" width="200" height="70" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+                  <ellipse cx="70" cy="36" rx="35" ry="16" fill="#e2e8f0" opacity="0.75"/>
+                  <ellipse cx="140" cy="32" rx="45" ry="15" fill="#e2e8f0" opacity="0.75"/>
+                  <ellipse cx="185" cy="40" rx="25" ry="13" fill="#e2e8f0" opacity="0.75"/>
+                  <circle cx="55" cy="28" r="2.5" fill="#94a3b8"/>
+                  <circle cx="85" cy="40" r="3" fill="#94a3b8"/>
+                  <circle cx="120" cy="30" r="2" fill="#94a3b8"/>
+                  <circle cx="150" cy="42" r="3.5" fill="#94a3b8"/>
+                  <path d="M100 46 C90 38 110 30 130 38 C145 44 130 52 115 50 Z" fill="#ca8a04" opacity="0.8"/>
+                  <text x="125" y="56" font-family="'JetBrains Mono', monospace" font-size="7.5" font-weight="700" fill="#dc2626" text-anchor="middle">❌ CO₂ > 15% (Анаэробное гниение)</text>
+                  <rect x="36" y="68" width="178" height="18" rx="4" fill="#fef2f2" stroke="#ef4444" stroke-width="1"/>
+                  <text x="125" y="80.5" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="#b91c1c" text-anchor="middle">⚠️ Капельный туман • Порча за 48 часов</text>
+                </svg>
+              </div>
+              <p class="side-text" data-i18n="comp3_old_d">
                 Дыхание овощей выделяет влагу. Внутри упаковки образуется конденсат, развиваются грибки и плесень. Продукт теряет товарный вид на 3-й день витрины, приводя к массовым списаниям (до 32% потерь).
               </p>
-              <div class="side-metric-tag bad">Списание 32% • Конденсат за 24 часа</div>
+              <div class="side-metric-tag bad" data-i18n="comp3_old_m">Списание 32% • Конденсат за 24 часа</div>
             </div>
             <div class="side-box box-new">
               <span class="side-tag tag-new">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                Стало: LaserBreathe EMAP
+                <span data-i18n="comp3_new_tag">Стало: LaserBreathe EMAP</span>
               </span>
-              <div class="side-title">Динамический газообмен + Антифог</div>
-              <p class="side-text">
+              <div class="side-title" data-i18n="comp3_new_t">Динамический газообмен + Антифог</div>
+              <div class="comp-visual-box">
+                <svg viewBox="0 0 250 95" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="25" y="12" width="200" height="70" rx="8" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
+                  <path d="M35 18 L215 18 L195 28 L35 28 Z" fill="#ffffff" opacity="0.6"/>
+                  <circle cx="95" cy="39" r="13" fill="#ef4444"/>
+                  <path d="M95 26 Q92 22 88 24 Q95 27 95 26 Q98 22 102 24 Z" fill="#15803d"/>
+                  <circle cx="91" cy="35" r="2.5" fill="#fca5a5" opacity="0.8"/>
+                  <path d="M130 47 C120 36 145 27 165 36 C175 42 160 49 145 47 Z" fill="#22c55e"/>
+                  <g fill="#16a34a">
+                    <circle cx="45" cy="34" r="1.5"/><circle cx="45" cy="42" r="1.5"/><circle cx="45" cy="50" r="1.5"/>
+                    <circle cx="205" cy="34" r="1.5"/><circle cx="205" cy="42" r="1.5"/><circle cx="205" cy="50" r="1.5"/>
+                  </g>
+                  <text x="52" y="44" font-family="'JetBrains Mono', monospace" font-size="7.5" font-weight="700" fill="#15803d">O₂⇄CO₂</text>
+                  <text x="178" y="44" font-family="'JetBrains Mono', monospace" font-size="7.5" font-weight="700" fill="#15803d">EMAP</text>
+                  <rect x="36" y="68" width="178" height="18" rx="4" fill="#15803d"/>
+                  <text x="125" y="80.5" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">✓ Лазер 120 мкм + Антифог • +4 дня</text>
+                </svg>
+              </div>
+              <p class="side-text" data-i18n="comp3_new_d">
                 Лазерная микроперфорация (120 мкм) синхронизирована с интенсивностью дыхания растительных тканей. Поддерживается равновесная атмосфера O₂/CO₂. Антифог не дает каплям оседать. Срок годности продлен на +4 дня.
               </p>
-              <div class="side-metric-tag good">+4 дня на полке • Списания -32%</div>
+              <div class="side-metric-tag good" data-i18n="comp3_new_m">+4 дня на полке • Списания -32%</div>
             </div>
           </div>
         </div>
@@ -569,32 +682,59 @@
           <div class="comparison-card-header">
             <div class="comp-icon">🥐</div>
             <div class="comp-title-group">
-              <span class="comp-subtitle">Пекарня и выпечка</span>
-              <h3>Пакеты для багетов и сдобы</h3>
+              <span class="comp-subtitle" data-i18n="comp4_sub">Пекарня и выпечка</span>
+              <h3 data-i18n="comp4_title">Пакеты для багетов и сдобы</h3>
             </div>
           </div>
           <div class="comparison-side-by-side">
             <div class="side-box box-old">
               <span class="side-tag tag-old">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                Было: Бумага + Пластиковое окно
+                <span data-i18n="comp4_old_tag">Было: Бумага + Пластиковое окно</span>
               </span>
-              <div class="side-title">Неразделимый гибридный мусор</div>
-              <p class="side-text">
+              <div class="side-title" data-i18n="comp4_old_t">Неразделимый гибридный мусор</div>
+              <div class="comp-visual-box">
+                <svg viewBox="0 0 250 95" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="30" y="12" width="190" height="70" rx="4" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+                  <rect x="90" y="12" width="70" height="70" fill="#e0f2fe" stroke="#38bdf8" stroke-width="1"/>
+                  <text x="125" y="27" font-family="'JetBrains Mono', monospace" font-size="7.5" font-weight="700" fill="#0369a1" text-anchor="middle">BOPP ПЛАСТИК</text>
+                  <text x="60" y="43" font-family="'JetBrains Mono', monospace" font-size="7.5" font-weight="700" fill="#92400e" text-anchor="middle">БУМАГА</text>
+                  <text x="190" y="43" font-family="'JetBrains Mono', monospace" font-size="7.5" font-weight="700" fill="#92400e" text-anchor="middle">БУМАГА</text>
+                  <line x1="90" y1="12" x2="90" y2="82" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="3 3"/>
+                  <line x1="160" y1="12" x2="160" y2="82" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="3 3"/>
+                  <text x="125" y="49" font-family="'Plus Jakarta Sans', sans-serif" font-size="7.5" font-weight="700" fill="#b91c1c" text-anchor="middle">❌ Клей • Не разделить</text>
+                  <rect x="36" y="68" width="178" height="18" rx="4" fill="#fef2f2" stroke="#ef4444" stroke-width="1"/>
+                  <text x="125" y="80.5" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="#b91c1c" text-anchor="middle">⚠️ Засор макулатуры • 100% на свалку</text>
+                </svg>
+              </div>
+              <p class="side-text" data-i18n="comp4_old_d">
                 Полоса полипропилена (BOPP) наклеена на бумагу клеем. Покупатель не разделяет пакет вручную, а макулатурные заводы выбраковывают партию из-за пластика. Пакет сжигается или вывозится на полигон.
               </p>
-              <div class="side-metric-tag bad">Не подлежит переработке • 100% мусор</div>
+              <div class="side-metric-tag bad" data-i18n="comp4_old_m">Не подлежит переработке • 100% мусор</div>
             </div>
             <div class="side-box box-new">
               <span class="side-tag tag-new">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                Стало: NatureVent Bakery
+                <span data-i18n="comp4_new_tag">Стало: NatureVent Bakery</span>
               </span>
-              <div class="side-title">100% целлюлоза (FSC + NatureFlex)</div>
-              <p class="side-text">
+              <div class="side-title" data-i18n="comp4_new_t">100% целлюлоза (FSC + NatureFlex)</div>
+              <div class="comp-visual-box">
+                <svg viewBox="0 0 250 95" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="30" y="12" width="190" height="70" rx="4" fill="#fef3c7" stroke="#15803d" stroke-width="1.5"/>
+                  <rect x="90" y="12" width="70" height="70" fill="#dcfce7" stroke="#22c55e" stroke-width="1"/>
+                  <text x="125" y="27" font-family="'JetBrains Mono', monospace" font-size="7.5" font-weight="700" fill="#15803d" text-anchor="middle">NatureFlex™</text>
+                  <text x="125" y="38" font-family="'Plus Jakarta Sans', sans-serif" font-size="7" font-weight="600" fill="#166534" text-anchor="middle">Древесная целлюлоза</text>
+                  <text x="60" y="43" font-family="'JetBrains Mono', monospace" font-size="7.5" font-weight="700" fill="#15803d" text-anchor="middle">FSC КРАФТ</text>
+                  <text x="190" y="43" font-family="'JetBrains Mono', monospace" font-size="7.5" font-weight="700" fill="#15803d" text-anchor="middle">FSC КРАФТ</text>
+                  <text x="125" y="52" font-family="'Plus Jakarta Sans', sans-serif" font-size="7.5" font-weight="700" fill="#047857" text-anchor="middle">♻️ Синий бак (Тест CEPI)</text>
+                  <rect x="36" y="68" width="178" height="18" rx="4" fill="#15803d"/>
+                  <text x="125" y="80.5" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">✓ 100% моно-целлюлоза в макулатуру</text>
+                </svg>
+              </div>
+              <p class="side-text" data-i18n="comp4_new_d">
                 Смотровое окно изготовлено из регенерированной растительной целлюлозы. Пакет полностью утилизируется в обычный синий контейнер для макулатуры без разделения (тест растворимости CEPI пройден).
               </p>
-              <div class="side-metric-tag good">100% в макулатуру • Тест CEPI пройден</div>
+              <div class="side-metric-tag good" data-i18n="comp4_new_m">100% в макулатуру • Тест CEPI пройден</div>
             </div>
           </div>
         </div>
@@ -604,9 +744,9 @@
     <!-- Deeptech Analytics & Visual Graphs -->
     <section id="analytics" class="section-container analytics-section">
       <div class="section-header">
-        <div class="section-tag">Научная и инженерная верификация</div>
-        <h2 class="section-title">Физико-химические графики и аналитика материалов</h2>
-        <p class="section-lead">
+        <div class="section-tag" data-i18n="analytics_tag">Научная и инженерная верификация</div>
+        <h2 class="section-title" data-i18n="analytics_title">Физико-химические графики и аналитика материалов</h2>
+        <p class="section-lead" data-i18n="analytics_lead">
           Данные лабораторных испытаний по стандартам ASTM, ISO и RecyClass: термомеханическая стабильность в горячей зоне, сокращение углеродного следа и кривая сохранения свежести.
         </p>
       </div>
@@ -616,8 +756,8 @@
         <div class="chart-card">
           <div class="chart-card-header">
             <span class="chart-badge">ASTM D4065 • DMA ТЕСТ</span>
-            <h3 class="chart-title">Термостойкость под нагрузкой</h3>
-            <p class="chart-desc">Модуль упругости E' (ГПа) в диапазоне от +20°C до +250°C. Показывает сохранение формы контейнера в витрине гриля.</p>
+            <h3 class="chart-title" data-i18n="chart1_title">Термостойкость под нагрузкой</h3>
+            <p class="chart-desc" data-i18n="chart1_desc">Модуль упругости E\' (ГПа) в диапазоне от +20°C до +250°C. Показывает сохранение формы контейнера в витрине гриля.</p>
           </div>
           <div class="chart-svg-wrap">
             <svg viewBox="0 0 420 220" xmlns="http://www.w3.org/2000/svg">
@@ -663,15 +803,15 @@
           <div class="chart-legend">
             <div class="legend-item">
               <span class="legend-color" style="background: #15803d;"></span>
-              <span><strong>PackShift CPET:</strong> Стабилен до 250°C (Dual-Ovenable)</span>
+              <span data-i18n="chart1_leg1"><strong>PackShift CPET:</strong> Стабилен до 250°C (Dual-Ovenable)</span>
             </div>
             <div class="legend-item">
               <span class="legend-color" style="background: #f59e0b;"></span>
-              <span><strong>Обычный PP:</strong> Течет и деформируется при 115°C</span>
+              <span data-i18n="chart1_leg2"><strong>Обычный PP:</strong> Течет и деформируется при 115°C</span>
             </div>
             <div class="legend-item">
               <span class="legend-color" style="background: #ef4444;"></span>
-              <span><strong>Полистирол (XPS):</strong> Разрушается уже при 85°C</span>
+              <span data-i18n="chart1_leg3"><strong>Полистирол (XPS):</strong> Разрушается уже при 85°C</span>
             </div>
           </div>
         </div>
@@ -680,8 +820,8 @@
         <div class="chart-card">
           <div class="chart-card-header">
             <span class="chart-badge">ISO 14044 • LCA АНАЛИЗ</span>
-            <h3 class="chart-title">Углеродный след (LCA)</h3>
-            <p class="chart-desc">Выбросы парниковых газов (кг CO₂e на 1000 единиц упаковки) от добычи сырья до утилизации (Cradle-to-Grave).</p>
+            <h3 class="chart-title" data-i18n="chart2_title">Углеродный след (LCA)</h3>
+            <p class="chart-desc" data-i18n="chart2_desc">Выбросы парниковых газов (кг CO₂e на 1000 единиц упаковки) от добычи сырья до утилизации (Cradle-to-Grave).</p>
           </div>
           <div class="chart-svg-wrap">
             <svg viewBox="0 0 420 220" xmlns="http://www.w3.org/2000/svg">
@@ -729,15 +869,15 @@
           <div class="chart-legend">
             <div class="legend-item">
               <span class="legend-color" style="background: #15803d;"></span>
-              <span><strong>LignoBox (багасса):</strong> 9.2 кг CO₂e (-89% выбросов, био-нейтрально)</span>
+              <span data-i18n="chart2_leg1"><strong>LignoBox (багасса):</strong> 9.2 кг CO₂e (-89% выбросов, био-нейтрально)</span>
             </div>
             <div class="legend-item">
               <span class="legend-color" style="background: #22c55e;"></span>
-              <span><strong>PackShift rPET:</strong> 19.8 кг CO₂e (-77% vs первичный пластик)</span>
+              <span data-i18n="chart2_leg2"><strong>PackShift rPET:</strong> 19.8 кг CO₂e (-77% vs первичный пластик)</span>
             </div>
             <div class="legend-item">
               <span class="legend-color" style="background: #ef4444;"></span>
-              <span><strong>Многослойный ламинат:</strong> 86.4 кг CO₂e (максимальный след)</span>
+              <span data-i18n="chart2_leg3"><strong>Многослойный ламинат:</strong> 86.4 кг CO₂e (максимальный след)</span>
             </div>
           </div>
         </div>
@@ -746,8 +886,8 @@
         <div class="chart-card">
           <div class="chart-card-header">
             <span class="chart-badge">EMAP ТЕСТ • СВЕЖЕСТЬ</span>
-            <h3 class="chart-title">Сохранение свежести овощей</h3>
-            <p class="chart-desc">Индекс товарного вида и витаминов (%) по дням на полке супермаркета. Сравнение обычной упаковки и технологии EMAP.</p>
+            <h3 class="chart-title" data-i18n="chart3_title">Сохранение свежести овощей</h3>
+            <p class="chart-desc" data-i18n="chart3_desc">Индекс товарного вида и витаминов (%) по дням на полке супермаркета. Сравнение обычной упаковки и технологии EMAP.</p>
           </div>
           <div class="chart-svg-wrap">
             <svg viewBox="0 0 420 220" xmlns="http://www.w3.org/2000/svg">
@@ -795,15 +935,15 @@
           <div class="chart-legend">
             <div class="legend-item">
               <span class="legend-color" style="background: #15803d;"></span>
-              <span><strong>PackShift EMAP:</strong> Равновесная среда O₂/CO₂, свежесть до 8 дней</span>
+              <span data-i18n="chart3_leg1"><strong>PackShift EMAP:</strong> Равновесная среда O₂/CO₂, свежесть до 8 дней</span>
             </div>
             <div class="legend-item">
               <span class="legend-color" style="background: #f59e0b;"></span>
-              <span><strong>Макроперфорация:</strong> Пересыхание и потеря тургора к 4-му дню</span>
+              <span data-i18n="chart3_leg2"><strong>Макроперфорация:</strong> Пересыхание и потеря тургора к 4-му дню</span>
             </div>
             <div class="legend-item">
               <span class="legend-color" style="background: #ef4444;"></span>
-              <span><strong>Глухой полиэтилен:</strong> Конденсат и порча уже на 3-й день</span>
+              <span data-i18n="chart3_leg3"><strong>Глухой полиэтилен:</strong> Конденсат и порча уже на 3-й день</span>
             </div>
           </div>
         </div>
@@ -890,42 +1030,42 @@
     <!-- Trust, Standards & Compliance -->
     <section id="compliance" class="section-container">
       <div class="section-header">
-        <div class="section-tag">Международная сертификация</div>
-        <h2 class="section-title">Соответствие европейским и национальным регуляциям</h2>
-        <p class="section-lead">
+        <div class="section-tag" data-i18n="compliance_tag">Международная сертификация</div>
+        <h2 class="section-title" data-i18n="compliance_title">Соответствие европейским и национальным регуляциям</h2>
+        <p class="section-lead" data-i18n="compliance_lead">
           Упаковка разработана с упреждением требований <strong>EU Packaging and Packaging Waste Regulation (PPWR 2030)</strong>.
         </p>
       </div>
 
       <div class="standards-grid">
         <div class="standard-card">
-          <div class="standard-badge">RecyClass</div>
-          <h4 class="standard-title">Grade A Recyclability</h4>
-          <p class="standard-desc">
+          <div class="standard-icon">🏅</div>
+          <h4 class="standard-title" data-i18n="st1_title">Grade A Recyclability</h4>
+          <p class="standard-desc" data-i18n="st1_desc">
             Подтвержденная совместимость с существующей европейской и национальной инфраструктурой оптической сортировки и механической переработки.
           </p>
         </div>
 
         <div class="standard-card">
-          <div class="standard-badge">EU PPWR</div>
-          <h4 class="standard-title">PPWR 2030 Ready</h4>
-          <p class="standard-desc">
-            Соответствие строгим квотам на минимальное содержание вторичного сырья (&gt;35% rPET для контакта с пищей) и запрет микропластика.
+          <div class="standard-icon">📜</div>
+          <h4 class="standard-title" data-i18n="st2_title">PPWR 2030 Ready</h4>
+          <p class="standard-desc" data-i18n="st2_desc">
+            Соответствие строгим квотам на минимальное содержание вторичного сырья (>35% rPET для контакта с пищей) и запрет микропластика.
           </p>
         </div>
 
         <div class="standard-card">
-          <div class="standard-badge">Zero Toxic</div>
-          <h4 class="standard-title">100% PFAS-Free</h4>
-          <p class="standard-desc">
+          <div class="standard-icon">🛡️</div>
+          <h4 class="standard-title" data-i18n="st3_title">100% PFAS-Free</h4>
+          <p class="standard-desc" data-i18n="st3_desc">
             Лабораторный тест на отсутствие пер- и полифторалкильных веществ в контакте с горячим маслом и жиром до 250°C.
           </p>
         </div>
 
         <div class="standard-card">
-          <div class="standard-badge">Food Safe</div>
-          <h4 class="standard-title">EFSA / FDA Approved</h4>
-          <p class="standard-desc">
+          <div class="standard-icon">🔬</div>
+          <h4 class="standard-title" data-i18n="st4_title">EFSA / FDA Approved</h4>
+          <p class="standard-desc" data-i18n="st4_desc">
             Сертификация безопасности контакта с пищевыми продуктами для горячих, влажных и кислых сред (Regulation EU No 10/2011).
           </p>
         </div>
@@ -933,59 +1073,41 @@
     </section>
 
     <!-- Pilot Implementation Plan -->
-    <section id="pilot" class="section-container pilot-section">
+    <section id="pilot" class="section-container">
       <div class="section-header">
-        <div class="section-tag">Дорожная карта внедрения</div>
-        <h2 class="section-title">План пилотного запуска в супермаркетах Profi</h2>
-        <p class="section-lead">
+        <div class="section-tag" data-i18n="pilot_tag">Дорожная карта внедрения</div>
+        <h2 class="section-title" data-i18n="pilot_title">План пилотного запуска в супермаркетах Profi</h2>
+        <p class="section-lead" data-i18n="pilot_lead">
           Быстрая интеграция на существующие упаковочные линии и витрины сети без капитальных затрат (CapEx = 0).
         </p>
       </div>
 
       <div class="timeline-grid">
         <div class="timeline-step">
-          <div class="step-num">Этап 1</div>
-          <h4 class="step-title">Аудит и передача ТУ</h4>
-          <p class="step-desc">
+          <div class="step-num">01</div>
+          <h4 class="step-title" data-i18n="step1_title">Аудит и передача ТУ</h4>
+          <p class="step-desc" data-i18n="step1_desc">
             Анализ упаковочных типоразмеров сети Profi. Передача технологических карт (ТУ), температурных профилей и рецептур аккредитованным конвертерам сети.
           </p>
-          <div class="step-time">Срок: 2 недели</div>
+          <div class="step-time" data-i18n="step1_time">Срок: 2 недели</div>
         </div>
 
         <div class="timeline-step">
-          <div class="step-num">Этап 2</div>
-          <h4 class="step-title">Тестовая формовка у поставщиков</h4>
-          <p class="step-desc">
-            Формовка пробных партий на существующих термоформовочных линиях поставщиков Profi без дополнительных инвестиций в оборудование (CapEx = 0).
+          <div class="step-num">02</div>
+          <h4 class="step-title" data-i18n="step2_title">Тестовая формовка у поставщиков</h4>
+          <p class="step-desc" data-i18n="step2_desc">
+            Формовка пробных партий на существующих термофорвовочных линиях поставщиков Profi без дополнительных инвестиций в оборудование (CapEx = 0).
           </p>
-          <div class="step-time">Срок: 4 недели</div>
+          <div class="step-time" data-i18n="step2_time">Срок: 4 недели</div>
         </div>
 
         <div class="timeline-step">
-          <div class="step-num">Этап 3</div>
-          <h4 class="step-title">Контрольный запуск в витринах</h4>
-          <p class="step-desc">
+          <div class="step-num">03</div>
+          <h4 class="step-title" data-i18n="step3_title">Контрольный запуск в витринах</h4>
+          <p class="step-desc" data-i18n="step3_desc">
             Тестирование упаковки в 5 флагманских супермаркетах сети Profi (Гриль, Овощи, Мясо). Замер снижения списаний и валидация европейских сертификатов.
           </p>
-          <div class="step-time">Срок: Квартал 2</div>
-        </div>
-      </div>
-
-      <!-- Action Box: Engineering Standard Transfer -->
-      <div class="action-banner">
-        <div class="action-banner-content">
-          <h3 class="action-banner-title">Внедрите инженерный стандарт PackShift в сеть Profi</h3>
-          <p class="action-banner-text">
-            Мы не являемся дистрибьютором или продавцом готовой упаковки — мы разрабатываем инженерный стандарт, открытые рецептуры материалов и технические условия (ТУ) для интеграции на мощностях ваших действующих поставщиков (B2B Drop-in).
-          </p>
-        </div>
-        <div class="action-banner-btn-box" style="display: flex; gap: 12px; flex-wrap: wrap;">
-          <a href="mailto:tech@packshift.eco?subject=Profi%20Technical%20Specification%20Request%20-%20Deeptech%20Gigahack" class="btn-primary">
-            Запросить ТУ для поставщиков
-          </a>
-          <a href="mailto:contact@packshift.eco?subject=Profi%20Engineering%20Consultation%20-%20Deeptech%20Gigahack" class="btn-secondary">
-            Связаться с инженерами
-          </a>
+          <div class="step-time" data-i18n="step3_time">Срок: Квартал 2</div>
         </div>
       </div>
     </section>
@@ -993,23 +1115,23 @@
   </main>
 
   <!-- Footer -->
-  <footer class="footer-project">
+    <footer class="footer-project">
     <div class="footer-container">
-      <div class="footer-brand-col">
+      <div class="footer-main-col">
         <div class="footer-logo-wrap">
           <img src="img/logo.png" alt="PackShift" class="footer-logo">
         </div>
-        <p class="footer-bio">
+        <p class="footer-bio" data-i18n="footer_bio">
           Инженерный стандарт циркулярной упаковки для современного ритейла.
           Разработано специально для сети супермаркетов <strong>Profi</strong> в рамках <strong>Deeptech Gigahack 2026</strong>.
         </p>
-        <div class="footer-track-badge">
+        <div class="footer-track-badge" data-i18n="footer_track">
           Организаторы: Biomentorhub × Profi Track
         </div>
       </div>
 
       <div class="footer-links-col">
-        <h5 class="footer-col-title">Решения по отделам</h5>
+        <h5 class="footer-col-title" data-i18n="footer_col1_title">Решения по отделам</h5>
         <ul class="footer-links">
           <li><a href="#grill">Готовая кулинария и Гриль (250°C)</a></li>
           <li><a href="#departments">Каталог моделей по отделам</a></li>
@@ -1019,7 +1141,7 @@
       </div>
 
       <div class="footer-links-col">
-        <h5 class="footer-col-title">Аналитика и Стандарты</h5>
+        <h5 class="footer-col-title" data-i18n="footer_col2_title">Аналитика и Стандарты</h5>
         <ul class="footer-links">
           <li><a href="#calculator">Калькулятор ESG-эффекта</a></li>
           <li><a href="#compliance">Стандарты RecyClass & PPWR</a></li>
@@ -1030,9 +1152,12 @@
     </div>
 
     <div class="footer-bottom-bar">
-      <p>© 2026 PackShift (Profi EcoPack) • Все права защищены. Deeptech Gigahack 2026 Competition Entry.</p>
+      <p data-i18n="footer_copy">© 2026 PackShift (Profi EcoPack) • Все права защищены. Deeptech Gigahack 2026 Competition Entry.</p>
     </div>
   </footer>
+
+    <!-- Multilingual i18n script -->
+  <script src="js/i18n.js"></script>
 
   <!-- Vanilla JS for Interactive Logic -->
   <script>
@@ -1049,7 +1174,24 @@
         return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
       };
 
-      const updateCalculations = () => {
+      function getStoreWord(num) {
+        const lang = window.currentLang || 'ru';
+        if (lang === 'en') {
+          return num === 1 ? 'store' : 'stores';
+        }
+        if (lang === 'md') {
+          return num === 1 ? 'magazin' : 'magazine';
+        }
+        const mod10 = num % 10;
+        const mod100 = num % 100;
+        if (mod100 >= 11 && mod100 <= 14) return 'магазинов';
+        if (mod10 === 1) return 'магазин';
+        if (mod10 >= 2 && mod10 <= 4) return 'магазина';
+        return 'магазинов';
+      }
+
+      window.updateCalculations = () => {
+        if (!slider || !storeDisplay) return;
         const stores = parseInt(slider.value, 10);
         storeDisplay.textContent = `${stores} ${getStoreWord(stores)}`;
 
@@ -1063,24 +1205,15 @@
         // ~€7 000 food waste prevention per store / year
         const foodLoss = Math.round(stores * 7000);
 
-        plasticVal.textContent = formatNumber(plastic);
-        co2Val.textContent = formatNumber(co2);
-        taxVal.textContent = `€${formatNumber(tax)}`;
-        foodLossVal.textContent = `€${formatNumber(foodLoss)}`;
+        if (plasticVal) plasticVal.textContent = formatNumber(plastic);
+        if (co2Val) co2Val.textContent = formatNumber(co2);
+        if (taxVal) taxVal.textContent = `€${formatNumber(tax)}`;
+        if (foodLossVal) foodLossVal.textContent = `€${formatNumber(foodLoss)}`;
       };
 
-      function getStoreWord(num) {
-        const mod10 = num % 10;
-        const mod100 = num % 100;
-        if (mod100 >= 11 && mod100 <= 14) return 'магазинов';
-        if (mod10 === 1) return 'магазин';
-        if (mod10 >= 2 && mod10 <= 4) return 'магазина';
-        return 'магазинов';
-      }
-
       if (slider) {
-        slider.addEventListener('input', updateCalculations);
-        updateCalculations();
+        slider.addEventListener('input', window.updateCalculations);
+        window.updateCalculations();
       }
 
       // 2. Smooth anchor scrolling with offset
