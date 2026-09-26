@@ -255,7 +255,14 @@ const translations = {
     footer_bio: "Инженерный стандарт циркулярной упаковки для современного ритейла. Разработано специально для сети супермаркетов <strong>Profi</strong> в рамках <strong>Deeptech Gigahack 2026</strong>.",
     footer_track: "Организаторы: Biomentorhub × Profi Track",
     footer_col1_title: "Решения по отделам",
+    footer_l_grill: "Готовая кулинария и Гриль (250°C)",
+    footer_l_dept: "Каталог моделей по отделам",
+    footer_l_comp: "Сравнение: Было / Стало",
+    footer_l_analytics: "Инженерные графики (DMA & LCA)",
     footer_col2_title: "Аналитика и Стандарты",
+    footer_l_calc: "Калькулятор ESG-эффекта",
+    footer_l_compliance: "Стандарты RecyClass & PPWR",
+    footer_l_specs: "Запросить ТУ для поставщиков",
     footer_copy: "© 2026 PackShift (Profi EcoPack) • Все права защищены. Deeptech Gigahack 2026 Competition Entry."
   },
 
@@ -510,7 +517,14 @@ const translations = {
     footer_bio: "Standard ingineresc de ambalaje circulare pentru retailul modern. Dezvoltat special pentru rețeaua de supermarketuri <strong>Profi</strong> în cadrul <strong>Deeptech Gigahack 2026</strong>.",
     footer_track: "Organizatori: Traseul Biomentorhub × Profi",
     footer_col1_title: "Soluții pe departamente",
+    footer_l_grill: "Gastronomie caldă și Grill (250°C)",
+    footer_l_dept: "Catalog de modele pe departamente",
+    footer_l_comp: "Comparație: Înainte / Acum",
+    footer_l_analytics: "Grafice inginerești (DMA & LCA)",
     footer_col2_title: "Analiză și Standarde",
+    footer_l_calc: "Calculator de impact ESG",
+    footer_l_compliance: "Standarde RecyClass & PPWR",
+    footer_l_specs: "Solicită specificațiile pentru furnizori",
     footer_copy: "© 2026 PackShift (Profi EcoPack) • Toate drepturile rezervate. Deeptech Gigahack 2026 Competition Entry."
   },
 
@@ -765,7 +779,14 @@ const translations = {
     footer_bio: "Circular packaging engineering standard for modern retail. Developed specifically for the <strong>Profi</strong> supermarket chain at <strong>Deeptech Gigahack 2026</strong>.",
     footer_track: "Organizers: Biomentorhub × Profi Track",
     footer_col1_title: "Department Solutions",
+    footer_l_grill: "Hot Culinary & Grill (250°C)",
+    footer_l_dept: "Department Solutions Catalog",
+    footer_l_comp: "Comparison: Old vs New",
+    footer_l_analytics: "Engineering Charts (DMA & LCA)",
     footer_col2_title: "Analytics & Standards",
+    footer_l_calc: "ESG Impact Calculator",
+    footer_l_compliance: "RecyClass & PPWR Standards",
+    footer_l_specs: "Request Supplier Technical Specs",
     footer_copy: "© 2026 PackShift (Profi EcoPack) • All rights reserved. Deeptech Gigahack 2026 Competition Entry."
   }
 };
