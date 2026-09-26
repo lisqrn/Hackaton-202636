@@ -1133,6 +1133,312 @@ header.header-project {
   color: rgba(250, 244, 228, 0.55);
 }
 
+/* Product Media & Spec Pills */
+.product-image-wrap {
+  width: 100%;
+  height: 220px;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  position: relative;
+  background: var(--bg-card-soft);
+  border: 1px solid var(--forest-border-light);
+}
+
+.product-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+  display: block;
+}
+
+.solution-card:hover .product-photo,
+.dept-card:hover .product-photo {
+  transform: scale(1.04);
+}
+
+.product-badge-overlay {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(18, 53, 36, 0.9);
+  color: var(--leaf-glow);
+  padding: 4px 10px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 700;
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(74, 222, 128, 0.35);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.specs-pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.spec-pill {
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 8px;
+  background: var(--bg-card-soft);
+  border: 1px solid var(--forest-border-light);
+  color: var(--text-forest-muted);
+}
+
+.spec-pill.pill-green {
+  background: rgba(34, 197, 94, 0.12);
+  color: var(--leaf-emerald);
+  border-color: rgba(34, 197, 94, 0.25);
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   Old vs New Direct Comparison Section
+   ========================================================================== */
+
+.comparison-old-new-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  margin-top: 24px;
+}
+
+.comparison-card {
+  background: var(--bg-card);
+  border: 1px solid var(--forest-border-light);
+  border-radius: 24px;
+  padding: 30px;
+  box-shadow: 0 8px 24px rgba(18, 53, 36, 0.06);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.28s ease;
+}
+
+.comparison-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(18, 53, 36, 0.1);
+  border-color: var(--leaf-vibrant);
+}
+
+.comparison-card-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.comp-icon {
+  font-size: 1.8rem;
+  background: var(--bg-card-soft);
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--forest-border-light);
+  flex-shrink: 0;
+}
+
+.comp-title-group h3 {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--forest-deep);
+}
+
+.comp-subtitle {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--leaf-emerald);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.comparison-side-by-side {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  flex: 1;
+}
+
+.side-box {
+  border-radius: 16px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+.side-box.box-old {
+  background: rgba(185, 28, 28, 0.04);
+  border: 1px solid rgba(185, 28, 28, 0.2);
+}
+
+.side-box.box-new {
+  background: rgba(34, 197, 94, 0.06);
+  border: 1px solid rgba(34, 197, 94, 0.25);
+}
+
+.side-tag {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.side-tag.tag-old {
+  color: #b91c1c;
+}
+
+.side-tag.tag-new {
+  color: #15803d;
+}
+
+.side-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--forest-deep);
+  margin-bottom: 8px;
+}
+
+.side-text {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  flex: 1;
+}
+
+.side-metric-tag {
+  margin-top: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 6px;
+  display: inline-block;
+  align-self: flex-start;
+}
+
+.side-metric-tag.bad {
+  background: rgba(185, 28, 28, 0.1);
+  color: #991b1b;
+}
+
+.side-metric-tag.good {
+  background: rgba(34, 197, 94, 0.16);
+  color: #15803d;
+}
+
+/* ==========================================================================
+   Visual Diagrams & Deeptech Analytics
+   ========================================================================== */
+
+.analytics-section {
+  background: #ffffff;
+  border-radius: 32px;
+  padding: 60px 48px;
+  border: 1px solid var(--forest-border-light);
+  box-shadow: 0 16px 40px rgba(18, 53, 36, 0.08);
+}
+
+.analytics-charts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 36px;
+}
+
+.chart-card {
+  background: var(--bg-card-soft);
+  border: 1px solid var(--forest-border-light);
+  border-radius: 20px;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.28s ease;
+}
+
+.chart-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--leaf-vibrant);
+  box-shadow: 0 14px 30px rgba(18, 53, 36, 0.1);
+}
+
+.chart-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--leaf-emerald);
+  background: rgba(34, 197, 94, 0.12);
+  padding: 4px 10px;
+  border-radius: 6px;
+  display: inline-block;
+  margin-bottom: 8px;
+  align-self: flex-start;
+}
+
+.chart-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--forest-deep);
+  line-height: 1.3;
+}
+
+.chart-desc {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-top: 6px;
+  margin-bottom: 12px;
+}
+
+.chart-svg-wrap {
+  width: 100%;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 10px;
+  border: 1px solid rgba(18, 53, 36, 0.08);
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.02);
+}
+
+.chart-svg-wrap svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.chart-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid rgba(18, 53, 36, 0.08);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11.5px;
+  color: var(--text-forest-muted);
+}
+
+.legend-color {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
 /* ==========================================================================
    Responsive Breakpoints
    ========================================================================== */
@@ -1140,7 +1446,8 @@ header.header-project {
 @media (max-width: 1200px) {
   .hero-proof-grid,
   .calc-results-grid,
-  .standards-grid {
+  .standards-grid,
+  .analytics-charts-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -1152,7 +1459,9 @@ header.header-project {
 @media (max-width: 992px) {
   .comparison-grid,
   .departments-grid,
-  .timeline-grid {
+  .timeline-grid,
+  .comparison-old-new-grid,
+  .analytics-charts-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1200,11 +1509,17 @@ header.header-project {
 
   .hero-proof-grid,
   .calc-results-grid,
-  .standards-grid {
+  .standards-grid,
+  .analytics-charts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .comparison-side-by-side {
     grid-template-columns: 1fr;
   }
 
   .annex-section,
+  .analytics-section,
   .calculator-card {
     padding: 32px 20px;
     border-radius: 24px;
