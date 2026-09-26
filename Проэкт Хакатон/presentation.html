@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PackShift • Deeptech Gigahack 2026 Pitch Deck</title>
+  <title>PackShift • Deeptech Gigahack 2026 (Biomentorhub × Profi)</title>
   <link rel="icon" type="image/svg+xml"
     href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌱</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,27 +14,23 @@
     rel="stylesheet">
   <style>
     /* ==========================================================================
-       СТИЛИСТИКА ХАКАТОНА: ТЕМНО-СЕРЫЙ ГРАФИТ + НЕОНОВЫЙ ИЗУМРУД
-       (Чистый технологичный питч-дек, никак не привязанный к сайту)
+       HACKATHON DEEPTECH THEME: Графит + Неоновый Изумруд + Чистый Минимализм
        ========================================================================== */
     :root {
-      --bg-dark: #0f1418;
-      --bg-surface: #141b21;
-      --bg-card: #182026;
-      --bg-card-hover: #1e2830;
-      --bg-emerald-tint: #122e24;
-
-      --border-subtle: #24323b;
+      --bg-dark: #0a0e11;
+      --bg-card: #12181d;
+      --bg-card-glow: rgba(16, 185, 129, 0.08);
+      --border-subtle: #1e2932;
       --border-emerald: #10b981;
-      --border-emerald-glow: rgba(52, 211, 153, 0.4);
+      --border-glow: rgba(52, 211, 153, 0.35);
 
       --neon-emerald: #34d399;
-      --deep-emerald: #10b981;
-      --dark-emerald: #059669;
+      --vibrant-green: #10b981;
+      --dark-green: #065f46;
 
       --text-white: #ffffff;
       --text-muted: #94a3b8;
-      --text-light: #e2e8f0;
+      --text-light: #cbd5e1;
     }
 
     * {
@@ -47,40 +43,39 @@
     html, body {
       height: 100%;
       background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 80% 90%, rgba(5, 150, 105, 0.08) 0%, transparent 40%);
       color: var(--text-white);
       overflow: hidden;
-      line-height: 1.5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
 
-    /* Главный 16:9 контейнер сцены слайдов */
+    /* Главный 16:9 контейнер сцены */
     .deck-viewport {
       width: 100vw;
       height: 100vh;
+      max-width: 177.78vh; /* 16:9 */
+      max-height: 56.25vw;
+      padding: 40px 60px 80px;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px 32px 70px;
-    }
-
-    .slide-stage {
-      max-width: 1400px;
-      width: 100%;
-      height: 100%;
+      flex-direction: column;
       position: relative;
     }
 
     .slide {
-      position: absolute;
-      top: 0;
-      left: 0;
       width: 100%;
       height: 100%;
       display: none;
       opacity: 0;
-      transform: translateY(12px);
-      transition: opacity 0.3s ease, transform 0.3s ease;
+      transform: translateY(10px);
+      transition: opacity 0.35s ease, transform 0.35s ease;
       flex-direction: column;
       justify-content: space-between;
+      text-align: center;
     }
 
     .slide.active {
@@ -90,233 +85,542 @@
       z-index: 10;
     }
 
-    /* Верхний колонтитул слайда */
-    .slide-top-bar {
+    /* Верхний минималистичный статус-бар */
+    .top-status-bar {
       display: flex;
       justify-content: space-between;
-      align-items: flex-end;
+      align-items: center;
+      width: 100%;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
       border-bottom: 1px solid var(--border-subtle);
-      padding-bottom: 14px;
-      margin-bottom: 22px;
     }
 
-    .slide-category {
+    .track-badge {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 11.5px;
+      font-size: 11px;
       font-weight: 700;
       color: var(--neon-emerald);
-      letter-spacing: 1.5px;
+      letter-spacing: 2px;
       text-transform: uppercase;
-      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    .slide-title {
-      font-size: clamp(1.4rem, 2.5vw, 2.2rem);
-      font-weight: 800;
-      color: var(--text-white);
-      line-height: 1.2;
+    .track-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--neon-emerald);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--neon-emerald);
     }
 
-    .slide-number-badge {
+    .slide-index-counter {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 14px;
+      font-size: 12px;
       font-weight: 700;
       color: var(--text-muted);
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
-      padding: 4px 12px;
+      padding: 4px 10px;
       border-radius: 6px;
-      flex-shrink: 0;
     }
 
-    /* Сетка контента */
-    .slide-content {
+    /* Центрированные заголовки */
+    .slide-headline-center {
+      font-size: clamp(1.8rem, 3.2vw, 2.8rem);
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.15;
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+
+    .slide-sublead-center {
+      font-size: clamp(0.95rem, 1.35vw, 1.2rem);
+      color: var(--text-muted);
+      max-width: 860px;
+      margin: 0 auto 26px;
+      line-height: 1.5;
+    }
+
+    .text-emerald {
+      color: var(--neon-emerald);
+    }
+
+    /* Основная область контента (Схемы и Диаграммы) */
+    .slide-main-stage {
       flex: 1;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      align-items: center;
+      width: 100%;
     }
 
-    .grid-2 {
+    /* ==========================================================================
+       ДИАГРАММЫ И СХЕМЫ
+       ========================================================================== */
+
+    /* Схема 1: Сравнительный сплит (Проблема vs Решение) */
+    .diagram-split {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-      height: 100%;
+      grid-template-columns: 1fr 60px 1fr;
+      align-items: center;
+      gap: 20px;
+      width: 100%;
+      max-width: 1200px;
     }
 
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-      height: 100%;
-    }
-
-    .grid-4 {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-      height: 100%;
-    }
-
-    /* Карточки технологичного стиля */
-    .tech-card {
+    .diagram-col-card {
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
-      border-radius: 16px;
-      padding: 24px 26px;
+      border-radius: 20px;
+      padding: 32px 28px;
+      text-align: left;
+      height: 100%;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: border-color 0.25s, box-shadow 0.25s;
     }
 
-    .tech-card.highlight {
-      border: 1.5px solid var(--deep-emerald);
-      box-shadow: 0 0 25px rgba(16, 185, 129, 0.15);
+    .diagram-col-card.solution-glow {
+      border: 1.5px solid var(--border-emerald);
+      background: radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.12) 0%, var(--bg-card) 70%);
+      box-shadow: 0 0 35px rgba(16, 185, 129, 0.15);
     }
 
-    .tech-card.glow-card {
-      background: var(--bg-emerald-tint);
-      border: 1.5px solid var(--neon-emerald);
-      box-shadow: 0 0 35px rgba(52, 211, 153, 0.2);
+    .diagram-vs-node {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      color: var(--neon-emerald);
+      font-size: 14px;
+      margin: 0 auto;
     }
 
-    .card-tag {
+    .step-chain {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .chain-node {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      padding: 12px 16px;
+    }
+
+    .chain-node.bad {
+      border-left: 3px solid #ef4444;
+    }
+
+    .chain-node.good {
+      border-left: 3px solid var(--neon-emerald);
+      background: rgba(16, 185, 129, 0.05);
+    }
+
+    .chain-icon {
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .chain-text strong {
+      display: block;
+      font-size: 14px;
+      color: #ffffff;
+      margin-bottom: 2px;
+    }
+
+    .chain-text span {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* Схема 2: Материальные инновации Гриля (2 карточки) */
+    .diagram-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      width: 100%;
+      max-width: 1200px;
+    }
+
+    .tech-box-schema {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-subtle);
+      border-radius: 22px;
+      padding: 30px;
+      text-align: left;
+      position: relative;
+    }
+
+    .tech-box-schema.highlight-glow {
+      border-color: var(--border-emerald);
+      box-shadow: 0 0 30px rgba(16, 185, 129, 0.12);
+    }
+
+    .tech-badge-pill {
+      display: inline-block;
       font-family: 'JetBrains Mono', monospace;
       font-size: 11px;
       font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
       color: var(--neon-emerald);
-      margin-bottom: 8px;
-    }
-
-    .card-heading {
-      font-size: clamp(1.2rem, 1.8vw, 1.55rem);
-      font-weight: 800;
-      color: var(--text-white);
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid var(--border-emerald);
+      padding: 4px 12px;
+      border-radius: 9999px;
       margin-bottom: 12px;
-      line-height: 1.25;
     }
 
-    .card-bullet-list {
+    .tech-schema-title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 16px;
+    }
+
+    .schema-flow-horizontal {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 14px 18px;
+      margin-bottom: 20px;
+    }
+
+    .flow-step {
+      text-align: center;
+    }
+
+    .flow-step-val {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--neon-emerald);
+    }
+
+    .flow-step-lbl {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .flow-arrow {
+      color: var(--border-subtle);
+      font-size: 16px;
+    }
+
+    .spec-points-list {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 11px;
-      font-size: clamp(0.75rem, 1.15vw, 0.95rem);
-      line-height: 1.5;
-      color: var(--text-muted);
-      flex: 1;
+      gap: 10px;
+      font-size: 13.5px;
+      color: var(--text-light);
     }
 
-    .card-bullet-list li {
-      position: relative;
-      padding-left: 18px;
+    .spec-points-list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
-    .card-bullet-list li::before {
-      content: '■';
-      position: absolute;
-      left: 0;
+    .spec-points-list li::before {
+      content: '✔';
       color: var(--neon-emerald);
-      font-size: 0.8em;
-      top: 1px;
+      font-weight: 800;
+      font-size: 13px;
     }
 
-    .card-bullet-list li strong {
-      color: var(--text-white);
+    /* Схема 3: 4 Отдела (Инфографика 4 квадрантов) */
+    .diagram-quad-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      width: 100%;
+      max-width: 1280px;
     }
 
-    /* Большие цифры-метрики */
-    .metric-value {
+    .quad-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 18px;
+      padding: 24px 20px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .quad-card:hover {
+      border-color: var(--border-emerald);
+      transform: translateY(-4px);
+    }
+
+    .quad-icon-circle {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(52, 211, 153, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 14px;
+    }
+
+    .quad-dept-title {
+      font-size: 11px;
       font-family: 'JetBrains Mono', monospace;
-      font-size: clamp(2rem, 3.4vw, 3rem);
-      font-weight: 700;
       color: var(--neon-emerald);
-      line-height: 1;
-      margin-bottom: 8px;
-    }
-
-    .metric-title {
-      font-size: clamp(0.85rem, 1.25vw, 1.05rem);
       font-weight: 700;
-      color: var(--text-white);
+      text-transform: uppercase;
+      letter-spacing: 1px;
       margin-bottom: 6px;
     }
 
-    .metric-sub {
-      font-size: clamp(0.7rem, 0.95vw, 0.85rem);
+    .quad-tech-name {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 12px;
+    }
+
+    .quad-feature-box {
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 10px;
+      padding: 10px 14px;
+      width: 100%;
+      margin-bottom: 14px;
+    }
+
+    .quad-stat-big {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--neon-emerald);
+    }
+
+    .quad-stat-label {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .quad-desc-text {
+      font-size: 12.5px;
       color: var(--text-muted);
       line-height: 1.45;
     }
 
-    .tech-pill-bottom {
-      background: rgba(16, 185, 129, 0.12);
-      border: 1px solid rgba(52, 211, 153, 0.25);
-      border-radius: 8px;
-      padding: 10px 14px;
-      font-size: 12.5px;
-      color: var(--neon-emerald);
-      font-weight: 600;
-      text-align: center;
-      margin-top: 14px;
+    /* Схема 4: Инфографика Калькулятора (4 больших круга с цифрами) */
+    .diagram-metrics-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+      width: 100%;
+      max-width: 1280px;
+      margin-bottom: 24px;
     }
 
-    /* Нижняя панель управления деком */
+    .big-metric-node {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 22px;
+      padding: 28px 20px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .big-metric-node.highlight-node {
+      border: 1.5px solid var(--border-emerald);
+      background: radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.15) 0%, var(--bg-card) 75%);
+      box-shadow: 0 0 30px rgba(16, 185, 129, 0.15);
+    }
+
+    .circle-stat-val {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: clamp(2.2rem, 3.5vw, 2.9rem);
+      font-weight: 800;
+      color: var(--neon-emerald);
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .circle-stat-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 6px;
+    }
+
+    .circle-stat-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .banner-capex-center {
+      background: rgba(16, 185, 129, 0.12);
+      border: 1.5px solid var(--neon-emerald);
+      border-radius: 16px;
+      padding: 16px 36px;
+      max-width: 900px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .banner-capex-center strong {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      color: var(--neon-emerald);
+      letter-spacing: 1px;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .banner-capex-center p {
+      font-size: 13.5px;
+      color: #ffffff;
+    }
+
+    /* Схема 5: Дорожная карта (Горизонтальный пайплайн) */
+    .pipeline-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1200px;
+      margin-bottom: 30px;
+    }
+
+    .pipe-step-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 30px 24px;
+      text-align: center;
+      flex: 1;
+    }
+
+    .pipe-step-card.active-step {
+      border: 1.5px solid var(--border-emerald);
+      box-shadow: 0 0 25px rgba(16, 185, 129, 0.15);
+    }
+
+    .pipe-step-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--neon-emerald);
+      background: rgba(16, 185, 129, 0.15);
+      border-radius: 9999px;
+      padding: 4px 12px;
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+
+    .pipe-step-title {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+
+    .pipe-step-time {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--neon-emerald);
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .pipe-step-desc {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .pipe-connector-arrow {
+      font-size: 26px;
+      color: var(--border-subtle);
+      padding: 0 16px;
+    }
+
+    /* Нижняя панель управления */
     .deck-bottom-bar {
       position: fixed;
-      bottom: 14px;
+      bottom: 16px;
       left: 0;
       width: 100%;
       display: flex;
       justify-content: center;
-      padding: 0 24px;
       z-index: 1000;
     }
 
-    .controls-strip {
-      background: var(--bg-card);
+    .controls-capsule {
+      background: rgba(18, 24, 29, 0.9);
+      backdrop-filter: blur(16px);
       border: 1px solid var(--border-subtle);
       border-radius: 9999px;
-      padding: 6px 18px;
+      padding: 8px 22px;
       display: flex;
       align-items: center;
-      gap: 16px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+      gap: 18px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
     }
 
-    .ctrl-button {
+    .nav-btn {
       background: none;
       border: none;
-      color: var(--text-white);
+      color: #ffffff;
       font-size: 13.5px;
       font-weight: 700;
       cursor: pointer;
-      padding: 6px 12px;
-      border-radius: 9999px;
-      display: inline-flex;
+      display: flex;
       align-items: center;
       gap: 6px;
+      padding: 4px 10px;
+      border-radius: 9999px;
       transition: all 0.2s;
     }
 
-    .ctrl-button:hover {
-      background: var(--bg-emerald-tint);
+    .nav-btn:hover {
+      background: rgba(16, 185, 129, 0.15);
       color: var(--neon-emerald);
     }
 
-    .counter-display {
+    .counter-pill {
       font-family: 'JetBrains Mono', monospace;
       font-size: 13px;
       font-weight: 700;
       color: var(--neon-emerald);
       border-left: 1px solid var(--border-subtle);
       border-right: 1px solid var(--border-subtle);
-      padding: 0 12px;
+      padding: 0 14px;
     }
 
-    .timer-display {
+    .timer-pill {
       font-family: 'JetBrains Mono', monospace;
       font-size: 13px;
       font-weight: 700;
@@ -326,7 +630,7 @@
       gap: 6px;
     }
 
-    .timer-dot {
+    .pulsing-dot {
       width: 7px;
       height: 7px;
       background: var(--neon-emerald);
@@ -335,37 +639,29 @@
     }
 
     @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.3; transform: scale(1.3); }
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.3); opacity: 0.4; }
     }
 
-    /* Выдвижная шторка спикера */
+    /* Шторка для спикера */
     .speaker-drawer {
       position: fixed;
       top: 0;
-      right: -450px;
-      width: 420px;
+      right: -460px;
+      width: 440px;
       height: 100%;
-      background: #141b21;
-      border-left: 2px solid var(--deep-emerald);
-      padding: 30px 24px;
+      background: #11171d;
+      border-left: 2px solid var(--vibrant-green);
+      padding: 34px 28px;
       z-index: 2000;
       transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: -20px 0 50px rgba(0, 0, 0, 0.7);
+      box-shadow: -20px 0 50px rgba(0, 0, 0, 0.8);
       overflow-y: auto;
+      text-align: left;
     }
 
     .speaker-drawer.open {
       right: 0;
-    }
-
-    .drawer-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid var(--border-subtle);
     }
 
     .drawer-title {
@@ -373,6 +669,11 @@
       font-size: 14px;
       font-weight: 700;
       color: var(--neon-emerald);
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 12px;
     }
 
     .drawer-close {
@@ -383,455 +684,550 @@
       cursor: pointer;
     }
 
-    .drawer-close:hover {
-      color: #ffffff;
-    }
-
-    .drawer-body {
-      font-size: 14px;
+    .drawer-text {
+      font-size: 14.5px;
       line-height: 1.7;
-      color: var(--text-light);
+      color: #e2e8f0;
     }
   </style>
 </head>
 
 <body>
 
-  <main class="deck-viewport">
-    <div class="slide-stage">
+  <div class="deck-viewport">
 
-      <!-- ==========================================
-           SLIDE 1: Title & Executive Summary
-           ========================================== -->
-      <section class="slide active" data-index="1"
-        data-notes="Спикер: «Добрый день, уважаемые члены жюри и эксперты сети Profi! Меня зовут [Имя], я представляю deeptech-проект PackShift. Мы разработали систему замещения первичного пластика в продуктовом ритейле на 0% первичных полимеров и термостойкостью до 250°C.»">
-        <div class="slide-top-bar">
-          <div>
-            <div class="slide-category">DEEPTECH GIGAHACK 2026 • BIOMENTORHUB × PROFI TRACK</div>
-            <h1 class="slide-title">PackShift: Циркулярная эко-упаковка для пищевого ритейла</h1>
-          </div>
-          <div class="slide-number-badge">01 / 08</div>
+    <!-- ==========================================
+         СЛАЙД 1: Титульный экран / Визуальная инфографика
+         ========================================== -->
+    <section class="slide active" data-index="1"
+      data-notes="Спикер: «Добрый день, уважаемые члены жюри и эксперты сети Profi! Меня зовут [Имя], я представляю deeptech-проект PackShift. Мы разработали систему замещения первичного пластика в продуктовом ритейле на 0% первичных полимеров и термостойкостью до 250°C.»">
+      <div class="top-status-bar">
+        <div class="track-badge">
+          <span class="track-dot"></span>
+          <span>DEEPTECH GIGAHACK 2026 • BIOMENTORHUB × PROFI TRACK</span>
         </div>
+        <div class="slide-index-counter">01 / 08</div>
+      </div>
 
-        <div class="slide-content">
-          <div style="margin-bottom: 26px;">
-            <p style="font-family: 'JetBrains Mono', monospace; font-size: 15px; color: var(--neon-emerald); font-weight: 700; margin-bottom: 10px;">
-              0% ПЕРВИЧНОГО ПЛАСТИКА • ТЕРМОСТОЙКОСТЬ 250°C • ZERO PFAS • EU PPWR 2030 READY
-            </p>
-            <p style="font-size: clamp(0.95rem, 1.35vw, 1.2rem); color: var(--text-muted); max-width: 950px; line-height: 1.6;">
-              Инженерная система замещения трудноперерабатываемой упаковки на моно-материалы rPET и биомиметические растительные барьеры. 
-              Разработано под операционные требования сети супермаркетов Profi.
-            </p>
+      <div class="slide-main-stage">
+        <h1 class="slide-headline-center" style="font-size: clamp(2.2rem, 4vw, 3.8rem); margin-bottom: 12px;">
+          Pack<span class="text-emerald">Shift</span>
+        </h1>
+        <p style="font-family: 'JetBrains Mono', monospace; font-size: clamp(1rem, 1.8vw, 1.45rem); font-weight: 700; color: var(--neon-emerald); margin-bottom: 14px;">
+          0% ПЕРВИЧНОГО ПЛАСТИКА • 100% ЦИРКУЛЯРНОСТЬ
+        </p>
+        <p class="slide-sublead-center">
+          Глубокотехнологичная система циркулярной пищевой упаковки для ритейла сети супермаркетов Profi.
+          Устранение токсичных PFAS, термостойкость 250°C и прямое снижение эко-сборов ритейлера.
+        </p>
+
+        <!-- Инфографика 4 ключевых показателей -->
+        <div class="diagram-metrics-row">
+          <div class="big-metric-node">
+            <div class="circle-stat-val">-88%</div>
+            <div class="circle-stat-title">Первичный пластик</div>
+            <div class="circle-stat-desc">Замещение на rPET и растительное сырье</div>
           </div>
-
-          <div class="grid-4" style="height: auto;">
-            <div class="tech-card">
-              <div class="metric-value">-88%</div>
-              <div class="metric-title">Первичный пластик</div>
-              <div class="metric-sub">Замещение на rPET и растительное сырье</div>
-            </div>
-            <div class="tech-card highlight">
-              <div class="metric-value">250°C</div>
-              <div class="metric-title">Вызов гриля (Annex)</div>
-              <div class="metric-sub">6ч в тепловой витрине без размягчения</div>
-            </div>
-            <div class="tech-card">
-              <div class="metric-value">+4 дня</div>
-              <div class="metric-title">Срок годности</div>
-              <div class="metric-sub">Лазерная микроперфорация EMAP (-32% списаний)</div>
-            </div>
-            <div class="tech-card">
-              <div class="metric-value">Class A</div>
-              <div class="metric-title">RecyClass & PPWR</div>
-              <div class="metric-sub">100% моно-материалы в сортировочные потоки</div>
-            </div>
+          <div class="big-metric-node highlight-node">
+            <div class="circle-stat-val">250°C</div>
+            <div class="circle-stat-title">Спец-вызов Гриля</div>
+            <div class="circle-stat-desc">До 6 часов в тепловой витрине без размягчения</div>
+          </div>
+          <div class="big-metric-node">
+            <div class="circle-stat-val">+4 Дня</div>
+            <div class="circle-stat-title">Свежесть продуктов</div>
+            <div class="circle-stat-desc">Микроперфорация EMAP (-32% списаний)</div>
+          </div>
+          <div class="big-metric-node">
+            <div class="circle-stat-val">Class A</div>
+            <div class="circle-stat-title">RecyClass & PPWR</div>
+            <div class="circle-stat-desc">100% моно-материалы в сортировку</div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- ==========================================
-           SLIDE 2: Problem & Regulatory Cliff
-           ========================================== -->
+    <!-- ==========================================
+         СЛАЙД 2: Схема разрыва (Проблема vs Решение)
+         ========================================== -->
       <section class="slide" data-index="2"
-        data-notes="Спикер: «Перед продуктовым ритейлом стоит двойной вызов: жесткие штрафы регламента EU PPWR 2030 за первичный пластик и растущий налог EPR. Но самая критическая боль витрины — горячий гриль, где пакеты из ПЭ и фольги плавятся, текут и размачивают корочку курицы.»">
-        <div class="slide-top-bar">
-          <div>
-            <div class="slide-category">КОНТЕКСТ И ВЫЗОВ РИТЕЙЛА</div>
-            <h2 class="slide-title">Регуляторный капкан и острая боль тепловых витрин Profi</h2>
-          </div>
-          <div class="slide-number-badge">02 / 08</div>
+      data-notes="Спикер: «Перед продуктовым ритейлом стоит двойной вызов: жесткие штрафы регламента EU PPWR 2030 за первичный пластик и растущий налог EPR. Но самая критическая боль витрины — горячий гриль, где пакеты из ПЭ и фольги плавятся, текут и размачивают корочку курицы.»">
+      <div class="top-status-bar">
+        <div class="track-badge">
+          <span class="track-dot"></span>
+          <span>ВЫЗОВ РИТЕЙЛЕРА И РЕГУЛЯЦИИ</span>
         </div>
+        <div class="slide-index-counter">02 / 08</div>
+      </div>
 
-        <div class="slide-content">
-          <div class="grid-2">
-            <div class="tech-card">
-              <div class="card-tag">РЕГУЛЯЦИИ И НАЛОГИ</div>
-              <h3 class="card-heading">Удар по маржинальности сети</h3>
-              <ul class="card-bullet-list">
-                <li><strong>Директива EU PPWR 2030:</strong> Запрет многослойных неперерабатываемых полимеров. Штрафы ритейлерам за превышение квот первичного пластика.</li>
-                <li><strong>Экологический сбор (EPR):</strong> Ставка налога на комбинированные ламинаты (ПЭ+алюминий) выросла на 45%. Трудная упаковка становится прямым убытком.</li>
-                <li><strong>Тотальный бан на PFAS:</strong> Европейский запрет пер- и полифторалкильных гидрофобизаторов в прямом пищевом контакте.</li>
-                <li><strong>Аудит Scope 3 (CSRD):</strong> Сеть Profi обязана публично декларировать и сокращать углеродный след упаковки.</li>
-              </ul>
-              <div class="tech-pill-bottom">
-                Риск штрафов за неперерабатываемую упаковку: до 4% годового оборота ритейлера
-              </div>
-            </div>
+      <div class="slide-main-stage">
+        <h2 class="slide-headline-center">Технологический разрыв: Текущая упаковка vs PackShift</h2>
+        <p class="slide-sublead-center">Почему стандартная упаковка ведет к штрафам и операционным убыткам сети Profi</p>
 
-            <div class="tech-card highlight">
-              <div class="card-tag">ОПЕРАЦИОННАЯ БОЛЬ</div>
-              <h3 class="card-heading">Отдел горячего гриля и кулинарии</h3>
-              <ul class="card-bullet-list">
-                <li><strong>Экстремальный режим:</strong> Выдержка в витрине при 85°C – 120°C до 6 часов. Пиковые температуры фасовки достигают 180°C – 250°C.</li>
-                <li><strong>Дефекты текущих пакетов:</strong> Полиэтилен с фольгой плавится, дает течь жира и выделяет резкий запах нагретого пластика.</li>
-                <li><strong>«Парниковый эффект»:</strong> Пар блокируется, аппетитная корочка гриля размокает в кашу за 40 минут — потеря лояльности покупателей.</li>
-                <li><strong>Скрытые токсины:</strong> Жиростойкость текущих пакетов держится на PFAS, мигрирующих в горячую пищу.</li>
-              </ul>
-              <div class="tech-pill-bottom">
-                Традиционные пакеты на 100% отправляются на полигон (ноль переработки)
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ==========================================
-           SLIDE 3: Special Annex Challenge: Hot Grill 250°C
-           ========================================== -->
-      <section class="slide" data-index="3"
-        data-notes="Спикер: «Мы создали 2 решения под спец-вызов: Решение А — моно-пакет CPET Ultra-Flex из кристаллического rPET, выдерживающий от -40 до +250°C и перерабатываемый в потоке бутылок. Решение Б — термобокс LignoShield из багассы с барьером из водорослей, отводящий пар для хрустящей корочки.»">
-        <div class="slide-top-bar">
-          <div>
-            <div class="slide-category">СПЕЦИАЛЬНЫЙ ВЫЗОВ ХАКАТОНА</div>
-            <h2 class="slide-title">Инженерные решения для Горячего Гриля (180°C – 250°C)</h2>
-          </div>
-          <div class="slide-number-badge">03 / 08</div>
-        </div>
-
-        <div class="slide-content">
-          <div class="grid-2">
-            <div class="tech-card highlight">
-              <div class="card-tag">РЕШЕНИЕ А • МОНО-ПАКЕТ</div>
-              <h3 class="card-heading">PackShift CPET Ultra-Flex</h3>
-              <ul class="card-bullet-list">
-                <li><strong>Материал:</strong> Кристаллический модифицированный rPET (кристалличность &gt; 38%).</li>
-                <li><strong>Термостойкость:</strong> от -40°C до +250°C (Dual-Ovenable: разогрев прямо в упаковке).</li>
-                <li><strong>Тепловая витрина:</strong> 6+ часов при 95°C–120°C без усадки, протечек и запаха.</li>
-                <li><strong>Жиростойкость:</strong> Высший класс Kit Test 12. 100% PFAS-Free.</li>
-                <li><strong>Рециклинг:</strong> 100% моно-материал. Поток ПЭТ-бутылок (RecyClass Class A).</li>
-                <li><strong>Себестоимость:</strong> -14% vs импортный барьерный ламинат с алюминием.</li>
-              </ul>
-              <div class="tech-pill-bottom">
-                100% циркулярный моно-поток (PET Bottle Stream Compatible)
-              </div>
-            </div>
-
-            <div class="tech-card">
-              <div class="card-tag">РЕШЕНИЕ Б • БИО-КОМПОЗИТ (PROFI BIO)</div>
-              <h3 class="card-heading">LignoShield™ ThermoBox</h3>
-              <ul class="card-bullet-list">
-                <li><strong>Материал:</strong> 100% формованная багасса сахарного тростника + альгинат/хитозан из водорослей.</li>
-                <li><strong>Дышащая мембрана:</strong> Микропористая структура стравливает пар. Корочка гриля остается хрустящей.</li>
-                <li><strong>Эко-жиробарьер:</strong> Водный нано-слой. 0% пластика, 0% фтора, 0% полиэтилена.</li>
-                <li><strong>Термостойкость:</strong> До +220°C кратковременно, 6 часов в тепловой витрине.</li>
-                <li><strong>Утилизация:</strong> Домашний компост за 60 дней (OK Compost HOME) или макулатура.</li>
-                <li><strong>Позиционирование:</strong> Премиальная эко-линейка готовой кулинарии сети Profi.</li>
-              </ul>
-              <div class="tech-pill-bottom">
-                Полное домашнее компостирование (OK Compost HOME Certified)
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ==========================================
-           SLIDE 4: Store Departments Portfolio
-           ========================================== -->
-      <section class="slide" data-index="4"
-        data-notes="Спикер: «PackShift оптимизирует еще 3 зоны магазина: Овощи — лазерная микроперфорация EMAP дает +4 дня свежести и -32% списаний. Мясо — капиллярный лоток собирает 45 мл сока без салфеток. Пекарня — крафт с био-окном NatureFlex на 100% пригоден к переработке с бумагой.»">
-        <div class="slide-top-bar">
-          <div>
-            <div class="slide-category">ПОРТФЕЛЬ РЕШЕНИЙ ДЛЯ СУПЕРМАРКЕТА</div>
-            <h2 class="slide-title">Комплексная оптимизация отделов: Овощи, Мясо, Выпечка</h2>
-          </div>
-          <div class="slide-number-badge">04 / 08</div>
-        </div>
-
-        <div class="slide-content">
-          <div class="grid-3">
-            <div class="tech-card">
-              <div class="card-tag">🥬 СВЕЖИЕ ОВОЩИ И ЗЕЛЕНЬ</div>
-              <h3 class="card-heading">EMAP Laser-Breathe™</h3>
-              <ul class="card-bullet-list">
-                <li><strong>Боль:</strong> Конденсат, плесень, 28-35% списаний зелени и ягод.</li>
-                <li><strong>Инновация:</strong> Моно-пленка rBOPP с лазерной микроперфорацией. Баланс O₂ (3-5%) и CO₂ (5-8%).</li>
-                <li><strong>Эффект:</strong> +4 дня к сроку годности на полке.</li>
-                <li><strong>Списания:</strong> Сокращение списаний в супермаркетах на 32%.</li>
-                <li><strong>Материал:</strong> Моно-rBOPP • 100% Recyclable.</li>
-              </ul>
-              <div class="tech-pill-bottom">Технология динамического газообмена</div>
-            </div>
-
-            <div class="tech-card">
-              <div class="card-tag">🥩 МЯСНОЙ И РЫБНЫЙ ОТДЕЛ</div>
-              <h3 class="card-heading">Capillary Tray (Pad-Less)</h3>
-              <ul class="card-bullet-list">
-                <li><strong>Боль:</strong> Грязная синтетическая салфетка исключает лоток из рециклинга.</li>
-                <li><strong>Инновация:</strong> Моно-rPET лоток с капиллярным гидро-замком на 45 мл экссудата.</li>
-                <li><strong>Эффект:</strong> 0 синтетических салфеток-вкладышей.</li>
-                <li><strong>Сортировка:</strong> 100% чистый поток вторичной переработки.</li>
-                <li><strong>Материал:</strong> 85% rPET • RecyClass Class A.</li>
-              </ul>
-              <div class="tech-pill-bottom">Устранение токсичных салфеток-вкладышей</div>
-            </div>
-
-            <div class="tech-card">
-              <div class="card-tag">🥐 ПЕКАРНЯ И ВЫПЕЧКА</div>
-              <h3 class="card-heading">NatureVent Crisp™</h3>
-              <ul class="card-bullet-list">
-                <li><strong>Боль:</strong> Пакеты со смотровыми окнами из полиэтилена сжигаются.</li>
-                <li><strong>Инновация:</strong> Крафт FSC + прозрачное био-окно NatureFlex™ из древесной массы + био-воск.</li>
-                <li><strong>Эффект:</strong> Сохранение хрустящей корочки круассанов.</li>
-                <li><strong>Утилизация:</strong> 100% Pulpable (переработка вместе с бумагой).</li>
-                <li><strong>Материал:</strong> Крафт FSC + целлюлоза • 0% ПЭ.</li>
-              </ul>
-              <div class="tech-pill-bottom">100% Pulpable (Тест CEPI пройден)</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ==========================================
-           SLIDE 5: Economics & Business Case
-           ========================================== -->
-      <section class="slide" data-index="5"
-        data-notes="Спикер: «Экология должна приносить прибыль. В расчете на 100 супермаркетов Profi мы замещаем 1840 тонн первичного пластика, предотвращаем 4250 тонн CO2e и экономим ритейлеру 1.28 млн евро в год на налоге EPR за счет класса А переработки. CapEx для магазинов равен нулю.»">
-        <div class="slide-top-bar">
-          <div>
-            <div class="slide-category">БИЗНЕС-МОДЕЛЬ И ЮНИТ-ЭКОНОМИКА</div>
-            <h2 class="slide-title">Экономика внедрения: Расчет на 100 супермаркетов сети Profi</h2>
-          </div>
-          <div class="slide-number-badge">05 / 08</div>
-        </div>
-
-        <div class="slide-content">
-          <div class="grid-4" style="margin-bottom: 22px;">
-            <div class="tech-card">
-              <div class="metric-value">1 840 т</div>
-              <div class="metric-title">Первичный пластик</div>
-              <div class="metric-sub">Предотвращено первичных полимеров в год</div>
-            </div>
-            <div class="tech-card">
-              <div class="metric-value">4 250 т</div>
-              <div class="metric-title">Сокращение CO₂e</div>
-              <div class="metric-sub">Предотвращено выбросов парниковых газов (Scope 3)</div>
-            </div>
-            <div class="tech-card glow-card">
-              <div class="metric-value">€1.28M</div>
-              <div class="metric-title">Экономия на EPR</div>
-              <div class="metric-sub">Прямая годовая экономия на налоге за счет моно-материалов</div>
-            </div>
-            <div class="tech-card">
-              <div class="metric-value">€700K</div>
-              <div class="metric-title">Снижение списаний</div>
-              <div class="metric-sub">Сбереженная продукция благодаря свежести (+4 дня)</div>
-            </div>
-          </div>
-
-          <div class="tech-card glow-card" style="padding: 18px 24px;">
-            <div style="font-family: 'JetBrains Mono', monospace; font-size: 13.5px; font-weight: 700; color: var(--neon-emerald); margin-bottom: 6px;">
-              💡 НУЛЕВОЙ CAPEX ДЛЯ РИТЕЙЛЕРА (DROP-IN COMPATIBILITY):
-            </div>
-            <p style="font-size: 0.95rem; color: #ffffff; line-height: 1.55;">
-              Упаковка PackShift полностью адаптирована под стандартные запайщики лотков, фасовочные линии и тепловые витрины супермаркетов Profi. Закупка нового оборудования не требуется. Себестоимость моно-пакетов CPET на 14% ниже импортных многослойных фольгированных ламинатов.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- ==========================================
-           SLIDE 6: Standards & Compliance
-           ========================================== -->
-      <section class="slide" data-index="6"
-        data-notes="Спикер: «PackShift — это регуляторный щит для Profi. Все материалы имеют высшую оценку RecyClass Class A, готовы к директиве PPWR 2030, сертифицированы по стандарту EFSA EU 10/2011 для горячего жира и на 100% свободны от опасных PFAS.»">
-        <div class="slide-top-bar">
-          <div>
-            <div class="slide-category">РЕГУЛЯТОРНЫЙ ЩИТ И СЕРТИФИКАЦИЯ</div>
-            <h2 class="slide-title">Соответствие европейским стандартам и нормативам</h2>
-          </div>
-          <div class="slide-number-badge">06 / 08</div>
-        </div>
-
-        <div class="slide-content">
-          <div class="grid-4">
-            <div class="tech-card">
-              <div class="card-tag">RECYCLABILITY</div>
-              <h3 class="card-heading">RecyClass Grade A</h3>
-              <p style="font-size: 13.5px; color: var(--text-muted); line-height: 1.6;">
-                Подтвержденная совместимость с оптическими сепараторами (NIR) и механическим рециклингом в ЕС и СНГ.
-              </p>
-              <div class="tech-pill-bottom">Design for Recycling</div>
-            </div>
-
-            <div class="tech-card">
-              <div class="card-tag">REGULATION</div>
-              <h3 class="card-heading">EU PPWR 2030 Ready</h3>
-              <p style="font-size: 13.5px; color: var(--text-muted); line-height: 1.6;">
-                Упреждение европейских норм: >35% пищевого rPET, 0% первичного пластика в фасовочных пакетах.
-              </p>
-              <div class="tech-pill-bottom">Zero Regulatory Risk</div>
-            </div>
-
-            <div class="tech-card">
-              <div class="card-tag">CHEMICAL SAFETY</div>
-              <h3 class="card-heading">100% PFAS-Free</h3>
-              <p style="font-size: 13.5px; color: var(--text-muted); line-height: 1.6;">
-                Сертификация отсутствия пер- и полифторалкильных веществ в контакте с горячим маслом до 250°C.
-              </p>
-              <div class="tech-pill-bottom">Non-toxic Water Barrier</div>
-            </div>
-
-            <div class="tech-card">
-              <div class="card-tag">FOOD CONTACT</div>
-              <h3 class="card-heading">EFSA / FDA Approved</h3>
-              <p style="font-size: 13.5px; color: var(--text-muted); line-height: 1.6;">
-                Соответствие Regulation EU No 10/2011 для прямого контакта с горячими, кислыми и жирными продуктами.
-              </p>
-              <div class="tech-pill-bottom">EU Migration Limit Passed</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ==========================================
-           SLIDE 7: Pilot Roadmap
-           ========================================== -->
-      <section class="slide" data-index="7"
-        data-notes="Спикер: «Мы предлагаем четкий 6-недельный план: 2 недели лабораторных тестов на витринах Profi, затем 4 недели пилота в 5 флагманских супермаркетах. Мы уже подготовили партию из 200 образцов и готовы передать их на следующей неделе.»">
-        <div class="slide-top-bar">
-          <div>
-            <div class="slide-category">ДОРОЖНАЯ КАРТА ВНЕДРЕНИЯ</div>
-            <h2 class="slide-title">План пилотного запуска в Profi: 6 недель до результата</h2>
-          </div>
-          <div class="slide-number-badge">07 / 08</div>
-        </div>
-
-        <div class="slide-content">
-          <div class="grid-3" style="margin-bottom: 22px;">
-            <div class="tech-card highlight">
-              <div class="card-tag">ЭТАП 1 • 2 НЕДЕЛИ</div>
-              <h3 class="card-heading">Лабораторный тест</h3>
-              <ul class="card-bullet-list">
-                <li>Тестирование пакетов CPET и термобоксов на витринах гриля Profi при 95°C–120°C.</li>
-                <li>Проверка герметичности, жиростойкости (Kit 12) и отсутствия посторонних запахов.</li>
-                <li>Протокол миграции EFSA для контакта с горячим куриным жиром.</li>
-              </ul>
-              <div class="tech-pill-bottom">Тепловые витрины гриля</div>
-            </div>
-
-            <div class="tech-card">
-              <div class="card-tag">ЭТАП 2 • 4 НЕДЕЛИ</div>
-              <h3 class="card-heading">Пилот в 5 магазинах</h3>
-              <ul class="card-bullet-list">
-                <li>Запуск в 5 флагманских супермаркетах Profi в отделах Гриль и Овощи.</li>
-                <li>Сбор обратной связи от поваров кулинарии и покупателей.</li>
-                <li>Замер динамики списаний и сохранности хрустящей корочки гриля.</li>
-              </ul>
-              <div class="tech-pill-bottom">Полевые испытания</div>
-            </div>
-
-            <div class="tech-card">
-              <div class="card-tag">ЭТАП 3 • КВАРТАЛ 2</div>
-              <h3 class="card-heading">Масштабирование</h3>
-              <ul class="card-bullet-list">
-                <li>Полноформатное развертывание в сети супермаркетов Profi.</li>
-                <li>Подключение автоматизированного дашборда учета сокращения выбросов Scope 3.</li>
-                <li>Оптимизация логистики поставок моно-упаковки.</li>
-              </ul>
-              <div class="tech-pill-bottom">Сеть супермаркетов</div>
-            </div>
-          </div>
-
-          <div class="tech-card glow-card" style="padding: 18px 24px; display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
+        <div class="diagram-split">
+          <!-- Левая колонка: Проблема -->
+          <div class="diagram-col-card">
             <div>
-              <div style="font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 700; color: var(--neon-emerald); margin-bottom: 4px;">
-                📦 КОМПЛЕКТ ИЗ 200 ОБРАЗЦОВ ГОТОВ К ПЕРЕДАЧЕ:
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700; color: #ef4444; letter-spacing: 1px;">
+                ❌ ТРАДИЦИОННАЯ УПАКОВКА (ТУПИК)
+              </span>
+              <div class="step-chain">
+                <div class="chain-node bad">
+                  <div class="chain-icon">⚠️</div>
+                  <div class="chain-text">
+                    <strong>Многослойный полиэтилен + фольга</strong>
+                    <span>Не перерабатывается (0% рециклинга) $\rightarrow$ штрафы EPR до +45%</span>
+                  </div>
+                </div>
+                <div class="chain-node bad">
+                  <div class="chain-icon">🔥</div>
+                  <div class="chain-text">
+                    <strong>Плавление и деформация при 95°–120°C</strong>
+                    <span>Течь горячего жира в витрине и токсичный запах полимеров</span>
+                  </div>
+                </div>
+                <div class="chain-node bad">
+                  <div class="chain-icon">🧪</div>
+                  <div class="chain-text">
+                    <strong>Токсичные добавки PFAS</strong>
+                    <span>Миграция фторорганики в пищу $\rightarrow$ под запретом EU 2026</span>
+                  </div>
+                </div>
+                <div class="chain-node bad">
+                  <div class="chain-icon">💨</div>
+                  <div class="chain-text">
+                    <strong>Парниковый эффект витрины</strong>
+                    <span>Влага заперта: хрустящая корочка курицы размокает за 40 мин</span>
+                  </div>
+                </div>
               </div>
-              <p style="font-size: 0.95rem; color: #ffffff;">
-                Партия пакетов CPET Ultra-Flex и термобоксов LignoShield подготовлена для старта испытаний в Profi на следующей неделе.
-              </p>
             </div>
-            <div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700; color: var(--neon-emerald); background: rgba(16, 185, 129, 0.2); padding: 8px 16px; border-radius: 6px; border: 1px solid var(--neon-emerald); white-space: nowrap;">
-              READY TO DELIVER
+          </div>
+
+          <!-- Центральный узел VS -->
+          <div class="diagram-vs-node">VS</div>
+
+          <!-- Правая колонка: Инновация PackShift -->
+          <div class="diagram-col-card solution-glow">
+            <div>
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700; color: var(--neon-emerald); letter-spacing: 1px;">
+                ✔ РЕШЕНИЕ PACKSHIFT DEEPTECH
+              </span>
+              <div class="step-chain">
+                <div class="chain-node good">
+                  <div class="chain-icon">♻️</div>
+                  <div class="chain-text">
+                    <strong>100% моно-материал rPET и био-композит</strong>
+                    <span>RecyClass Class A $\rightarrow$ прямое освобождение от эко-налога EPR</span>
+                  </div>
+                </div>
+                <div class="chain-node good">
+                  <div class="chain-icon">🛡️</div>
+                  <div class="chain-text">
+                    <strong>Стойкость до 250°C (Dual-Ovenable)</strong>
+                    <span>Выдержка более 6 часов в тепловой витрине без усадки и дефектов</span>
+                  </div>
+                </div>
+                <div class="chain-node good">
+                  <div class="chain-icon">🌿</div>
+                  <div class="chain-text">
+                    <strong>100% PFAS-Free барьер Kit Test 12</strong>
+                    <span>Водная нано-дисперсия альгината водорослей и хитозана</span>
+                  </div>
+                </div>
+                <div class="chain-node good">
+                  <div class="chain-icon">✨</div>
+                  <div class="chain-text">
+                    <strong>Дышащая микропористая мембрана</strong>
+                    <span>Отводит лишний пар, сохраняя корочку гриля хрустящей</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- ==========================================
-           SLIDE 8: Mission & Call to Action
-           ========================================== -->
-      <section class="slide" data-index="8"
-        data-notes="Спикер: «Миссия PackShift — сделать циркулярность прибыльной для Profi уже сегодня, не дожидаясь штрафов 2030 года. Спасибо за внимание! С удовольствием отвечу на вопросы жюри.»">
-        <div class="slide-top-bar">
-          <div>
-            <div class="slide-category">DEEPTECH GIGAHACK 2026 • BIOMENTORHUB × PROFI</div>
-            <h2 class="slide-title">PackShift: Циркулярность, выгодная ритейлеру</h2>
+    <!-- ==========================================
+         СЛАЙД 3: Схема материалов для Гриля (180°–250°C)
+         ========================================== -->
+    <section class="slide" data-index="3"
+      data-notes="Спикер: «Мы создали 2 решения под спец-вызов: Решение А — моно-пакет CPET Ultra-Flex из кристаллического rPET, выдерживающий от -40 до +250°C и перерабатываемый в потоке бутылок. Решение Б — термобокс LignoShield из багассы с барьером из водорослей, отводящий пар для хрустящей корочки.»">
+      <div class="top-status-bar">
+        <div class="track-badge">
+          <span class="track-dot"></span>
+          <span>СПЕЦИАЛЬНЫЙ ВЫЗОВ ХАКАТОНА</span>
+        </div>
+        <div class="slide-index-counter">03 / 08</div>
+      </div>
+
+      <div class="slide-main-stage">
+        <h2 class="slide-headline-center">Материаловедение: 2 решения для витрин гриля (250°C)</h2>
+        <p class="slide-sublead-center">Физико-химические барьеры для курицы-гриль без полиэтилена и токсичных PFAS</p>
+
+        <div class="diagram-grid-2">
+          <!-- Решение А -->
+          <div class="tech-box-schema highlight-glow">
+            <span class="tech-badge-pill">РЕШЕНИЕ А • МОНО-ПАКЕТ CPET</span>
+            <h3 class="tech-schema-title">PackShift CPET Ultra-Flex</h3>
+
+            <!-- Инфографика характеристик -->
+            <div class="schema-flow-horizontal">
+              <div class="flow-step">
+                <div class="flow-step-val">-40°C..+250°C</div>
+                <div class="flow-step-lbl">Диапазон</div>
+              </div>
+              <div class="flow-arrow">➔</div>
+              <div class="flow-step">
+                <div class="flow-step-val">&gt; 6 часов</div>
+                <div class="flow-step-lbl">В витрине 95°C</div>
+              </div>
+              <div class="flow-arrow">➔</div>
+              <div class="flow-step">
+                <div class="flow-step-val">Kit 12</div>
+                <div class="flow-step-lbl">Жиробарьер</div>
+              </div>
+            </div>
+
+            <ul class="spec-points-list">
+              <li>Кристалличность полимера $\chi_c &gt; 38\%$ обеспечивает термостабильность</li>
+              <li>100% rPET: прямое включение в поток переработки ПЭТ-бутылок</li>
+              <li>Dual-Ovenable: покупатель может разогреть блюдо прямо в пакете</li>
+              <li>Себестоимость: на 14% ниже фольгированного ламината</li>
+            </ul>
           </div>
-          <div class="slide-number-badge">08 / 08</div>
+
+          <!-- Решение Б -->
+          <div class="tech-box-schema">
+            <span class="tech-badge-pill">РЕШЕНИЕ Б • БИО-КОМПОЗИТ LIGNOSHIELD</span>
+            <h3 class="tech-schema-title">LignoShield™ ThermoBox</h3>
+
+            <!-- Инфографика характеристик -->
+            <div class="schema-flow-horizontal">
+              <div class="flow-step">
+                <div class="flow-step-val">Багасса</div>
+                <div class="flow-step-lbl">100% волокно</div>
+              </div>
+              <div class="flow-arrow">➔</div>
+              <div class="flow-step">
+                <div class="flow-step-val">Альгинат</div>
+                <div class="flow-step-lbl">Барьер водорослей</div>
+              </div>
+              <div class="flow-arrow">➔</div>
+              <div class="flow-step">
+                <div class="flow-step-val">60 дней</div>
+                <div class="flow-step-lbl">Домашний компост</div>
+              </div>
+            </div>
+
+            <ul class="spec-points-list">
+              <li>Микропористая структура отводит влажный пар (хрустящая корочка)</li>
+              <li>Водный барьер из альгината и хитозана: 0% пластика, 0% фтора</li>
+              <li>Термостойкость до 220°C кратковременно, 6 часов в тепловой витрине</li>
+              <li>Идеально для премиальной эко-кулинарии сети Profi Bio</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         СЛАЙД 4: 4 Квадранта решений по отделам
+         ========================================== -->
+    <section class="slide" data-index="4"
+      data-notes="Спикер: «PackShift оптимизирует еще 3 зоны магазина: Овощи — лазерная микроперфорация EMAP дает +4 дня свежести и -32% списаний. Мясо — капиллярный лоток собирает 45 мл сока без салфеток. Пекарня — крафт с био-окном NatureFlex на 100% пригоден к переработке с бумагой.»">
+      <div class="top-status-bar">
+        <div class="track-badge">
+          <span class="track-dot"></span>
+          <span>АРХИТЕКТУРА РЕШЕНИЙ ДЛЯ PROFI</span>
+        </div>
+        <div class="slide-index-counter">04 / 08</div>
+      </div>
+
+      <div class="slide-main-stage">
+        <h2 class="slide-headline-center">Комплексная архитектура: 4 зоны супермаркета</h2>
+        <p class="slide-sublead-center">Специализированные моно-структуры под специфику каждого продукта сети Profi</p>
+
+        <div class="diagram-quad-grid">
+          <!-- 1. Гриль -->
+          <div class="quad-card">
+            <div class="quad-icon-circle">🍗</div>
+            <div class="quad-dept-title">Готовая Кулинария</div>
+            <div class="quad-tech-name">CPET Ultra-Flex</div>
+            <div class="quad-feature-box">
+              <div class="quad-stat-big">250°C</div>
+              <div class="quad-stat-label">Термостойкость</div>
+            </div>
+            <p class="quad-desc-text">Выдержка 6 часов в витрине, 100% rPET, высший барьер Kit 12 без PFAS.</p>
+          </div>
+
+          <!-- 2. Овощи -->
+          <div class="quad-card">
+            <div class="quad-icon-circle">🥬</div>
+            <div class="quad-dept-title">Свежие Овощи</div>
+            <div class="quad-tech-name">EMAP Laser™</div>
+            <div class="quad-feature-box">
+              <div class="quad-stat-big">+4 Дня</div>
+              <div class="quad-stat-label">Срок годности</div>
+            </div>
+            <p class="quad-desc-text">Лазерная микроперфорация балансирует O₂/CO₂, снижая списания на 32%.</p>
+          </div>
+
+          <!-- 3. Мясо -->
+          <div class="quad-card">
+            <div class="quad-icon-circle">🥩</div>
+            <div class="quad-dept-title">Мясной Отдел</div>
+            <div class="quad-tech-name">Capillary Tray</div>
+            <div class="quad-feature-box">
+              <div class="quad-stat-big">0 Салфеток</div>
+              <div class="quad-stat-label">Pad-Less замок</div>
+            </div>
+            <p class="quad-desc-text">Удержание до 45 мл экссудата геометрией ячеек. 100% чистый поток рециклинга.</p>
+          </div>
+
+          <!-- 4. Пекарня -->
+          <div class="quad-card">
+            <div class="quad-icon-circle">🥐</div>
+            <div class="quad-dept-title">Пекарня</div>
+            <div class="quad-tech-name">NatureVent™</div>
+            <div class="quad-feature-box">
+              <div class="quad-stat-big">Pulpable</div>
+              <div class="quad-stat-label">Тест CEPI пройден</div>
+            </div>
+            <p class="quad-desc-text">Крафт FSC + окно NatureFlex™ из целлюлозы. Полная переработка с бумагой.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         СЛАЙД 5: Инфографика Экономики на 100 магазинов
+         ========================================== -->
+    <section class="slide" data-index="5"
+      data-notes="Спикер: «Экология должна приносить прибыль. В расчете на 100 супермаркетов Profi мы замещаем 1840 тонн первичного пластика, предотвращаем 4250 тонн CO2e и экономим ритейлеру 1.28 млн евро в год на налоге EPR за счет класса А переработки. CapEx для магазинов равен нулю.»">
+      <div class="top-status-bar">
+        <div class="track-badge">
+          <span class="track-dot"></span>
+          <span>ЮНИТ-ЭКОНОМИКА И ESG-ЭФФЕКТ</span>
+        </div>
+        <div class="slide-index-counter">05 / 08</div>
+      </div>
+
+      <div class="slide-main-stage">
+        <h2 class="slide-headline-center">Экономический эффект на масштабе 100 магазинов Profi</h2>
+        <p class="slide-sublead-center">Прямая финансовая экономия на налогах EPR и сокращении пищевых списаний</p>
+
+        <div class="diagram-metrics-row">
+          <div class="big-metric-node">
+            <div class="circle-stat-val">1 840 т</div>
+            <div class="circle-stat-title">Первичный пластик</div>
+            <div class="circle-stat-desc">Тонн первичных полимеров предотвращено в год</div>
+          </div>
+
+          <div class="big-metric-node">
+            <div class="circle-stat-val">4 250 т</div>
+            <div class="circle-stat-title">Сокращение CO₂e</div>
+            <div class="circle-stat-desc">Снижение углеродного следа Scope 3 (CSRD)</div>
+          </div>
+
+          <div class="big-metric-node highlight-node">
+            <div class="circle-stat-val">€1.28M</div>
+            <div class="circle-stat-title">Экономия на EPR</div>
+            <div class="circle-stat-desc">Чистая годовая экономия на эко-сборах ритейлера</div>
+          </div>
+
+          <div class="big-metric-node">
+            <div class="circle-stat-val">€700K</div>
+            <div class="circle-stat-title">Снижение потерь</div>
+            <div class="circle-stat-desc">Сбереженная продукция благодаря свежести (+4 дня)</div>
+          </div>
         </div>
 
-        <div class="slide-content" style="align-items: center; justify-content: center; text-align: center;">
-          <div class="tech-card glow-card" style="max-width: 900px; width: 100%; padding: 40px; margin: 0 auto;">
-            <div style="font-family: 'JetBrains Mono', monospace; font-size: 14px; color: var(--neon-emerald); font-weight: 700; letter-spacing: 2px; margin-bottom: 12px;">
-              PITCH SUMMARY & NEXT STEPS
-            </div>
-            <h2 style="font-size: clamp(2rem, 3.5vw, 3.2rem); font-weight: 800; color: #ffffff; line-height: 1.15; margin-bottom: 18px;">
-              Делаем циркулярность прибыльной для Profi уже сегодня
-            </h2>
-            <p style="font-size: 1.15rem; color: var(--neon-emerald); font-weight: 700; margin-bottom: 24px;">
-              0% первичного пластика • -14% себестоимость • Нулевой CapEx • Защита маржинальности сети
+        <div class="banner-capex-center">
+          <strong>⚡ НУЛЕВОЙ CAPEX (DROP-IN COMPATIBILITY)</strong>
+          <p>
+            100% совместимость со стандартными запайщиками и тепловыми витринами Profi. Себестоимость моно-пакетов CPET на 14% ниже импортных ламинатов с фольгой.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         СЛАЙД 6: Схема регуляторного щита (4 щита)
+         ========================================== -->
+    <section class="slide" data-index="6"
+      data-notes="Спикер: «PackShift — это регуляторный щит для Profi. Все материалы имеют высшую оценку RecyClass Class A, готовы к директиве PPWR 2030, сертифицированы по стандарту EFSA EU 10/2011 для горячего жира и на 100% свободны от опасных PFAS.»">
+      <div class="top-status-bar">
+        <div class="track-badge">
+          <span class="track-dot"></span>
+          <span>РЕГУЛЯТОРНЫЙ ЩИТ И СЕРТИФИКАЦИЯ</span>
+        </div>
+        <div class="slide-index-counter">06 / 08</div>
+      </div>
+
+      <div class="slide-main-stage">
+        <h2 class="slide-headline-center">Международный регуляторный щит Profi</h2>
+        <p class="slide-sublead-center">Полное соответствие нормативам Европейского Союза и пищевым протоколам безопасности</p>
+
+        <div class="diagram-quad-grid">
+          <div class="quad-card">
+            <div class="quad-icon-circle">♻️</div>
+            <div class="quad-dept-title">Recyclability</div>
+            <div class="quad-tech-name">RecyClass A</div>
+            <p class="quad-desc-text">
+              Высший класс сортировки. Доказанная совместимость с оптическими NIR-сепараторами и механической переработкой в ЕС.
             </p>
+          </div>
 
-            <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 18px 24px; margin-bottom: 26px; text-align: left;">
-              <p style="font-size: 14px; color: var(--text-light); line-height: 1.6;">
-                <strong>Готовы к внедрению:</strong> Мы предлагаем сети Profi стать первым ритейлером в регионе, закрывшим норматив EU PPWR 2030 в категории горячей кулинарии без токсичных PFAS и размокания корочки гриля.
-              </p>
-            </div>
+          <div class="quad-card">
+            <div class="quad-icon-circle">📜</div>
+            <div class="quad-dept-title">Regulation</div>
+            <div class="quad-tech-name">PPWR 2030</div>
+            <p class="quad-desc-text">
+              Упреждение квот ЕС: &gt;35% пищевого rPET, 0% первичного пластика в фасовке. Полная защита от будущих штрафов.
+            </p>
+          </div>
 
-            <p style="font-size: 1.25rem; font-weight: 700; color: #ffffff;">
-              Благодарим за внимание! Готовы ответить на ваши вопросы.
+          <div class="quad-card">
+            <div class="quad-icon-circle">🛡️</div>
+            <div class="quad-dept-title">Chemical Safety</div>
+            <div class="quad-tech-name">Zero PFAS</div>
+            <p class="quad-desc-text">
+              100% PFAS-Free. Лабораторный тест на отсутствие перфторорганических соединений в горячем контакте до 250°C.
+            </p>
+          </div>
+
+          <div class="quad-card">
+            <div class="quad-icon-circle">🍽️</div>
+            <div class="quad-dept-title">Food Contact</div>
+            <div class="quad-tech-name">EFSA / FDA</div>
+            <p class="quad-desc-text">
+              Сертификация EU No 10/2011 для прямого контакта с горячими, жирными и влажными пищевыми продуктами.
             </p>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-    </div>
-  </main>
+    <!-- ==========================================
+         СЛАЙД 7: Схема Пайплайна внедрения (6 недель)
+         ========================================== -->
+    <section class="slide" data-index="7"
+      data-notes="Спикер: «Мы предлагаем четкий 6-недельный план: 2 недели лабораторных тестов на витринах Profi, затем 4 недели пилота в 5 флагманских супермаркетах. Мы уже подготовили партию из 200 образцов и готовы передать их на следующей неделе.»">
+      <div class="top-status-bar">
+        <div class="track-badge">
+          <span class="track-dot"></span>
+          <span>ДОРОЖНАЯ КАРТА ПИЛОТА</span>
+        </div>
+        <div class="slide-index-counter">07 / 08</div>
+      </div>
 
-  <!-- Нижняя панель управления деком -->
+      <div class="slide-main-stage">
+        <h2 class="slide-headline-center">План пилотного запуска в Profi: 6 недель</h2>
+        <p class="slide-sublead-center">Быстрое тестирование на действующих тепловых витринах сети без остановки процессов</p>
+
+        <!-- Горизонтальная схема пайплайна -->
+        <div class="pipeline-container">
+          <div class="pipe-step-card active-step">
+            <div class="pipe-step-num">ЭТАП 1 • 2 НЕДЕЛИ</div>
+            <h3 class="pipe-step-title">Лабораторный тест</h3>
+            <div class="pipe-step-time">Тепловые витрины гриля</div>
+            <p class="pipe-step-desc">
+              Тест пакетов CPET и боксов при 95°C–120°C (6 часов). Проверка удержания жира Kit 12 и протокол миграции EFSA.
+            </p>
+          </div>
+
+          <div class="pipe-connector-arrow">➔</div>
+
+          <div class="pipe-step-card">
+            <div class="pipe-step-num">ЭТАП 2 • 4 НЕДЕЛИ</div>
+            <h3 class="pipe-step-title">Пилот в 5 магазинах</h3>
+            <div class="pipe-step-time">Флагманские супермаркеты</div>
+            <p class="pipe-step-desc">
+              Полевое тестирование в отделах Гриль и Овощи. Сбор обратной связи поваров кулинарии и покупателей сети.
+            </p>
+          </div>
+
+          <div class="pipe-connector-arrow">➔</div>
+
+          <div class="pipe-step-card">
+            <div class="pipe-step-num">ЭТАП 3 • КВАРТАЛ 2</div>
+            <h3 class="pipe-step-title">Масштабирование</h3>
+            <div class="pipe-step-time">Вся сеть супермаркетов</div>
+            <p class="pipe-step-desc">
+              Развертывание в сети Profi, подключение автоматического дашборда учета сокращения Scope 3 выбросов.
+            </p>
+          </div>
+        </div>
+
+        <div class="banner-capex-center" style="border-color: var(--neon-emerald); background: rgba(16, 185, 129, 0.15);">
+          <strong>📦 ПАРТИЯ ИЗ 200 ОБРАЗЦОВ ГОТОВА К ПЕРЕДАЧЕ PROFI</strong>
+          <p>Комплект пакетов CPET Ultra-Flex и термобоксов LignoShield подготовлен к испытаниям на следующей неделе.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         СЛАЙД 8: Финальный экран (Call to Action)
+         ========================================== -->
+    <section class="slide" data-index="8"
+      data-notes="Спикер: «Миссия PackShift — сделать циркулярность прибыльной для Profi уже сегодня, не дожидаясь штрафов 2030 года. Спасибо за внимание! С удовольствием отвечу на вопросы жюри.»">
+      <div class="top-status-bar">
+        <div class="track-badge">
+          <span class="track-dot"></span>
+          <span>DEEPTECH GIGAHACK 2026 • РЕЗЮМЕ</span>
+        </div>
+        <div class="slide-index-counter">08 / 08</div>
+      </div>
+
+      <div class="slide-main-stage">
+        <div style="background: var(--bg-card); border: 2px solid var(--neon-emerald); border-radius: 28px; padding: 48px 60px; max-width: 960px; width: 100%; box-shadow: 0 0 50px rgba(16, 185, 129, 0.18);">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700; color: var(--neon-emerald); letter-spacing: 2px; margin-bottom: 12px;">
+            BIOMENTORHUB × PROFI TRACK
+          </div>
+          <h2 style="font-size: clamp(2.2rem, 3.8vw, 3.4rem); font-weight: 800; color: #ffffff; line-height: 1.15; margin-bottom: 16px;">
+            Делаем циркулярность прибыльной для Profi уже сегодня
+          </h2>
+          <p style="font-size: 1.25rem; font-weight: 700; color: var(--neon-emerald); margin-bottom: 24px;">
+            0% первичного пластика • -14% себестоимость • Нулевой CapEx
+          </p>
+
+          <p style="font-size: 14.5px; color: var(--text-light); line-height: 1.6; max-width: 780px; margin: 0 auto 30px;">
+            PackShift позволяет сети Profi опередить требования регулятора EU PPWR 2030, защитить маржинальность кулинарии и гарантировать пищевую безопасность покупателей без токсичных PFAS.
+          </p>
+
+          <div style="display: inline-block; background: rgba(16, 185, 129, 0.15); border: 1px solid var(--neon-emerald); padding: 12px 32px; border-radius: 9999px; font-size: 1.2rem; font-weight: 800; color: #ffffff;">
+            Готовы ответить на ваши вопросы
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Нижняя панель управления -->
   <footer class="deck-bottom-bar">
-    <div class="controls-strip">
-      <button class="ctrl-button" id="prevBtn">◀ Назад</button>
-      <div class="counter-display" id="slideCount">01 / 08</div>
-      <button class="ctrl-button" id="nextBtn">Вперед ▶</button>
-      <button class="ctrl-button" id="notesBtn">💬 Текст спикера (S)</button>
-      <button class="ctrl-button" id="fsBtn">⛶ Экран (F)</button>
-      <div class="timer-display">
-        <span class="timer-dot"></span>
-        <span id="countdown">05:00</span>
+    <div class="controls-capsule">
+      <button class="nav-btn" id="prevSlide">◀ Назад</button>
+      <div class="counter-pill" id="counterPill">01 / 08</div>
+      <button class="nav-btn" id="nextSlide">Вперед ▶</button>
+      <button class="nav-btn" id="notesToggle">💬 Шпаргалка (S)</button>
+      <button class="nav-btn" id="fsToggle">⛶ Экран (F)</button>
+      <div class="timer-pill">
+        <span class="pulsing-dot"></span>
+        <span id="timerPill">05:00</span>
       </div>
     </div>
   </footer>
 
-  <!-- Шторка для текста спикера -->
-  <aside class="speaker-drawer" id="notesDrawer">
+  <!-- Выдвижная шторка спикера -->
+  <aside class="speaker-drawer" id="speakerDrawer">
     <div class="drawer-header">
       <span class="drawer-title">СЛОВА СПИКЕРА</span>
-      <button class="drawer-close" id="closeDrawer">✕</button>
+      <button class="drawer-close" id="drawerClose">✕</button>
     </div>
-    <div class="drawer-body" id="drawerContent">
+    <div class="drawer-text" id="drawerText">
       Загрузка...
     </div>
   </aside>
@@ -839,20 +1235,20 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const slides = document.querySelectorAll('.slide');
-      const prevBtn = document.getElementById('prevBtn');
-      const nextBtn = document.getElementById('nextBtn');
-      const slideCount = document.getElementById('slideCount');
-      const notesBtn = document.getElementById('notesBtn');
-      const closeDrawer = document.getElementById('closeDrawer');
-      const notesDrawer = document.getElementById('notesDrawer');
-      const drawerContent = document.getElementById('drawerContent');
-      const fsBtn = document.getElementById('fsBtn');
-      const countdown = document.getElementById('countdown');
+      const prevBtn = document.getElementById('prevSlide');
+      const nextBtn = document.getElementById('nextSlide');
+      const counterPill = document.getElementById('counterPill');
+      const notesToggle = document.getElementById('notesToggle');
+      const drawerClose = document.getElementById('drawerClose');
+      const speakerDrawer = document.getElementById('speakerDrawer');
+      const drawerText = document.getElementById('drawerText');
+      const fsToggle = document.getElementById('fsToggle');
+      const timerPill = document.getElementById('timerPill');
 
       let current = 1;
       const total = slides.length;
 
-      const setSlide = (n) => {
+      const renderSlide = (n) => {
         if (n < 1) n = 1;
         if (n > total) n = total;
 
@@ -861,21 +1257,22 @@
         if (target) {
           target.classList.add('active');
           current = n;
-          slideCount.textContent = `0${current} / 0${total}`;
-          drawerContent.textContent = target.getAttribute('data-notes') || 'Нет заметок к слайду.';
+          counterPill.textContent = `0${current} / 0${total}`;
+          drawerText.textContent = target.getAttribute('data-notes') || 'Нет заметок к слайду.';
         }
       };
 
-      prevBtn.addEventListener('click', () => setSlide(current - 1));
-      nextBtn.addEventListener('click', () => setSlide(current + 1));
+      prevBtn.addEventListener('click', () => renderSlide(current - 1));
+      nextBtn.addEventListener('click', () => renderSlide(current + 1));
 
+      // Keyboard
       document.addEventListener('keydown', (e) => {
         if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
-          setSlide(current + 1);
+          renderSlide(current + 1);
         } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
-          setSlide(current - 1);
+          renderSlide(current - 1);
         } else if (e.key.toLowerCase() === 's') {
-          notesDrawer.classList.toggle('open');
+          speakerDrawer.classList.toggle('open');
         } else if (e.key.toLowerCase() === 'f') {
           if (!document.fullscreenElement) {
             document.documentElement.requestFullscreen();
@@ -885,10 +1282,10 @@
         }
       });
 
-      notesBtn.addEventListener('click', () => notesDrawer.classList.toggle('open'));
-      closeDrawer.addEventListener('click', () => notesDrawer.classList.remove('open'));
+      notesToggle.addEventListener('click', () => speakerDrawer.classList.toggle('open'));
+      drawerClose.addEventListener('click', () => speakerDrawer.classList.remove('open'));
 
-      fsBtn.addEventListener('click', () => {
+      fsToggle.addEventListener('click', () => {
         if (!document.fullscreenElement) {
           document.documentElement.requestFullscreen();
         } else {
@@ -896,21 +1293,21 @@
         }
       });
 
-      // 5-minute countdown
-      let sec = 300;
+      // 5-min timer
+      let timeLeft = 300;
       setInterval(() => {
-        if (sec <= 0) {
-          countdown.textContent = "00:00 (Стоп)";
-          countdown.style.color = "#ef4444";
+        if (timeLeft <= 0) {
+          timerPill.textContent = "00:00 (Стоп)";
+          timerPill.style.color = "#ef4444";
           return;
         }
-        sec--;
-        const m = String(Math.floor(sec / 60)).padStart(2, '0');
-        const s = String(sec % 60).padStart(2, '0');
-        countdown.textContent = `${m}:${s}`;
+        timeLeft--;
+        const m = String(Math.floor(timeLeft / 60)).padStart(2, '0');
+        const s = String(timeLeft % 60).padStart(2, '0');
+        timerPill.textContent = `${m}:${s}`;
       }, 1000);
 
-      setSlide(1);
+      renderSlide(1);
     });
   </script>
 </body>
