@@ -62,6 +62,8 @@
 Hackaton-202636/
 ├── README.md                     # Описание проекта и техническая спецификация
 ├── PRESENTATION_PITCH.md         # Готовый текст и поминутный сценарий защиты на 5 минут
+├── presentation.html             # Интерактивная веб-презентация со слайдами и таймером
+├── PackShift_Profi_Gigahack2026.pptx # Официальная презентация PowerPoint (16:9)
 ├── index.html                    # Автоматический редирект для GitHub Pages
 └── Проэкт Хакатон/
     ├── index.html                # Главная страница (HTML5 + семантическая разметка + JS)
@@ -75,8 +77,10 @@ Hackaton-202636/
 
 ## 🌐 Демо и Материалы для защиты
 
-- **Онлайн-демо сайта**: [https://lisqrn.github.io/Hackaton-202636/](https://lisqrn.github.io/Hackaton-202636/)
-- **Сценарий питча на 5 минут с Q&A**: [PRESENTATION_PITCH.md](./PRESENTATION_PITCH.md)
+- **Интерактивная онлайн-презентация (Слайды)**: [https://lisqrn.github.io/Hackaton-202636/presentation.html](https://lisqrn.github.io/Hackaton-202636/presentation.html)
+- **Файл презентации PowerPoint**: [PackShift_Profi_Gigahack2026.pptx](./PackShift_Profi_Gigahack2026.pptx)
+- **Основной сайт и ESG-калькулятор**: [https://lisqrn.github.io/Hackaton-202636/](https://lisqrn.github.io/Hackaton-202636/)
+- **Сценарий питча на 5 минут с ответами на Q&A**: [PRESENTATION_PITCH.md](./PRESENTATION_PITCH.md)
 - **Активный Pull Request**: [PR #1 (denis100strike/Hackaton-202636)](https://github.com/denis100strike/Hackaton-202636/pull/1)
 
 ## 🚀 Локальный запуск
