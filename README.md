@@ -61,6 +61,8 @@
 ```
 Hackaton-202636/
 ├── README.md                     # Описание проекта и техническая спецификация
+├── PRESENTATION_PITCH.md         # Готовый текст и поминутный сценарий защиты на 5 минут
+├── index.html                    # Автоматический редирект для GitHub Pages
 └── Проэкт Хакатон/
     ├── index.html                # Главная страница (HTML5 + семантическая разметка + JS)
     ├── css/
@@ -70,6 +72,12 @@ Hackaton-202636/
     ├── js/
     └── json/
 ```
+
+## 🌐 Демо и Материалы для защиты
+
+- **Онлайн-демо сайта**: [https://lisqrn.github.io/Hackaton-202636/](https://lisqrn.github.io/Hackaton-202636/)
+- **Сценарий питча на 5 минут с Q&A**: [PRESENTATION_PITCH.md](./PRESENTATION_PITCH.md)
+- **Активный Pull Request**: [PR #1 (denis100strike/Hackaton-202636)](https://github.com/denis100strike/Hackaton-202636/pull/1)
 
 ## 🚀 Локальный запуск
 
